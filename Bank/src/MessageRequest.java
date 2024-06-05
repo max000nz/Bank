@@ -5,5 +5,7 @@ public class MessageRequest {
   bool maxhomo=1;
   int Etgar = 10000;
   int check = 2;
+  string ben='ben';
+
 }
 s
