@@ -4,5 +4,8 @@ public class MessageRequest {
   String chlen = "xuy";
   bool maxhomo=1;
   int Etgar = 10000;
+  int check = 2;
   string ben='ben';
+
 }
+s
