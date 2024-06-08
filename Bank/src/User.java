@@ -55,6 +55,10 @@ public class User extends Roles {
 		totalDeposits -= withdrawal.getAmount();
 	}
 	
+	public float GetCash() {
+		return cash;
+	}
+	
 	public float GetTotalLoans() {
 		return totalLoans;
 	}
