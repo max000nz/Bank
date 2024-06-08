@@ -8,8 +8,6 @@ private enum roleType {
 User, 
 Admin;
 }
-  
-
 
 //functions
 public Roles(String name, String lastName, int id, String password)
@@ -42,10 +40,6 @@ public String getLastName() {
 
 public void setLastName(String lastName) {
 	this.lastName = lastName;
-}
-
-public String getPassword() {
-	return password;
 }
 
 }
