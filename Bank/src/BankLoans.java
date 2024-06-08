@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-//gay
+
 
 public class BankLoans {
   private int numOfLoans;
