@@ -16,7 +16,7 @@ public class User {
 	public User() {
 		
 		//pendingRequests = new Stack<>();		Implement after adding the 'Request' class
-		//queue = new ArrayDeque<>();			Implement after adding the 'Loan' class
+		//loans = new ArrayDeque<>();			Implement after adding the 'Loan' class
 		//deposit = new ArrayDeque<>();			Implement after adding the 'Deposit' class
         this.cash = 0;
         this.totalLoans = 0;
@@ -39,18 +39,24 @@ public class User {
 	
 	public void PayoutLoanR() {
 		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
+		
+		//Loan payout = loans.remove();
+		//this.cash -= payout.getValue();
 	}
 	
 	public void WithdrawDepositR() {
-		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
+		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
+		
+		//Deposit withdrawal = deposits.remove();
+		//this.cash += withdrawal.getValue();
 	}
 	
-	public void GetTotalLoans() {
-		
+	public float GetTotalLoans() {
+		return totalLoans;
 	}
 	
-	public void GetTotalDeposite() {
-		
+	public float GetTotalDeposit() {
+		return totalDeposits;
 	}
 
 }
