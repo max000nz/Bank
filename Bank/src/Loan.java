@@ -1,15 +1,12 @@
-package liad;
 
-public class Loan {
+
+
+
+public class Loan extend UserRequest{
 
 	
 	
 	
 	
-	String getName(){
-		
-		
-		return null;
-				
-	}
+	
 }
