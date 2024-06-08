@@ -42,4 +42,8 @@ public void setLastName(String lastName) {
 	this.lastName = lastName;
 }
 
+public int GetId() {
+	return id;
+}
+
 }
