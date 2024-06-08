@@ -14,7 +14,7 @@ Admin;
 //functions
 public Roles()
 {
-id=id+1;
+	id=id+1;
 }
 
 public boolean SearchInfo(int id, String Password)
