@@ -29,6 +29,7 @@ public class User extends Roles {
 		
 		UserRequest new_loan = new UserRequest();
 		loans.add(new_loan);
+		totalLoans += new_loan.getAmount();
 	}
 	
 	public void NewDepositR() {
@@ -36,6 +37,7 @@ public class User extends Roles {
 		
 		UserRequest new_deposit = new UserRequest();
 		deposits.add(new_deposit);
+		totalDeposits += new_deposit.getAmount();
 	}
 	
 	public void PayoutLoanR() {
@@ -43,6 +45,7 @@ public class User extends Roles {
 		
 		UserRequest payout = loans.remove();
 		this.cash -= payout.getAmount();
+		totalLoans -= payout.getAmount();
 	}
 	
 	public void WithdrawDepositR() {
@@ -50,6 +53,7 @@ public class User extends Roles {
 		
 		UserRequest withdrawal = deposits.remove();
 		this.cash += withdrawal.getAmount();
+		totalDeposits -= withdrawal.getAmount();
 	}
 	
 	public float GetTotalLoans() {
