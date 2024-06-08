@@ -2,9 +2,9 @@ import java.util.*;
 
 public class Admin extends Roles {
 public LinkedList<User> users=new LinkedList<User>(); 
-public Stack<Request> bankReq=new Stack<Request>();
+public Stack<UserRequest> bankReq=new Stack<UserRequest>();
 public Queue<BankLoans> allBankLoans=new LinkedList<BankLoans>();
-public Queue<BankDeposite>allBankDeposite=new Queue<BankDeposite>();
+public Queue<BankDeposit>allBankDeposite=new LinkedList<BankDeposit>();
   
 
 //functions
@@ -14,7 +14,7 @@ return this.users.getFirst();
 }
 
 
-private BankDeposite GetTransactionHistory() {
+private BankDeposit GetTransactionHistory() {
 
 }
 
