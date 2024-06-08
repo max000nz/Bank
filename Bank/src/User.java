@@ -14,9 +14,15 @@ public class User extends Roles {
 	
 	public User() {
 		
+
+		//pendingRequests = new Stack<>();		Implement after adding the 'Request' class
+		//loans = new ArrayDeque<>();			Implement after adding the 'Loan' class
+		//deposit = new ArrayDeque<>();			Implement after adding the 'Deposit' class
+
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
 		deposits = new ArrayDeque<>();
+
 		
         this.cash = 0;
         this.totalLoans = 0;
@@ -42,14 +48,29 @@ public class User extends Roles {
 	public void PayoutLoanR() {
 		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
 		
+
+		//Loan payout = loans.remove();
+		//this.cash -= payout.getValue();
+
 		UserRequest payout = loans.remove();
 		this.cash -= payout.getAmount();
 		totalLoans -= payout.getAmount();
+
 	}
 	
 	public void WithdrawDepositR() {
 		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
 		
+
+		//Deposit withdrawal = deposits.remove();
+		//this.cash += withdrawal.getValue();
+	}
+	
+	public float GetTotalLoans() {
+		return totalLoans;
+	}
+	
+
 		UserRequest withdrawal = deposits.remove();
 		this.cash += withdrawal.getAmount();
 		totalDeposits -= withdrawal.getAmount();
@@ -62,7 +83,7 @@ public class User extends Roles {
 	public float GetTotalLoans() {
 		return totalLoans;
 	}
-	
+
 	public float GetTotalDeposit() {
 		return totalDeposits;
 	}
