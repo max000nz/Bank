@@ -19,6 +19,7 @@ public class User extends Roles {
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
 		deposits = new ArrayDeque<>();
+
 		
         this.cash = 0;
         this.totalLoans = 0;
@@ -43,10 +44,11 @@ public class User extends Roles {
 	
 	public void PayoutLoanR() {
 		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
-		
+
 		UserRequest payout = loans.remove();
 		this.cash -= payout.getAmount();
 		totalLoans -= payout.getAmount();
+
 	}
 	
 	public void WithdrawDepositR() {
@@ -64,7 +66,7 @@ public class User extends Roles {
 	public float GetTotalLoans() {
 		return totalLoans;
 	}
-	
+
 	public float GetTotalDeposit() {
 		return totalDeposits;
 	}
