@@ -14,6 +14,8 @@ public class User extends Roles {
 	
 	public User() {
 		
+		super()
+		
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
 		deposits = new ArrayDeque<>();
