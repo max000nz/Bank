@@ -1,8 +1,8 @@
 public class Roles {
 private String name;
 private String lastName;
-private String Password;
-static int id=0;
+private String password;
+private int id;
 
 private enum roleType {
 User, 
@@ -12,39 +12,39 @@ Admin;
 
 
 //functions
-public Roles()
+public Roles(String name, String lastName, int id, String password)
 {
-	id=id+1;
+	this.name = name;
+	this.lastName = lastName;
+	this.id = id;
+	this.password = password;
 }
 
-public boolean SearchInfo(int id, String Password)
+public boolean SearchInfo(int id, String password)
 {
-
-return true;
+	if(id == this.id && password == this.password) {
+		return true;
+	}
 }
 
 public String getName() {
-return name;
+	return name;
 }
 
 public void setName(String name) {
-this.name = name;
+	this.name = name;
 }
 
 public String getLastName() {
-return lastName;
+	return lastName;
 }
 
 public void setLastName(String lastName) {
-this.lastName = lastName;
+	this.lastName = lastName;
 }
 
 public String getPassword() {
-return Password;
-}
-
-public void setPassword(String password) {
-Password = password;
+	return password;
 }
 
 }

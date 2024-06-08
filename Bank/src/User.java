@@ -12,16 +12,16 @@ public class User extends Roles {
 	private float totalLoans;
 	private float totalDeposits;
 	
-	public User() {
+	public User(String name, String lastName, int id, String password, int cash) {
 		
-		super();
+		super(name, lastName, id, password);
 		
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
 		deposits = new ArrayDeque<>();
 
 		
-        this.cash = 0;
+        this.cash = cash;
         this.totalLoans = 0;
         this.totalDeposits = 0;
     }
