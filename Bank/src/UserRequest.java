@@ -1,4 +1,4 @@
-
+//gay
 public class UserRequest {
 	
 	private int loans;
