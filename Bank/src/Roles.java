@@ -25,6 +25,7 @@ public boolean SearchInfo(int id, String password)
 	if(id == this.id && password == this.password) {
 		return true;
 	}
+	return false;
 }
 
 public String getName() {
