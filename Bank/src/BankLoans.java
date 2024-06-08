@@ -14,7 +14,6 @@ public class BankLoans {
   public UserRequest findLoanByname(String name){
 	  if (this.numOfLoans == 0) return null;
 	  
-	  
 	  for (int i=0; i< this.numOfLoans; i++) {
 		  // if(this.loans.get(i).getName().equals(name)) return this.loans.get(i);		// No method getName
 	  }
