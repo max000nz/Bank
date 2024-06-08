@@ -1,13 +1,12 @@
 import java.util.Stack;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.ArrayDeque;
 
-public class User {
+public class User extends Roles {
 	
-	//Stack<Request> pendingRequests;			Implement after adding the 'Request' class
-	//Queue<Loan> loans;					Implement after adding the 'Loan' class
-	//Queue<Deposit> deposits;				Implement after adding the 'Deposit' class
+	Stack<UserRequest> requestHistory;
+	Queue<UserRequest> loans;
+	Queue<UserRequest> deposits;
 	
 	private float cash;
 	private float totalLoans;
@@ -15,9 +14,15 @@ public class User {
 	
 	public User() {
 		
+
 		//pendingRequests = new Stack<>();		Implement after adding the 'Request' class
 		//loans = new ArrayDeque<>();			Implement after adding the 'Loan' class
 		//deposit = new ArrayDeque<>();			Implement after adding the 'Deposit' class
+
+		requestHistory = new Stack<>();
+		loans = new ArrayDeque<>();
+		deposits = new ArrayDeque<>();
+
 		
         this.cash = 0;
         this.totalLoans = 0;
@@ -27,27 +32,36 @@ public class User {
 	public void NewLoanR() {
 		// The function creates a Loan object and adds it to the the queue.
 		
-		//Loan new_loan = new Loan();
-		//loans.add(new_loan);
+		UserRequest new_loan = new UserRequest();
+		loans.add(new_loan);
+		totalLoans += new_loan.getAmount();
 	}
 	
 	public void NewDepositR() {
 		// The function creates a Deposit object and adds it to the the queue.
 		
-		//Deposit new_deposit = new Deposit();
-		//deposits.add(new_deposit);
+		UserRequest new_deposit = new UserRequest();
+		deposits.add(new_deposit);
+		totalDeposits += new_deposit.getAmount();
 	}
 	
 	public void PayoutLoanR() {
 		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
 		
+
 		//Loan payout = loans.remove();
 		//this.cash -= payout.getValue();
+
+		UserRequest payout = loans.remove();
+		this.cash -= payout.getAmount();
+		totalLoans -= payout.getAmount();
+
 	}
 	
 	public void WithdrawDepositR() {
 		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
 		
+
 		//Deposit withdrawal = deposits.remove();
 		//this.cash += withdrawal.getValue();
 	}
@@ -56,6 +70,20 @@ public class User {
 		return totalLoans;
 	}
 	
+
+		UserRequest withdrawal = deposits.remove();
+		this.cash += withdrawal.getAmount();
+		totalDeposits -= withdrawal.getAmount();
+	}
+	
+	public float GetCash() {
+		return cash;
+	}
+	
+	public float GetTotalLoans() {
+		return totalLoans;
+	}
+
 	public float GetTotalDeposit() {
 		return totalDeposits;
 	}
