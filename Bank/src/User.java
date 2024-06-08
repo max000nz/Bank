@@ -18,6 +18,7 @@ public class User {
 		//pendingRequests = new Stack<>();		Implement after adding the 'Request' class
 		//loans = new ArrayDeque<>();			Implement after adding the 'Loan' class
 		//deposit = new ArrayDeque<>();			Implement after adding the 'Deposit' class
+		
         this.cash = 0;
         this.totalLoans = 0;
         this.totalDeposits = 0;
