@@ -6,8 +6,8 @@ import java.util.ArrayDeque;
 public class User {
 	
 	//Stack<Request> pendingRequests;			Implement after adding the 'Request' class
-	//Queue<Loan> loans;					Implement after adding the 'Loan' class
-	//Queue<Deposit> deposits;				Implement after adding the 'Deposit' class
+	//Queue<Request> loans;						Implement after adding the 'Request' class
+	//Queue<Request> deposits;					Implement after adding the 'Request' class
 	
 	private float cash;
 	private float totalLoans;
@@ -16,8 +16,8 @@ public class User {
 	public User() {
 		
 		//pendingRequests = new Stack<>();		Implement after adding the 'Request' class
-		//loans = new ArrayDeque<>();			Implement after adding the 'Loan' class
-		//deposit = new ArrayDeque<>();			Implement after adding the 'Deposit' class
+		//loans = new ArrayDeque<>();				Implement after adding the 'Request' class
+		//deposit = new ArrayDeque<>();			Implement after adding the 'Request' class
 		
         this.cash = 0;
         this.totalLoans = 0;
