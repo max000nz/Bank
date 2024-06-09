@@ -1,7 +1,7 @@
 package role_classes;
 import enums.RoleType;
 
-public class Roles {
+public abstract class Roles {
 	
 protected String name;
 protected String lastName;
@@ -10,7 +10,7 @@ protected int id;
 protected RoleType role;
 
 
- // set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
+ // Set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
 
 
 //functions
