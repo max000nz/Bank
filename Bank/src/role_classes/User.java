@@ -1,5 +1,6 @@
 package role_classes;
 import bank_classes.UserRequest;
+import enums.RequestType;
 import enums.RoleType;
 import java.util.Stack;
 import java.util.Queue;
@@ -29,10 +30,10 @@ public class User extends Roles {
         this.totalDeposits = 0;
     }
 	
-	public void NewLoanR() {
+	public void NewLoanR(String message, int amount) {
 		// The function creates a Loan object and adds it to the the queue.
 		
-		UserRequest new_loan = new UserRequest();
+		UserRequest new_loan = new UserRequest(id, message, amount, RequestType.LOAN);
 		loans.add(new_loan);
 		totalLoans += new_loan.getAmount();
 	}
@@ -40,7 +41,7 @@ public class User extends Roles {
 	public void NewDepositR() {
 		// The function creates a Deposit object and adds it to the the queue.
 		
-		UserRequest new_deposit = new UserRequest();
+		UserRequest new_deposit = new UserRequest(id, message, amount, RequestType.DEPOSIT);
 		deposits.add(new_deposit);
 		totalDeposits += new_deposit.getAmount();
 	}
