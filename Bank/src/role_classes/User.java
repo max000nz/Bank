@@ -38,7 +38,7 @@ public class User extends Roles {
 		totalLoans += new_loan.getAmount();
 	}
 	
-	public void NewDepositR() {
+	public void NewDepositR(String message, int amount) {
 		// The function creates a Deposit object and adds it to the the queue.
 		
 		UserRequest new_deposit = new UserRequest(id, message, amount, RequestType.DEPOSIT);
