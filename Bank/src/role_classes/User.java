@@ -2,9 +2,9 @@ package role_classes;
 import bank_classes.UserRequest;
 import enums.RequestType;
 import enums.RoleType;
-import java.util.Stack;
-import java.util.Queue;
 import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Stack;
 
 public class User extends Roles {
 	
