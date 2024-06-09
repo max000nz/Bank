@@ -7,7 +7,7 @@ private String lastName;
 private String password;
 private int id;
 
-private enum roleType {
+private enum roleType{
 USER, 
 ADMIN;
 }
