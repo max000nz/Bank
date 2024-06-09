@@ -1,8 +1,7 @@
 package role_classes;
-import java.util.Stack;
-
 import bank_classes.UserRequest;
-
+import enums.RoleType;
+import java.util.Stack;
 import java.util.Queue;
 import java.util.ArrayDeque;
 
@@ -16,9 +15,9 @@ public class User extends Roles {
 	private float totalLoans;
 	private float totalDeposits;
 	
-	public User(String name, String lastName, int id, String password, int cash) {
+	public User(String name, String lastName, int id, String password, int cash, RoleType role) {
 		
-		super(name, lastName, id, password);
+		super(name, lastName, id, password, role);
 		
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
