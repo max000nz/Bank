@@ -8,9 +8,9 @@ import java.util.ArrayDeque;
 
 public class User extends Roles {
 	
-	Stack<UserRequest> requestHistory;
-	Queue<UserRequest> loans;
-	Queue<UserRequest> deposits;
+	private Stack<UserRequest> requestHistory;
+	private Queue<UserRequest> loans;
+	private Queue<UserRequest> deposits;
 	
 	private float cash;
 	private float totalLoans;
@@ -73,6 +73,10 @@ public class User extends Roles {
 
 	public float GetTotalDeposit() {
 		return totalDeposits;
+	}
+
+	public Stack<UserRequest> GetRequestHistory(){
+		return requestHistory;
 	}
 
 }
