@@ -10,7 +10,7 @@ protected int id;
 protected RoleType role;
 
 
- // set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
+ // Set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
 
 
 //functions
