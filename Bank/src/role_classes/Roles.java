@@ -27,7 +27,7 @@ public boolean SearchInfo(int id, String password)
 {
 
 	// create a connection to users DB (create bank-user class), get thw relevant user if exist 
-	if(id == this.id && password == this.password) {
+	if(id == this.id && password.equals((password))) {
 		return true;
 	}
 	return false;
