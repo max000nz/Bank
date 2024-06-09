@@ -5,7 +5,13 @@ public class UserRequest {
 	private int id;
 	private String message;
 	private int amount;
-	
+    private enum requestType {
+      LOAN, 
+      DEPOSITE,
+	  SET_NAME,
+	  SET_LAST_NAME,
+}
+
 	public String getMessage() {
 		return message;
 	}
