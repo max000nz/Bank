@@ -1,23 +1,17 @@
+package bank_classes;
 import java.util.LinkedList;
 
 public class BankLoans {
-  private int numOfLoans;
-  private LinkedList<UserRequest> loans = null;
+  private int numOfLoans = 0;
+  private static LinkedList<UserRequest> loans = new LinkedList<UserRequest>();
   
   
-  public BankLoans() {
-	  this.numOfLoans = 0;
-	  this.loans = new LinkedList<UserRequest>();
-  }
-  
-  
-  public UserRequest findLoanByname(String name){
+
+  public UserRequest findLoanById(int id){
 	  if (this.numOfLoans == 0) return null;
-	  
 	  for (int i=0; i< this.numOfLoans; i++) {
-		  // if(this.loans.get(i).getName().equals(name)) return this.loans.get(i);		// No method getName
+		   if(loans.get(i).getId() == id) return loans.get(i);		
 	  }
-	  
 	  System.out.println("name was not found");
 	  return null;
   }

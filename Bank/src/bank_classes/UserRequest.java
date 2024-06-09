@@ -1,3 +1,4 @@
+package bank_classes;
 
 public class UserRequest {
 	

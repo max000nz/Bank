@@ -1,28 +1,25 @@
-
-
+package role_classes;
+import enums.RoleType;
 
 public class Roles {
 private String name;
 private String lastName;
 private String password;
 private int id;
-
-private enum roleType {
-USER, 
-ADMIN;
-}
+private RoleType role;
 
 
-// set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
+ // set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
 
 
 //functions
-public Roles(String name, String lastName, int id, String password)
+public Roles(String name, String lastName, int id, String password, RoleType role)
 {
 	this.name = name;
 	this.lastName = lastName;
 	this.id = id;
 	this.password = password;
+	this.role = role;
 }
 
 public boolean SearchInfo(int id, String password)
