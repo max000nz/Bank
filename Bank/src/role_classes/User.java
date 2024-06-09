@@ -1,24 +1,24 @@
 package role_classes;
-import java.util.Stack;
-
 import bank_classes.UserRequest;
-
+import enums.RequestType;
+import enums.RoleType;
+import java.util.Stack;
 import java.util.Queue;
 import java.util.ArrayDeque;
 
 public class User extends Roles {
 	
-	Stack<UserRequest> requestHistory;
-	Queue<UserRequest> loans;
-	Queue<UserRequest> deposits;
+	private Stack<UserRequest> requestHistory;
+	private Queue<UserRequest> loans;
+	private Queue<UserRequest> deposits;
 	
 	private float cash;
 	private float totalLoans;
 	private float totalDeposits;
 	
-	public User(String name, String lastName, int id, String password, int cash) {
+	public User(String name, String lastName, int id, String password, int cash, RoleType role) {
 		
-		super(name, lastName, id, password);
+		super(name, lastName, id, password, role);
 		
 		requestHistory = new Stack<>();
 		loans = new ArrayDeque<>();
@@ -30,18 +30,18 @@ public class User extends Roles {
         this.totalDeposits = 0;
     }
 	
-	public void NewLoanR() {
+	public void NewLoanR(String message, int amount) {
 		// The function creates a Loan object and adds it to the the queue.
 		
-		UserRequest new_loan = new UserRequest();
+		UserRequest new_loan = new UserRequest(id, message, amount, RequestType.LOAN);
 		loans.add(new_loan);
 		totalLoans += new_loan.getAmount();
 	}
 	
-	public void NewDepositR() {
+	public void NewDepositR(String message, int amount) {
 		// The function creates a Deposit object and adds it to the the queue.
 		
-		UserRequest new_deposit = new UserRequest();
+		UserRequest new_deposit = new UserRequest(id, message, amount, RequestType.DEPOSIT);
 		deposits.add(new_deposit);
 		totalDeposits += new_deposit.getAmount();
 	}
@@ -73,6 +73,10 @@ public class User extends Roles {
 
 	public float GetTotalDeposit() {
 		return totalDeposits;
+	}
+
+	public Stack<UserRequest> GetRequestHistory(){
+		return requestHistory;
 	}
 
 }

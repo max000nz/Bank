@@ -2,11 +2,12 @@ package role_classes;
 import enums.RoleType;
 
 public class Roles {
-private String name;
-private String lastName;
-private String password;
-private int id;
-private RoleType role;
+	
+protected String name;
+protected String lastName;
+protected String password;
+protected int id;
+protected RoleType role;
 
 
  // set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
