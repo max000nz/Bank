@@ -1,7 +1,7 @@
 package role_classes;
 import enums.RoleType;
 
-public class Roles {
+public abstract class Roles {
 	
 protected String name;
 protected String lastName;
