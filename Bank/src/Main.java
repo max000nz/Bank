@@ -4,7 +4,4 @@ import bank_classes.BankRequest;
 
 public class Main {
 	
-	}
-    
-
 }
