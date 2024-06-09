@@ -2,7 +2,7 @@ package enums;
 
 public enum RequestType {
     LOAN, 
-    DEPOSITE,
+    DEPOSIT,
     SET_NAME,
     SET_LAST_NAME,
 }
