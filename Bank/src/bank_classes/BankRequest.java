@@ -1,12 +1,25 @@
 package bank_classes;
 import java.util.*;
 
-public class BankRequest {
+public abstract class BankRequest {
   private static Queue<UserRequest> requests = new LinkedList<UserRequest>();
+  private static Queue<UserRequest> approvedRequests = new LinkedList<UserRequest>();
 
-  public static Queue<UserRequest> addRequest(UserRequest request){
+  public static void addRequest(UserRequest request){
 	requests.add(request);
-	return requests;
+  }
+
+  public static boolean approveRequest(){
+	if(requests==null) return false;
+	approvedRequests.add(requests.peek());
+	requests.remove();
+	return true;
+  }
+
+  public static boolean denyRequest(){
+	if(requests==null) return false;
+	requests.remove();
+	return true;
   }
 
   public static Queue<UserRequest> getBankRequests(){ return requests; }
@@ -21,15 +34,17 @@ public class BankRequest {
 	  return null;
   }
 
+  public static int getRequestsSize(){
+	return requests.size();
+  }
+
+  public static int getapprovedRequestsSize(){
+	return approvedRequests.size();
+  }
+
+  public static UserRequest getFirstRequest(){
+	return requests.peek();
+  }
   
-//   public static UserRequest deleteLoan(int id){
-// 	  if (requests.size() == 0) return null;
-	  
-// 	  for (int i=0; i< requests.size(); i++) {
-// 		  // if(this.loans.get(i).id.equals(id)) return this.loans.get(i);				// No method getName
-// 	  }
-// 	  System.out.println("name was not found");
-// 	  return null;
-//   }
   
 }
