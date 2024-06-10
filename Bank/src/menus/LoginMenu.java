@@ -5,16 +5,16 @@ import java.util.Scanner;
 public abstract class LoginMenu {
 
     public static void ShowLoginMenu(){
+
+        System.out.println("Welcome!\n");
         
         while(true){
             
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Welcome!\n");
-
             System.out.print("Please enter your id: ");
             String id = scanner.nextLine();
-            System.out.print("\nPlease enter your password: ");
+            System.out.print("Please enter your password: ");
             String password = scanner.nextLine();
 
             /*
