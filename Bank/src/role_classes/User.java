@@ -1,16 +1,19 @@
 package role_classes;
+import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import enums.RequestType;
 import enums.RoleType;
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.UUID;
 
 public class User extends Roles {
 	
 	private Stack<UserRequest> requestHistory;
-	private Queue<UserRequest> loans;
-	private Queue<UserRequest> deposits;
+	private Queue<UUID> loans;
+	private Queue<UUID> deposits;
 	
 	private float cash= 0;
 	private float totalLoans= 0;
@@ -25,8 +28,8 @@ public class User extends Roles {
 		super(name, lastName, id, password, role);
 		
 		requestHistory = new Stack<>();
-		loans = new ArrayDeque<>();
-		deposits = new ArrayDeque<>();
+		Queue<UUID> loans = new LinkedList<UUID>();
+		Queue<UUID> deposit = new LinkedList<UUID>();
 
 		
         this.cash = cash;
@@ -34,35 +37,33 @@ public class User extends Roles {
         this.totalDeposits = 0;
     }
 	
-	public void NewLoanR(String message, int amount) {
+	public void NewLoanR(UserRequest loan) {
 		// The function creates a Loan object and adds it to the the queue.
-		
-		UserRequest new_loan = new UserRequest(id, message, amount, RequestType.LOAN);
-		loans.add(new_loan);
-		totalLoans += new_loan.getAmount();
+		loans.add(loan.getId());
+		totalLoans += loan.getAmount();
+		BankRequest.addRequest(loan);
 	}
 	
-	public void NewDepositR(String message, int amount) {
+	public void NewDepositR(UserRequest deposit) {
 		// The function creates a Deposit object and adds it to the the queue.
-		
-		UserRequest new_deposit = new UserRequest(id, message, amount, RequestType.DEPOSIT);
-		deposits.add(new_deposit);
-		totalDeposits += new_deposit.getAmount();
+		deposits.add(deposit.getId());
+		totalDeposits += deposit.getAmount();
+		BankRequest.addRequest(deposit);
 	}
 	
-	public void PayoutLoanR() {
+	public void PayoutLoanR(UserRequest closeLoan) {
 		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
-
-		UserRequest payout = loans.remove();
+		//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
+		
 		this.cash -= payout.getAmount();
 		totalLoans -= payout.getAmount();
 
 	}
 	
-	public void WithdrawDepositR() {
+	public void WithdrawDepositR(UserRequest closeDeposit) {
 		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
+		//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
 		
-		UserRequest withdrawal = deposits.remove();
 		this.cash += withdrawal.getAmount();
 		totalDeposits -= withdrawal.getAmount();
 	}

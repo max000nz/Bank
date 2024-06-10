@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
+import connection.RoleAns;
 import enums.RequestType;
 import role_classes.User;
 
@@ -13,9 +14,13 @@ public class UserMenu {
         float currCash = 0;
         String message;
         System.out.println("Welcome, " + currUser.getName());
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("What you want to do?");
-        int choice = myObj.nextInt();
+        System.out.println("Withdrawal");
+        System.out.println("Deposit Cash");
+        System.out.println("Loan");
+        System.out.println("Long deposit");
+        System.out.println("Close loan");
+        System.out.println("Close long deposit");
+        int choice = RoleAns.intInput("What you want to do?", 1, 4);
         switch(choice){
         case 1:
             currCash = currUser.GetCash();
@@ -37,7 +42,7 @@ public class UserMenu {
             loan.setMessage(message);
             loan.setUserId(currUser.GetId());
             loan.setType(RequestType.LOAN);
-            BankRequest.addRequest(loan);
+            currUser.NewLoanR(loan);
         break;
         case 4:
             currCash = currUser.GetCash();    
@@ -48,7 +53,19 @@ public class UserMenu {
             deposit.setMessage(message);
             deposit.setUserId(currUser.GetId());
             deposit.setType(RequestType.DEPOSIT);
-            BankRequest.addRequest(deposit);
+            currUser.NewDepositR(deposit);
+        break;
+        case 5:
+            //Request Close Loan
+
+
+        currUser.PayoutLoanR(loan);
+        break;
+        case 6:
+            //Request Close Deposit
+
+            
+        currUser.WithdrawDepositR(deposit);
         break;
         }
     }
