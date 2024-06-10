@@ -12,9 +12,9 @@ public class User extends Roles {
 	private Queue<UserRequest> loans;
 	private Queue<UserRequest> deposits;
 	
-	private float cash;
-	private float totalLoans;
-	private float totalDeposits;
+	private float cash= 0;
+	private float totalLoans= 0;
+	private float totalDeposits= 0;
 	
 
 
@@ -66,9 +66,10 @@ public class User extends Roles {
 		this.cash += withdrawal.getAmount();
 		totalDeposits -= withdrawal.getAmount();
 	}
-	
-	public float GetCash() {
-		return cash;
+
+
+	public void setCash(){
+
 	}
 	
 	public float GetTotalLoans() {
@@ -82,5 +83,9 @@ public class User extends Roles {
 	public Stack<UserRequest> GetRequestHistory(){
 		return requestHistory;
 	}
+
+	
+
+
 
 }

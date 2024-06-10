@@ -57,4 +57,16 @@ public int GetId() {
 	return id;
 }
 
+public void setId(int id){
+	this.id = id;
+}
+
+public void setRole(RoleType role){
+	this.role = role;
+}
+
+public void setPassword(String password){
+  this.password = password;
+}
+
 }
