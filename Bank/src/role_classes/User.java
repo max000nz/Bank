@@ -62,7 +62,11 @@ public class User extends Roles {
 		this.cash += withdrawal.getAmount();
 		totalDeposits -= withdrawal.getAmount();
 	}
-	
+
+	public void SetCash(float cash) {
+		this.cash = cash;
+	}
+
 	public float GetCash() {
 		return cash;
 	}
