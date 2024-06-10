@@ -1,15 +1,16 @@
 package menus;
 
+import bank_classes.UsersList;
 import java.util.LinkedList;
 import java.util.Scanner;
-import role_classes.Admin;
-import role_classes.User;
+import role_classes.*;
 
 public class AdminMenu {
- public static void showAdminMenu()
+ public static void showAdminMenu(Admin admin)
  {
+
     boolean working=true;
-    LinkedList<User> users=Admin.GetUsers();
+    LinkedList<Roles> users=UsersList.getUsers();
     while (working) {
         System.out.println("Hello Admin!");//we want the admin name to show?
         System.out.println("1.Show all Users");//fill option later
@@ -22,8 +23,9 @@ public class AdminMenu {
         Scanner myObj=new Scanner(System.in);
         int userchoice=myObj.nextInt();
         switch (userchoice) {
+
             case 1 -> {
-              for (User elem : users) {
+              for (Roles elem : users) {
                   System.out.println(elem.GetId());
                   System.out.println(elem.getName());
                   System.out.println(elem.GetCash());
@@ -36,8 +38,8 @@ public class AdminMenu {
 
             case 3 -> {
                 System.out.println("Please provide an id: ");
-                int id=myObj.nextInt();
-                Admin.DeleteUser(id);
+                int user_id=myObj.nextInt();
+                admin.DeleteUser(user_id);
             }
 
             case 4 -> {
