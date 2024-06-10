@@ -3,8 +3,8 @@ import java.util.*;
 
 public abstract class BankRequest {
   private static Queue<UserRequest> requests = new LinkedList<UserRequest>();
-  private static Queue<UserRequest> approvedRequests = new LinkedList<UserRequest>();
-
+  private static LinkedList<UserRequest> approvedRequests = new LinkedList<UserRequest>();
+  
   public static void addRequest(UserRequest request){
 	requests.add(request);
   }
@@ -20,6 +20,15 @@ public abstract class BankRequest {
 	if(requests==null) return false;
 	requests.remove();
 	return true;
+  }
+
+  public static void deleteRequest(UserRequest request){
+	for (UserRequest curr : approvedRequests) {
+		if(curr.getId() == request.getId()){
+			approvedRequests.remove(curr);
+			return;
+		}
+   	}
   }
 
   public static Queue<UserRequest> getBankRequests(){ return requests; }

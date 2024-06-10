@@ -56,6 +56,7 @@ public class User extends Roles {
 	// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
 	//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
 	public void PayoutLoanR(UserRequest closeLoan) {
+		
 		this.cash -= closeLoan.getAmount();
 		totalLoans -= closeLoan.getAmount();
 

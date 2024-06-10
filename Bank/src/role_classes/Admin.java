@@ -58,25 +58,33 @@ public class Admin extends Roles {
     }
     UserRequest curr_req = BankRequest.getFirstRequest();
     int id = curr_req.getUserId();
-  
+    User curr_user = UsersList.findUsertById(id);
     switch(curr_req.getType()){
+
       case RequestType.LOAN:
-        
+          curr_user.SetCash(curr_user.GetCash() + curr_req.getAmount());
       break;
+
       case RequestType.DEPOSIT:
-          User curr_user = UsersList.findUsertById(id);
           if(curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()){
              System.out.println("error deposite bigger then your cash in the bank");
              break;
           }
-
           curr_user.SetCash(curr_user.GetCash() - curr_req.getAmount());
       break;
+
       case RequestType.CLOSE_LOAN:
-      
+        if(curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()){
+         System.out.println("error remain of loan is bigger then your cash in the bank");
+         break;
+        }
+        curr_user.SetCash(curr_user.GetCash() - curr_req.getAmount());
+        BankRequest.deleteRequest(curr_req);
       break;
+
       case RequestType.CLOSE_DEPOSIT:
-      
+        curr_user.SetCash(curr_user.GetCash() + curr_req.getAmount());
+        BankRequest.deleteRequest(curr_req);
       break;
     }
     
