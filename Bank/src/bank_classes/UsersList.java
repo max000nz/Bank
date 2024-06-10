@@ -5,7 +5,7 @@ import java.util.List;
 import role_classes.User;
 
 public class UsersList {
-    private static List<User> users = new LinkedList<>();
+    private static LinkedList<User> users = new LinkedList<User>();
 
     // Add a user to the list
     public static void addUser(User user) {
@@ -18,7 +18,7 @@ public class UsersList {
     }
 
     // Get all users in the list
-    public static List<User> getUsers() {
+    public static LinkedList<User> getUsers() {
         return users;
     }
 

@@ -3,16 +3,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import bank_classes.BankLoans;
+import bank_classes.BankRequest;
 import bank_classes.UserRequest;
+import bank_classes.UsersList;
 import enums.RoleType;
 
 
 public class Admin extends Roles {
-	public LinkedList<User> users=new LinkedList<User>(); 
-	public Stack<UserRequest> bankReq=new Stack<UserRequest>();
-	public Queue<BankLoans> allBankLoans=new LinkedList<BankLoans>();
-	public Queue<BankDeposit>allBankDeposite=new LinkedList<BankDeposit>();
+	public LinkedList<User> users= UsersList.getUsers(); 
+	public LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
+	public Queue<BankRequest> allBankLoans=new LinkedList<BankRequest>();
+	public Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
 	  
 	
 	//functions
@@ -26,7 +27,7 @@ public class Admin extends Roles {
     super(name, lastName, id, password, role );
   }
   
-  private BankDeposite GetTransactionHistory() {
+  private BankRequest GetTransactionHistory() {
   	
   }
   
