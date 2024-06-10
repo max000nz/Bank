@@ -63,6 +63,7 @@ public class UserMenu {
         break;
         case 5:
             //Request Close Loan
+            
 
 
         currUser.PayoutLoanR(loan);

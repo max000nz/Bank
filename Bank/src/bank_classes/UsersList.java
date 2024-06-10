@@ -1,6 +1,8 @@
 package bank_classes;
 import enums.RoleType;
 import java.util.LinkedList;
+import java.util.UUID;
+
 import role_classes.*;
 
 public class UsersList {
@@ -55,4 +57,14 @@ public class UsersList {
     }
 
     // Other methods for managing users can be added as needed
+    
+    public static User findUsertById(int id){
+	  if (users.size() == 0) return null;
+	  for (Roles curr : users) {
+		   if(curr.getId() == id){
+				return ((User)curr);
+		   }
+	  }
+      return null;
+  }
 }

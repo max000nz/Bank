@@ -49,7 +49,9 @@ public class AdminMenu {
             }
             
 
-            case 5 -> {
+            case 5 -> {//show relevant request
+                       //if approved - handle money transfer
+                       //if denied - do nothing
                 break;
             }
 
