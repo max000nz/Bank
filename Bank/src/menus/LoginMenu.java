@@ -1,4 +1,5 @@
 package menus;
+
 import java.util.Scanner;
 
 public abstract class LoginMenu {
@@ -16,4 +17,5 @@ public abstract class LoginMenu {
 
         scanner.close();
     }
+
 }
