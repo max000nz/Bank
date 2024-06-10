@@ -16,6 +16,10 @@ public class User extends Roles {
 	private float totalLoans;
 	private float totalDeposits;
 	
+
+
+	public User(){}
+
 	public User(String name, String lastName, int id, String password, int cash, RoleType role) {
 		
 		super(name, lastName, id, password, role);
