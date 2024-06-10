@@ -10,7 +10,6 @@ import enums.RoleType;
 
 
 public class Admin extends Roles {
-	public LinkedList<User> users= UsersList.getUsers(); 
 	public LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
 	public Queue<BankRequest> allBankLoans=new LinkedList<BankRequest>();
 	public Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
@@ -48,6 +47,6 @@ public class Admin extends Roles {
   
   private boolean ApproveRequest()
   {
-  
+    return true;
   }
 }
