@@ -11,40 +11,24 @@ import enums.RoleType;
 
 public class Admin extends Roles {
 
-	public static  LinkedList<User> users= UsersList.getUsers(); 
-	public static LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
-	public static Queue<BankRequest>allBankLoans=new LinkedList<BankRequest>();
-	public static Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
-
+	public LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
+	public Queue<BankRequest> allBankLoans=new LinkedList<BankRequest>();
+	public Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
 	  
 	//functions
-
-	
-	public static LinkedList<User> GetUsers() {
-	return Admin.users;
-	}
-
-
+  
   public  Admin(String name, String lastName, int id, String password, RoleType role){
     super(name, lastName, id, password, role );
   }
-  
+
   private BankRequest GetTransactionHistory() {
-  	
+    // returns the tree;
   }
   
-
-  public static void DeleteUser(int id)
+  public void DeleteUser(int user_id)
   {
-  	for(int i=0; i<Admin.users.size(); i++){
-  		User temp = Admin.users.get(i);
-  		if(temp.GetId()==id) {
-        Admin.users.remove(i);
-        System.out.println("User"+id+"hes been deleted");
-      }
-  		else System.out.println("User Not Found");
-  	}
-
+    UsersList.removeUser(user_id, id);
+  }
   
   //private GetAnalytics(){
   //implementation of Binary tree  
