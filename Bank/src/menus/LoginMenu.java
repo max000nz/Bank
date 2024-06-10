@@ -3,7 +3,7 @@ package menus;
 import bank_classes.UsersList;
 import connection.RoleAns;
 import java.util.LinkedList;
-import role_classes.User;
+import role_classes.Roles;
 
 public abstract class LoginMenu {
 
@@ -16,7 +16,7 @@ public abstract class LoginMenu {
             int id = RoleAns.intInput("Please enter your id: ", 100000000, 999999999);
             String password = RoleAns.stringInput("Please enter your password: ", 100000000, 999999999, true);
 
-            LinkedList<User> users = UsersList.getUsers();
+            LinkedList<Roles> users = UsersList.getUsers();
 
             for(int i = 0; i < users.size(); i++){
                 
