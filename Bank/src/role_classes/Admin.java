@@ -16,12 +16,13 @@ public class Admin extends Roles {
 	public static Queue<BankRequest>allBankLoans=new LinkedList<BankRequest>();
 	public static Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
 
+
   public  Admin(String name, String lastName, int id, String password, RoleType role){
     super(name, lastName, id, password, role );
   }
-  
+
   private BankRequest GetTransactionHistory() {
-  	
+    // returns the tree;
   }
   
 
