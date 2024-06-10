@@ -1,4 +1,6 @@
 package role_classes;
+import javax.management.relation.Role;
+
 import enums.RoleType;
 
 public abstract class Roles {
@@ -14,6 +16,8 @@ protected RoleType role;
 
 
 //functions
+
+public Roles(){}
 public Roles(String name, String lastName, int id, String password, RoleType role)
 {
 	this.name = name;
