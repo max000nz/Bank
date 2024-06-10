@@ -28,7 +28,7 @@ public class AdminMenu {
               for (Roles elem : users) {
                   System.out.println(elem.GetId());
                   System.out.println(elem.getName());
-                  System.out.println(elem.GetCash());
+                  if(elem instanceof User) System.out.println(((User) elem).GetCash());
                   System.out.println();
               }
             }
@@ -42,16 +42,21 @@ public class AdminMenu {
                 admin.DeleteUser(user_id);
             }
             
-            case 4:
-            break;
+            case 4 -> {
+                break;
+            }
+            
 
-            case 5:
-            break;
+            case 5 -> {
+                break;
+            }
 
-            case 0 : 
-            working=false; 
-            break;
-            default : throw new AssertionError();
+            case 0 -> { 
+                working=false; 
+                break;
+            }
+
+            default -> throw new AssertionError();
         }
 
 
