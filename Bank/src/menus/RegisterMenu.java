@@ -18,14 +18,15 @@ public abstract class RegisterMenu {
         current.setName(RoleAns.stringInput("enter first name", 2, 10, true));
         current.setLastName(RoleAns.stringInput("enter first name", 2, 10, true));
         current.setId(RoleAns.intInput("enter id", 100000000, 999999999));
-        current.setPassword(RoleAns.stringInput("enter first name", 2, 10, false));  // need to create confirmation for password
-
+        current.setPassword(RoleAns.stringInput("enter first name", 2, 10, false));
         /*
          * confirm password
          * valitaion for if there is user with same id
          * add to users list
          * go to user manu
          */
+         
+         UserMenu.ShowUserMenu(current);
 
 
 
