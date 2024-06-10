@@ -10,18 +10,21 @@ import enums.RoleType;
 
 
 public class Admin extends Roles {
-	public LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
-	public Queue<BankRequest> allBankLoans=new LinkedList<BankRequest>();
-	public Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
+
+	public static  LinkedList<User> users= UsersList.getUsers(); 
+	public static LinkedList<UserRequest> bankReq = BankRequest.getBankRequests();
+	public static Queue<BankRequest>allBankLoans=new LinkedList<BankRequest>();
+	public static Queue<BankRequest>allBankDeposite=new LinkedList<BankRequest>();
+
 	  
-	
 	//functions
+
 	
-	private User GetUsers() {
-	return this.users.getFirst();
+	public static LinkedList<User> GetUsers() {
+	return Admin.users;
 	}
 
-  
+
   public  Admin(String name, String lastName, int id, String password, RoleType role){
     super(name, lastName, id, password, role );
   }
@@ -30,20 +33,22 @@ public class Admin extends Roles {
   	
   }
   
-  private void DeleteUser(int id)
+
+  public static void DeleteUser(int id)
   {
-  	for(int i=0; i<this.users.size(); i++){
-  		User temp = this.users.get(i);
-  		if(temp.GetId()==id) this.users.remove(i);
+  	for(int i=0; i<Admin.users.size(); i++){
+  		User temp = Admin.users.get(i);
+  		if(temp.GetId()==id) {
+        Admin.users.remove(i);
+        System.out.println("User"+id+"hes been deleted");
+      }
   		else System.out.println("User Not Found");
   	}
-  }
-  
+
   
   //private GetAnalytics(){
   //implementation of Binary tree  
   //}
-  
   
   private boolean ApproveRequest()
   {

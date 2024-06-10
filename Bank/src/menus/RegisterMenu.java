@@ -25,8 +25,8 @@ public abstract class RegisterMenu {
          * add to users list
          * go to user manu
          */
-
-         UserMenu.ShowUserMenu
+         
+         UserMenu.ShowUserMenu(current);
 
 
 

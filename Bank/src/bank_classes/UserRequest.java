@@ -8,8 +8,10 @@ public class UserRequest {
 	private UUID id = UUID.randomUUID();
 	private int userId;
 	private String message;
-	private int amount;
+	private float amount;
 	private RequestType type;
+
+	public UserRequest(){}
 
 	public UserRequest(int userId, String message, int amount , RequestType type ){
         
@@ -27,18 +29,30 @@ public class UserRequest {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public int getAmount() {
+	public float getAmount() {
 		return this.amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 	public UUID getId() {
 		return this.id;
 	}
 
-	public int userId(){
+	public void setUserId(int user){
+		this.userId = user;
+	}
+
+	public int getUserId(){
 		return this.userId;
+	}
+
+	public RequestType getType() {
+		return type;
+	}
+
+	public void setType(RequestType type) {
+		this.type = type;
 	}
 
 }

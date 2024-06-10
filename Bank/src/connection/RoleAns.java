@@ -32,7 +32,7 @@ public class RoleAns {
         return 0;
     }
 
-    public static float floatInput(String message, int minLenght, int maxLenght){
+    public static float floatInput(String message, float minLenght, float maxLenght){
         float current;
         Scanner input = new Scanner(System.in);
         while(true){
@@ -54,7 +54,7 @@ public class RoleAns {
         return true;
     }
 
-    protected static boolean validateFloat(int min, int max){
+    protected static boolean validateFloat(float min, float max){
         // need to create valitation for string (lenght, relevant letters and space)
         return true;
     }

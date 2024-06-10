@@ -68,8 +68,12 @@ public class User extends Roles {
 	}
 
 
-	public void setCash(){
+	public void SetCash(float cash) {
+		this.cash = cash;
+	}
 
+	public float GetCash() {
+		return cash;
 	}
 	
 	public float GetTotalLoans() {
