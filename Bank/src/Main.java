@@ -1,8 +1,8 @@
-import java.util.*;
-
-import bank_classes.BankRequest;
-import menus.AdminMenu;
+import menus.LoginMenu;
 
 public class Main {
-	
+	public static void main(String args[]){
+        LoginMenu.ShowLoginMenu();
+    }
+
 }

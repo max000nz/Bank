@@ -1,5 +1,6 @@
 package menus;
 
+
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -41,4 +42,5 @@ public class AdminMenu {
 
     }
  }
+
 }
