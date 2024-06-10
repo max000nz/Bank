@@ -65,6 +65,10 @@ public void setRole(RoleType role){
 	this.role = role;
 }
 
+public RoleType getRole(){
+	return this.role;
+}
+
 public void setPassword(String password){
   this.password = password;
 }

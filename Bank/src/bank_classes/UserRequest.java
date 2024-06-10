@@ -54,13 +54,4 @@ public class UserRequest {
 	public void setType(RequestType type) {
 		this.type = type;
 	}
-
-	public boolean isApproved() {
-		return isApproved;
-	}
-
-	public void setApproved(boolean isApproved) {
-		this.isApproved = isApproved;
-	}
-
 }

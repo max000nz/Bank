@@ -28,7 +28,7 @@ public class AdminMenu {
 
             case 1 -> {
               for (Roles elem : users) {
-                  System.out.println(elem.GetId());
+                  System.out.println(elem.getId());
                   System.out.println(elem.getName());
                   if(elem instanceof User) System.out.println(((User) elem).GetCash());
                   System.out.println();

@@ -15,6 +15,7 @@ public class User extends Roles {
 	private Queue<UUID> loans;
 	private Queue<UUID> deposits;
 	
+	private float frame = 0;
 	private float cash= 0;
 	private float totalLoans= 0;
 	private float totalDeposits= 0;
@@ -51,12 +52,12 @@ public class User extends Roles {
 		BankRequest.addRequest(deposit);
 	}
 	
+
+	// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
+	//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
 	public void PayoutLoanR(UserRequest closeLoan) {
-		// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
-		//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
-		
-		this.cash -= payout.getAmount();
-		totalLoans -= payout.getAmount();
+		this.cash -= closeLoan.getAmount();
+		totalLoans -= closeLoan.getAmount();
 
 	}
 	
@@ -64,8 +65,8 @@ public class User extends Roles {
 		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
 		//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
 		
-		this.cash += withdrawal.getAmount();
-		totalDeposits -= withdrawal.getAmount();
+		this.cash += closeDeposit.getAmount();
+		totalDeposits -= closeDeposit.getAmount();
 	}
 
 
@@ -89,7 +90,13 @@ public class User extends Roles {
 		return requestHistory;
 	}
 
-	
+	public void SetFrame(float frame) {
+		this.frame = frame;
+	}
+
+	public float GetFrame() {
+		return frame;
+	}
 
 
 

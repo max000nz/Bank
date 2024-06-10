@@ -1,11 +1,10 @@
 package bank_classes;
 import enums.RoleType;
 import java.util.LinkedList;
-import java.util.UUID;
 
 import role_classes.*;
 
-public class UsersList {
+public abstract class UsersList {
 
     private static LinkedList<Roles> users = new LinkedList<>();
 
@@ -19,7 +18,7 @@ public class UsersList {
         // Checks that only the admin is using the function
         for(Roles user_in_list : users){
 
-            if(user_in_list.GetId() == admin_id){
+            if(user_in_list.getId() == admin_id){
 
                 if(user_in_list.getRole() == RoleType.ADMIN){
 
@@ -43,7 +42,7 @@ public class UsersList {
         // Removes the user with the corresponding id from the list
         for(Roles user_in_list : users){
 
-            if(user_in_list.GetId() == user_id){
+            if(user_in_list.getId() == user_id){
                 
                 users.remove(user_in_list);
                 return;

@@ -7,6 +7,7 @@ import java.util.UUID;
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import bank_classes.UsersList;
+import enums.RequestType;
 import enums.RoleType;
 
 
@@ -21,14 +22,14 @@ public class Admin extends Roles {
     super(name, lastName, id, password, role );
   }
 
-  private BankRequest GetTransactionHistory() {
-    // returns the tree;
-  }
+  // public BankRequest getTransactionHistory() {
+  //    returns the tree;
+  // }
   
 
-  public static void DeleteUser(int user_id)
+  public void DeleteUser(int user_id)
   {
-  	UsersList.removeUser(user_id, id);
+  	UsersList.removeUser(user_id, this.id);
   }
 
   //private GetAnalytics(){
@@ -55,11 +56,30 @@ public class Admin extends Roles {
     if(BankRequest.getRequestsSize() == 0){
       return false;
     }
-    int id = BankRequest.getFirstRequest().getUserId();
-    float userCash = UsersList.findUsertById(id).GetCash();
-    if(BankRequest.getFirstRequest().getAmount() >= userCash){
+    UserRequest curr_req = BankRequest.getFirstRequest();
+    int id = curr_req.getUserId();
+  
+    switch(curr_req.getType()){
+      case RequestType.LOAN:
+        
+      break;
+      case RequestType.DEPOSIT:
+          User curr_user = UsersList.findUsertById(id);
+          if(curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()){
+             System.out.println("error deposite bigger then your cash in the bank");
+             break;
+          }
+
+          curr_user.SetCash(curr_user.GetCash() - curr_req.getAmount());
+      break;
+      case RequestType.CLOSE_LOAN:
       
+      break;
+      case RequestType.CLOSE_DEPOSIT:
+      
+      break;
     }
+    
     return true;
   }
 }

@@ -45,7 +45,7 @@ public class UserMenu {
             UserRequest loan = new UserRequest();
             loan.setAmount(changeCash);
             loan.setMessage(message);
-            loan.setUserId(currUser.GetId());
+            loan.setUserId(currUser.getId());
             loan.setType(RequestType.LOAN);
             currUser.NewLoanR(loan);
         break;
@@ -57,22 +57,19 @@ public class UserMenu {
             UserRequest deposit = new UserRequest();
             deposit.setAmount(changeCash);
             deposit.setMessage(message);
-            deposit.setUserId(currUser.GetId());
+            deposit.setUserId(currUser.getId());
             deposit.setType(RequestType.DEPOSIT);
             currUser.NewDepositR(deposit);
         break;
         case 5:
             //Request Close Loan
-            
-
-
-        currUser.PayoutLoanR(loan);
+        // currUser.PayoutLoanR();
         break;
         case 6:
             //Request Close Deposit
 
             
-        currUser.WithdrawDepositR(deposit);
+        // currUser.WithdrawDepositR(deposit);
         break;
         }
     }
