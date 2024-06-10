@@ -1,8 +1,8 @@
 package menus;
 
 import bank_classes.UsersList;
+import connection.RoleAns;
 import java.util.LinkedList;
-import java.util.Scanner;
 import role_classes.User;
 
 public abstract class LoginMenu {
@@ -12,13 +12,9 @@ public abstract class LoginMenu {
         System.out.println("Welcome!\n");
         
         while(true){
-            
-            Scanner scanner = new Scanner(System.in);
 
-            System.out.print("Please enter your id: ");
-            int id = Integer.parseInt(scanner.nextLine());
-            System.out.print("Please enter your password: ");
-            String password = scanner.nextLine();
+            int id = RoleAns.intInput("Please enter your id: ", 100000000, 999999999);
+            String password = RoleAns.stringInput("Please enter your password: ", 100000000, 999999999, true);
 
             LinkedList<User> users = UsersList.getUsers();
 
@@ -27,7 +23,6 @@ public abstract class LoginMenu {
                 if(users.get(i).SearchInfo(id, password)){
 
                     System.out.println("\nLogging in...\n");
-                    scanner.close();
                     break;
                 }
                 
