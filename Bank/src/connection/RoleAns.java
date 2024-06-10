@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RoleAns {
     
-// 
+
 
 
     public static String stringInput(String message, int minLenght, int maxLenght , boolean space ){
@@ -19,17 +19,20 @@ public class RoleAns {
     }
 
     public static int intInput(String message, int minLenght, int maxLenght){
-       int current;
+       String current;
+       int currInt = 0;
        Scanner input = new Scanner(System.in);
        while(true){
         System.out.println(message + "between " + minLenght + " and " + maxLenght);
-        current = input.nextInt();
-        if (validateInt(minLenght, maxLenght)) { break; }
+        current = input.nextLine();
+        if (validateInt(minLenght, maxLenght)) { 
+            currInt = Integer.parseInt(current);
+            break; }
       }
         return 0;
     }
 
-    public static float floatInput(String message, int minLenght, int maxLenght){
+    public static float floatInput(String message, float minLenght, float maxLenght){
         float current;
         Scanner input = new Scanner(System.in);
         while(true){
@@ -47,11 +50,11 @@ public class RoleAns {
     }
 
     protected static boolean validateInt(int min, int max){
-        // need to create valitation for string (lenght, relevant letters and space)
+        // need to create valitation for int (lenght, relevant letters and space)
         return true;
     }
 
-    protected static boolean validateFloat(int min, int max){
+    protected static boolean validateFloat(float min, float max){
         // need to create valitation for string (lenght, relevant letters and space)
         return true;
     }
