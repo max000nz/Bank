@@ -22,32 +22,35 @@ public class AdminMenu {
         Scanner myObj=new Scanner(System.in);
         int userchoice=myObj.nextInt();
         switch (userchoice) {
-            case 1 -> {
-              for (User elem : users) {
-                  System.out.println(elem.GetId());
-                  System.out.println(elem.getName());
-                  System.out.println(elem.GetCash());
-                  System.out.println();
-              }
-            }
+            case 1:
+                for (User elem : users) {
+                    System.out.println(elem.GetId());
+                    System.out.println(elem.getName());
+                    System.out.println(elem.GetCash());
+                    System.out.println();
+                }
+                break;
+           
 
-            case 2 -> {
-            }
+            case 2:
+            break;
 
-            case 3 -> {
+            case 3:
                 System.out.println("Please provide an id: ");
                 int id=myObj.nextInt();
                 Admin.DeleteUser(id);
-            }
+            break;
 
-            case 4 -> {
-            }
+            case 4:
+            break;
 
-            case 5 -> {
-            }
+            case 5:
+            break;
 
-            case 0 -> working=false;
-            default -> throw new AssertionError();
+            case 0 : 
+            working=false; 
+            break;
+            default : throw new AssertionError();
         }
 
 
