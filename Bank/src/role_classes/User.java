@@ -16,6 +16,10 @@ public class User extends Roles {
 	private float totalLoans;
 	private float totalDeposits;
 	
+
+
+	public User(){}
+
 	public User(String name, String lastName, int id, String password, int cash, RoleType role) {
 		
 		super(name, lastName, id, password, role);
@@ -62,7 +66,11 @@ public class User extends Roles {
 		this.cash += withdrawal.getAmount();
 		totalDeposits -= withdrawal.getAmount();
 	}
-	
+
+	public void SetCash(float cash) {
+		this.cash = cash;
+	}
+
 	public float GetCash() {
 		return cash;
 	}

@@ -1,31 +1,32 @@
 package menus;
 
-import java.util.Scanner;
+import bank_classes.UsersList;
+import connection.RoleAns;
+import java.util.LinkedList;
+import role_classes.User;
 
 public abstract class LoginMenu {
 
     public static void ShowLoginMenu(){
+
+        System.out.println("Welcome!\n");
         
         while(true){
-            
-            Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Welcome!\n");
+            int id = RoleAns.intInput("Please enter your id: ", 100000000, 999999999);
+            String password = RoleAns.stringInput("Please enter your password: ", 100000000, 999999999, true);
 
-            System.out.print("Please enter your id: ");
-            String id = scanner.nextLine();
-            System.out.print("\nPlease enter your password: ");
-            String password = scanner.nextLine();
+            LinkedList<User> users = UsersList.getUsers();
 
-            /*
-            if(password is correct){
+            for(int i = 0; i < users.size(); i++){
+                
+                if(users.get(i).SearchInfo(id, password)){
 
-                System.out.println("\nLogging in...\n");
-                scanner.close();
-                break;
-
+                    System.out.println("\nLogging in...\n");
+                    break;
+                }
+                
             }
-            */
 
             System.out.println("Incorrect. Try again.\n");
         }
