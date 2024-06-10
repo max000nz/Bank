@@ -47,6 +47,6 @@ public class Admin extends Roles {
   
   private boolean ApproveRequest()
   {
-  
+    return true;
   }
 }
