@@ -41,15 +41,17 @@ public class AdminMenu {
                 int user_id=myObj.nextInt();
                 admin.DeleteUser(user_id);
             }
+            
+            case 4:
+            break;
 
-            case 4 -> {
-            }
+            case 5:
+            break;
 
-            case 5 -> {
-            }
-
-            case 0 -> working=false;
-            default -> throw new AssertionError();
+            case 0 : 
+            working=false; 
+            break;
+            default : throw new AssertionError();
         }
 
 
