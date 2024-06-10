@@ -6,11 +6,12 @@ import java.util.Scanner;
 import role_classes.*;
 
 public class AdminMenu {
+
  public static void showAdminMenu(Admin admin)
  {
-
     boolean working=true;
     LinkedList<Roles> users=UsersList.getUsers();
+
     while (working) {
         System.out.println("Hello Admin!");//we want the admin name to show?
         System.out.println("1.Show all Users");//fill option later
@@ -21,6 +22,7 @@ public class AdminMenu {
         System.out.println("0.exit");
         System.out.println("Enter Choice: ");
         Scanner myObj=new Scanner(System.in);
+        
         int userchoice=myObj.nextInt();
         switch (userchoice) {
 
