@@ -13,8 +13,23 @@ public class UsersList {
     }
 
     // Remove a user from the list
-    public static void removeUser(User user) {
-        users.remove(user);
+    public static void removeUser(int user_id, int admin_id) {
+
+        User temp_admin;
+
+        for(User user_in_list : users){
+            if(user_in_list.GetId() == admin_id) temp_admin = user_in_list;
+            System.err.println("Only an admin perform this operation.");
+            return;
+        }
+
+        for(User user_in_list : users){
+            if(user_in_list.GetId() == user_id){
+                users.remove(user_in_list);
+                return;
+            }
+        }
+        
     }
 
     // Get all users in the list
