@@ -9,7 +9,7 @@ public abstract class RoleAns {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
-    String current = null;
+    String current;
     Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
@@ -25,7 +25,7 @@ public abstract class RoleAns {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
-    String current = null;
+    String current;
     Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
