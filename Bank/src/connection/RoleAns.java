@@ -5,7 +5,7 @@ import java.util.*;
 
 public abstract class RoleAns {
   
-  public static String passwordInput(String message, int minLenght, int maxLenght, InputType input_type) throws Exception {
+  public static String passwordInput(String message, int minLenght, int maxLenght) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
@@ -21,7 +21,7 @@ public abstract class RoleAns {
     }
   }
 
-  public static String namesInput(String message, int minLenght, int maxLenght, InputType input_type) throws Exception {
+  public static String namesInput(String message, int minLenght, int maxLenght) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
@@ -132,6 +132,7 @@ public abstract class RoleAns {
           if(c == o) return false;
         }
 
+        c = Character.toLowerCase(c);
         for(char l : alphabet.toCharArray()){
           if(c == l) return false;
         }
@@ -141,19 +142,21 @@ public abstract class RoleAns {
     if(input_type == InputType.CASH){
 
       for (char c : str.toCharArray()) {
-      
         for(char o : operators.toCharArray()){
-          
           int counter = 0;
-
           if(c == o && c != '.') return false;
-          
           else{
             counter++;
             if(counter >= 2) return false;
           }
-          
           if(c == o) return false;
+        }
+      }
+
+      for(char c : operators.toCharArray()){
+        c = Character.toLowerCase(c);
+        for(char l : alphabet.toCharArray()){
+          if(c == l) return false;
         }
       }
     }
@@ -161,7 +164,6 @@ public abstract class RoleAns {
     if(input_type == InputType.NAMES){
 
       for (char c : str.toCharArray()) {
-
         for(char o : operators.toCharArray()){
           if(c == o && c != ' ') return false;
         }
