@@ -4,13 +4,8 @@ import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import bank_classes.UsersList;
 import connection.RoleAns;
-import enums.RequestType;
-
-import java.net.SocketPermission;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.UUID;
-
 import role_classes.*;
 
 public class AdminMenu {
@@ -65,7 +60,12 @@ public class AdminMenu {
                     System.out.println("Message: " + curr_req.getMessage());
                     System.out.println("Amount: " + curr_req.getAmount());
                     System.out.println("Type: " + curr_req.getType());
-                    int choice = RoleAns.intInput("Does you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3);
+                    int choice=0;
+            try {
+                choice = RoleAns.choiceInput("Does you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3);
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
                     switch(choice){
                         case 1:
                             if(admin.handleApprovedRequest()){
