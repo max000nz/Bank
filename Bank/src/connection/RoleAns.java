@@ -132,13 +132,6 @@ public abstract class RoleAns {
     String operators = "+-*/%^&|<>!=?:,.()_@#$\"'`~[]{}\\;";
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-    try {
-      if(validationLength(str,min,max,input_type) == false) return false;
-    } catch (Exception e) {
-      System.err.println(e.getMessage());
-      return false;
-    }
-
     if(input_type == InputType.PASSWORD) return true;
     if(input_type == InputType.MESSAGE) return true;
 
@@ -186,6 +179,13 @@ public abstract class RoleAns {
           if(c == o && c != ' ') return false;
         }
       }
+    }
+
+    try {
+      if(validationLength(str,min,max,input_type) == false) return false;
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+      return false;
     }
 
     return true;
