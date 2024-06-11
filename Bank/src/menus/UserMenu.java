@@ -76,17 +76,16 @@ public class UserMenu {
                     loanChoice = RoleAns.intInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3);
                     switch (loanChoice) {
                         case 1:
-                            if (currUser.GetCash() > curr_request.getAmount()) {
+                            if (currUser.GetCash() >= curr_request.getAmount()) {
                                 currUser.PayoutLoanR(curr_request);
                             } else {
                                 System.out.println("You dont have enough money!");
-                                return;
+                                break;
                             }
-                            break;
                         case 2:
                             continue;
                         case 3:
-                            return; // CHECK IF LEGIT
+                            return; // CHANGE MAIN SWITCH TO WHILE AND THIS WILL WORK
                     }
                 }
                 break;
@@ -102,11 +101,11 @@ public class UserMenu {
                     switch (depositChoice) {
                         case 1:
                             currUser.WithdrawDepositR(curr_request);
-                            break;
+                            continue;
                         case 2:
                             continue;
                         case 3:
-                            return; // CHECK IF LEGIT
+                            return; // CHANGE MAIN SWITCH TO WHILE AND THIS WILL WORK
                     }
                 }
         }
