@@ -1,11 +1,9 @@
 package menus;
 
 
-import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import connection.RoleAns;
 import enums.RequestType;
-import java.util.Scanner;
 import role_classes.User;
 
 public class UserMenu {
@@ -16,12 +14,12 @@ public class UserMenu {
         String message;
         System.out.println("Welcome, " + currUser.getName());
 
-        System.out.println("Withdrawal");
-        System.out.println("Deposit Cash");
-        System.out.println("Loan");
-        System.out.println("Long deposit");
-        System.out.println("Close loan");
-        System.out.println("Close long deposit");
+        System.out.println("1.Withdrawal");
+        System.out.println("2.Deposit Cash");
+        System.out.println("3.Loan");
+        System.out.println("4.Long deposit");
+        System.out.println("5.Close loan");
+        System.out.println("6.Close long deposit");
         int choice = RoleAns.intInput("What you want to do?", 1, 4);
         switch(choice){
 
