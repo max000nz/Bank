@@ -1,61 +1,173 @@
 package connection;
+import enums.InputType;
 import java.util.*;
 
 
-public class RoleAns {
-    
+public abstract class RoleAns {
+  
+  public static String passwordInput(String message, int minLenght, int maxLenght, InputType input_type) throws Exception {
 
+    if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
-
-    public static String stringInput(String message, int minLenght, int maxLenght , boolean space ){
-      String current = null;
-      Scanner input = new Scanner(System.in);
-      while(true){
-        System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
-        current = input.nextLine();
-        if (validateString(minLenght, maxLenght, space)) { break; }
+    String current = null;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      current = input.nextLine();
+      if (operatorCheck(current, minLenght, maxLenght, InputType.PASSWORD)) {
+        input.close();
+        return current;
       }
-      return current;
     }
+  }
 
-    public static int intInput(String message, int minLenght, int maxLenght){
-       String current;
-       int currInt = 0;
-       Scanner input = new Scanner(System.in);
-       while(true){
-        System.out.println(message + "between " + minLenght + " and " + maxLenght);
-        current = input.nextLine();
-        if (validateInt(minLenght, maxLenght)) { 
-            currInt = Integer.parseInt(current);
-            break; }
+  public static String namesInput(String message, int minLenght, int maxLenght, InputType input_type) throws Exception {
+
+    if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
+
+    String current = null;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      current = input.nextLine();
+      if (operatorCheck(current, minLenght, maxLenght, InputType.NAMES)) {
+        input.close();
+        return current;
       }
-        return 0;
+    }
+  }
+
+  public static float cashInput(String message, float minValue, float maxValue) throws Exception {
+
+    if(maxValue < minValue) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
+
+    String current;
+    float currFloat;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "between " + minValue + " and " + maxValue);
+      current = input.nextLine();
+      if (operatorCheck(current, minValue, maxValue, InputType.CASH)) {
+        currFloat = Float.parseFloat(current);
+        input.close();
+        return currFloat;
+      }
+    }
+  }
+
+  public static int idInput(String message, int minValue, int maxValue) throws Exception {
+
+    if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
+
+    String current;
+    int currInt = 0;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "between " + minValue + " and " + maxValue);
+      current = input.nextLine();
+      if (operatorCheck(current, minValue, maxValue, InputType.ID)) { 
+        currInt = Integer.parseInt(current);
+        input.close();
+        return currInt;
+      }
+    }
+  }
+
+  public static float choiceInput(String message, float minValue, float maxValue) throws Exception {
+
+    if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
+
+    String current;
+    float currFloat;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "between " + minValue + " and " + maxValue);
+      current = input.nextLine();
+      if (operatorCheck(current, minValue, maxValue, InputType.CHOICE)) {
+        currFloat = Float.parseFloat(current);
+        return currFloat;
+      }
+    }
+  }
+
+  private static boolean validationLength(String str, float min, float max, InputType input_type) throws Exception {
+
+    if(max < min) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
+
+    if(input_type == InputType.PASSWORD || input_type == InputType.NAMES){
+
+      if(str.length() > max || str.length() < min){
+        return false;
+      }
     }
 
-    public static float floatInput(String message, float minLenght, float maxLenght){
-        float current;
-        Scanner input = new Scanner(System.in);
-        while(true){
-         System.out.println(message + "between " + minLenght + " and " + maxLenght);
-         current = input.nextFloat();
-         if (validateFloat(minLenght, maxLenght)) { break; }
-       }
-         return 0;
-     }
+    if(input_type == InputType.CASH  || input_type == InputType.ID || input_type == InputType.CHOICE){
 
-
-    protected static boolean validateString(int min, int max, boolean space){
-        // need to create valitation for string (lenght, relevant letters and space)
-        return true;
+      float num = Float.parseFloat(str);
+      if(num > max || num < min) return false;
     }
 
-    protected static boolean validateInt(int min, int max){
-        // need to create valitation for int (lenght, relevant letters and space)
-        return true;
+    return true;
+  }
+
+  private static boolean operatorCheck(String str, float min, float max, InputType input_type)
+  {
+    String operators = "+-*/%^&|<>!=?:,.()_@#$\"'`~[]{}\\;";
+    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+    try {
+      if(validationLength(str,min,max,input_type) == false) return false;
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+      return false;
     }
 
-    protected static boolean validateFloat(float min, float max){
-        // need to create valitation for string (lenght, relevant letters and space)
-        return true;
+    if(input_type == InputType.PASSWORD) return true;
+
+    if(input_type == InputType.ID || input_type == InputType.CHOICE){
+
+      for (char c : str.toCharArray()) {
+      
+        for(char o : operators.toCharArray()){
+          if(c == o) return false;
+        }
+
+        for(char l : alphabet.toCharArray()){
+          if(c == l) return false;
+        }
+      }
     }
+
+    if(input_type == InputType.CASH){
+
+      for (char c : str.toCharArray()) {
+      
+        for(char o : operators.toCharArray()){
+          
+          int counter = 0;
+
+          if(c == o && c != '.') return false;
+          
+          else{
+            counter++;
+            if(counter >= 2) return false;
+          }
+          
+          if(c == o) return false;
+        }
+      }
+    }
+
+    if(input_type == InputType.NAMES){
+
+      for (char c : str.toCharArray()) {
+
+        for(char o : operators.toCharArray()){
+          if(c == o && c != ' ') return false;
+        }
+      }
+    }
+
+    return true;
+  }
 }
