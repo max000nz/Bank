@@ -5,11 +5,12 @@ import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import connection.RoleAns;
 import enums.RequestType;
+import java.util.Scanner;
 import java.util.UUID;
 import role_classes.User;
 
 public class UserMenu {
-    public static void ShowUserMenu(User currUser) {
+    public static void ShowUserMenu(User currUser, Scanner input) {
 
         float changeCash = 0;
         float currCash = 0;
@@ -25,7 +26,7 @@ public class UserMenu {
         System.out.println("0.Exit");
         int choice = -1;
         try {
-            choice = RoleAns.choiceInput("What do you want to do?", 1, 7);
+            choice = RoleAns.choiceInput("What do you want to do?", 1, 7, input);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -35,7 +36,7 @@ public class UserMenu {
             case 1:
                 currCash = currUser.GetCash();
                 try {
-                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash);
+                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
@@ -47,7 +48,7 @@ public class UserMenu {
             case 2:
             
                 try {
-                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000);
+                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
@@ -60,8 +61,8 @@ public class UserMenu {
             case 3:
                 
                 try {
-                    changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000);
-                    message = RoleAns.messageInput("Why you want to take a loan?", 1, 100);
+                    changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000, input);
+                    message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
@@ -76,8 +77,8 @@ public class UserMenu {
             case 4:
                 currCash = currUser.GetCash();
                 try {
-                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, currCash);
-                    message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100);
+                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, currCash, input);
+                    message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                 } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
@@ -97,7 +98,7 @@ public class UserMenu {
                     System.out.printf("%d. %d", num, curr_request.getAmount());
                     num++;
                     try {
-                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3);
+                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
@@ -125,7 +126,7 @@ public class UserMenu {
                     System.out.printf("%d. %d", num, curr_request.getAmount());
                     num++;
                     try {
-                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n3.Exit", 1, 3);
+                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());
                     }
