@@ -1,7 +1,8 @@
 package enums;
 
 public enum InputType {
-    PASSWORD, 
+    PASSWORD,
+    MESSAGE, 
     NAMES,
     CASH,
     ID,

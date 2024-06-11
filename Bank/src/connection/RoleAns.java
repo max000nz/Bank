@@ -21,10 +21,26 @@ public abstract class RoleAns {
     }
   }
 
-  public static String namesInput(String message, int minLenght, int maxLenght) throws Exception {
+  public static String messageInput(String message, int minLenght, int maxLenght) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
+    String current;
+    Scanner input = new Scanner(System.in);
+    while(true){
+      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      current = input.nextLine();
+      if (operatorCheck(current, minLenght, maxLenght, InputType.MESSAGE)) {
+        input.close();
+        return current;
+      }
+    }
+  }
+
+  public static String namesInput(String message, int minLenght, int maxLenght) throws Exception {
+
+    if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
+    
     String current;
     Scanner input = new Scanner(System.in);
     while(true){
@@ -73,19 +89,20 @@ public abstract class RoleAns {
     }
   }
 
-  public static float choiceInput(String message, float minValue, float maxValue) throws Exception {
+  public static int choiceInput(String message, float minValue, float maxValue) throws Exception {
 
     if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
 
     String current;
-    float currFloat;
+    int currInt;
     Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "between " + minValue + " and " + maxValue);
       current = input.nextLine();
       if (operatorCheck(current, minValue, maxValue, InputType.CHOICE)) {
-        currFloat = Float.parseFloat(current);
-        return currFloat;
+        currInt = Integer.parseInt(current);
+        input.close();
+        return currInt;
       }
     }
   }
@@ -94,7 +111,7 @@ public abstract class RoleAns {
 
     if(max < min) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
 
-    if(input_type == InputType.PASSWORD || input_type == InputType.NAMES){
+    if(input_type == InputType.PASSWORD || input_type == InputType.MESSAGE || input_type == InputType.NAMES){
 
       if(str.length() > max || str.length() < min){
         return false;
@@ -123,6 +140,7 @@ public abstract class RoleAns {
     }
 
     if(input_type == InputType.PASSWORD) return true;
+    if(input_type == InputType.MESSAGE) return true;
 
     if(input_type == InputType.ID || input_type == InputType.CHOICE){
 
