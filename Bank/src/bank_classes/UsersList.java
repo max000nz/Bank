@@ -1,7 +1,6 @@
 package bank_classes;
 import enums.RoleType;
 import java.util.LinkedList;
-
 import role_classes.*;
 
 public abstract class UsersList {
@@ -65,5 +64,15 @@ public abstract class UsersList {
 		   }
 	  }
       return null;
+  }
+
+
+  public static  boolean checkIfexist(int id)
+  {
+    for (Roles elem :users ) {
+        if(elem.getId()==id)
+        return true;
+    }
+    return false;
   }
 }
