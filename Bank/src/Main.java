@@ -6,6 +6,10 @@ public class Main {
         switch(LoginMenu.ShowLoginMenu())
         {
             case ADMIN:
+            break;
+
+            case USER:
+            break;
             
         }
     }
