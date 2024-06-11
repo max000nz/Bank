@@ -1,6 +1,7 @@
 package role_classes;
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
+import bank_classes.UsersList;
 import enums.RequestType;
 import enums.RoleType;
 import java.util.ArrayDeque;
@@ -30,14 +31,14 @@ public class User extends Roles {
 		
 		requestHistory = new Stack<>();
 		Queue<UUID> loans = new LinkedList<UUID>();
-		Queue<UUID> deposit = new LinkedList<UUID>();
+		Queue<UUID> deposits = new LinkedList<UUID>();
 
 		
         this.cash = cash;
         this.totalLoans = 0;
         this.totalDeposits = 0;
     }
-	
+
 	public void NewLoanR(UserRequest loan) {
 		// The function creates a Loan object and adds it to the the queue.
 		loans.add(loan.getId());
@@ -54,22 +55,20 @@ public class User extends Roles {
 	
 
 	// The function deletes a Loan object from the end of the queue and subtracts the sum that needs to be paid from 'cash'.
-	//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
 	public void PayoutLoanR(UserRequest closeLoan) {
-		
 		this.cash -= closeLoan.getAmount();
 		totalLoans -= closeLoan.getAmount();
-
+		BankRequest.deleteRequest(closeLoan);
+		this.loans.remove();
 	}
 	
+	// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
 	public void WithdrawDepositR(UserRequest closeDeposit) {
-		// The function deletes a Loan object from the end of the queue and adds the sum that needs to be paid to 'cash'.
-		//REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR REPAIR 
-		
 		this.cash += closeDeposit.getAmount();
 		totalDeposits -= closeDeposit.getAmount();
+		BankRequest.deleteRequest(closeDeposit);
+		this.deposits.remove();
 	}
-
 
 	public void SetCash(float cash) {
 		this.cash = cash;
@@ -99,6 +98,12 @@ public class User extends Roles {
 		return frame;
 	}
 
+	public Queue<UUID> getLoans() {
+		return loans;
+	}
 
+	public Queue<UUID> getDeposits() {
+		return deposits;
+	}
 
 }
