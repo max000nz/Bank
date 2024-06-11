@@ -25,7 +25,7 @@ public abstract class RegisterMenu {
             return;
         }  //Valdtion check if user exist... 
         try {
-            current.setPassword(RoleAns.passwordInput("Please Enter password: ", 2, 10,input));
+            current.setPassword(RoleAns.passwordInput("Please Enter password: ", 2, 10, input));
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
