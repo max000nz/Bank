@@ -1,107 +1,94 @@
 package connection;
 import enums.InputType;
-import java.util.*;
+import java.util.Scanner;
 
 
 public abstract class RoleAns {
   
-  public static String passwordInput(String message, int minLenght, int maxLenght) throws Exception {
+  public static String passwordInput(String message, int minLenght, int maxLenght, Scanner input) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
-
     String current;
-    Scanner input = new Scanner(System.in);
     while(true){
-      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      System.out.println(message + "with length between: " + minLenght + " and " + maxLenght);
       current = input.nextLine();
       if (operatorCheck(current, minLenght, maxLenght, InputType.PASSWORD)) {
-        input.close();
         return current;
       }
     }
   }
 
-  public static String messageInput(String message, int minLenght, int maxLenght) throws Exception {
+  public static String messageInput(String message, int minLenght, int maxLenght, Scanner input) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
     String current;
-    Scanner input = new Scanner(System.in);
     while(true){
-      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      System.out.println(message + "with length between: " + minLenght + " and " + maxLenght);
       current = input.nextLine();
       if (operatorCheck(current, minLenght, maxLenght, InputType.MESSAGE)) {
-        input.close();
         return current;
       }
     }
   }
 
-  public static String namesInput(String message, int minLenght, int maxLenght) throws Exception {
+  public static String namesInput(String message, int minLenght, int maxLenght, Scanner input) throws Exception {
 
     if(maxLenght < minLenght) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
     
     String current;
-    Scanner input = new Scanner(System.in);
     while(true){
-      System.out.println(message + "with lenght between: " + minLenght + " and " + maxLenght);
+      System.out.println(message + "with length between: " + minLenght + " and " + maxLenght);
       current = input.nextLine();
       if (operatorCheck(current, minLenght, maxLenght, InputType.NAMES)) {
-        input.close();
         return current;
       }
     }
   }
 
-  public static float cashInput(String message, float minValue, float maxValue) throws Exception {
+  public static float cashInput(String message, float minValue, float maxValue, Scanner input) throws Exception {
 
     if(maxValue < minValue) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if maxLenght is bigger than minLenght.
 
     String current;
     float currFloat;
-    Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "between " + minValue + " and " + maxValue);
       current = input.nextLine();
       if (operatorCheck(current, minValue, maxValue, InputType.CASH)) {
         currFloat = Float.parseFloat(current);
-        input.close();
         return currFloat;
       }
     }
   }
 
-  public static int idInput(String message, int minValue, int maxValue) throws Exception {
+  public static int idInput(String message, int minValue, int maxValue, Scanner input) throws Exception {
 
     if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
 
     String current;
     int currInt = 0;
-    Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "between " + minValue + " and " + maxValue);
       current = input.nextLine();
       if (operatorCheck(current, minValue, maxValue, InputType.ID)) { 
         currInt = Integer.parseInt(current);
-        input.close();
         return currInt;
       }
     }
   }
 
-  public static int choiceInput(String message, float minValue, float maxValue) throws Exception {
+  public static int choiceInput(String message, float minValue, float maxValue, Scanner input) throws Exception {
 
     if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
 
     String current;
     int currInt;
-    Scanner input = new Scanner(System.in);
     while(true){
       System.out.println(message + "between " + minValue + " and " + maxValue);
       current = input.nextLine();
       if (operatorCheck(current, minValue, maxValue, InputType.CHOICE)) {
         currInt = Integer.parseInt(current);
-        input.close();
         return currInt;
       }
     }

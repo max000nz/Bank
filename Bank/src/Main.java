@@ -1,9 +1,11 @@
 
+import java.util.Scanner;
 import menus.LoginMenu;
 
 public class Main {
 	public static void main(String args[]){
-        switch(LoginMenu.ShowLoginMenu())
+        Scanner input = new Scanner(System.in);
+        switch(LoginMenu.ShowLoginMenu(input))
         {
             case ADMIN:
             break;
@@ -12,5 +14,6 @@ public class Main {
             break;
             
         }
+        input.close();
     }
 }

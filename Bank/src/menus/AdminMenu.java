@@ -10,7 +10,7 @@ import role_classes.*;
 
 public class AdminMenu {
 
- public static void showAdminMenu(Admin admin)
+ public static void showAdminMenu(Admin admin, Scanner input)
  {
     boolean working=true;
     boolean approveLoop=true;
@@ -62,7 +62,7 @@ public class AdminMenu {
                     System.out.println("Type: " + curr_req.getType());
                     int choice=0;
             try {
-                choice = RoleAns.choiceInput("Does you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3);
+                choice = RoleAns.choiceInput("Does you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
