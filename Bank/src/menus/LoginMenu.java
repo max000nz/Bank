@@ -16,13 +16,13 @@ public abstract class LoginMenu {
 
             int id=0;
             try {
-                id = RoleAns.idInput("Please enter your id: ", 100000000, 999999999,input);
+                id = RoleAns.idInput("Please enter your id: ", 100000000, 999999999, input);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
             String password="";
             try {
-                password = RoleAns.passwordInput("Please enter your password: ", 100000000, 999999999,input);
+                password = RoleAns.passwordInput("Please enter your password: ", 100000000, 999999999, input);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
