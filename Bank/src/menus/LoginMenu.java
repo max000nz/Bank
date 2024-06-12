@@ -2,12 +2,8 @@ package menus;
 
 import bank_classes.UsersList;
 import connection.RoleAns;
-import enums.RoleType;
 import java.util.LinkedList;
 import java.util.Scanner;
-
-import javax.management.relation.Role;
-
 import role_classes.Roles;
 
 public abstract class LoginMenu {
@@ -18,18 +14,9 @@ public abstract class LoginMenu {
         while(true){
 
             int id=0;
-            try {
-                id = RoleAns.idInput("Please enter your id: ", 100000000, 999999999, input);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
+            id = RoleAns.idInput("Please enter your id: ", 100000000, 999999999, input);
             String password="";
-            try {
-                password = RoleAns.passwordInput("Please enter your password: ", 100000000, 999999999, input);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
-
+            password = RoleAns.passwordInput("Please enter your password: ", 100000000, 999999999, input);
             LinkedList<Roles> users = UsersList.getUsers();
 
             for (Roles elem : users) {
