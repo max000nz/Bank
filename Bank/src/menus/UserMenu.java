@@ -33,23 +33,14 @@ public class UserMenu {
     
                 case 1:
                     currCash = currUser.GetCash();
-                    try {
-                        changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
+                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
                     currCash -= changeCash;
                     currUser.SetCash(currCash);
                     break;
     
     
                 case 2:
-                
-                    try {
-                        changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
+                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
                     currCash = currUser.GetCash();
                     currCash += changeCash;
                     currUser.SetCash(currCash);
@@ -57,13 +48,8 @@ public class UserMenu {
     
     
                 case 3:
-                    
-                    try {
-                        changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000, input);
-                        message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
+                    changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000, input);
+                    message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
                     UserRequest loan = new UserRequest();
                     loan.setAmount(changeCash);
                     loan.setMessage(message);
@@ -74,12 +60,8 @@ public class UserMenu {
     
                 case 4:
                     currCash = currUser.GetCash();
-                    try {
-                        changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, currCash, input);
-                        message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
-                    } catch (Exception e) {
-                        System.err.println(e.getMessage());
-                    }
+                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, currCash, input);
+                    message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
                     deposit.setAmount(changeCash);
                     deposit.setMessage(message);
@@ -95,11 +77,8 @@ public class UserMenu {
                         UserRequest curr_request = BankRequest.findRequestById(elem);
                         System.out.printf("%d. %d", num, curr_request.getAmount());
                         num++;
-                        try {   // need to handle queue issue ( head moving backward whan choise is no)
-                            loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        // need to handle queue issue ( head moving backward whan choise is no)
+                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                         switch (loanChoice) {
                             case 1:
                                 currUser.PayoutLoanR(curr_request);
@@ -125,11 +104,7 @@ public class UserMenu {
                         UserRequest curr_request = BankRequest.findRequestById(elem);
                         System.out.printf("%d. %d", num, curr_request.getAmount());
                         num++;
-                        try {
-                            depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                         switch (depositChoice) {
                             case 1:
                                 currUser.WithdrawDepositR(curr_request);
