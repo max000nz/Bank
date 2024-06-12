@@ -124,7 +124,7 @@ public abstract class RoleAns {
 
   private static boolean operatorCheck(String str, float min, float max, InputType input_type) throws Exception
   {
-    String operators = "+-*/%^&|<>!=?:,.()_@#$\"'`~[]{}\\;";
+    String operators = "+-*/%^&|<>!=?:,.()_@#$\"'`~[]{}\\; ";
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     if(input_type == InputType.PASSWORD) return true;
