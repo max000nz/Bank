@@ -3,7 +3,7 @@ import javax.management.relation.Role;
 
 import enums.RoleType;
 
-public abstract class Roles {
+public class Roles {
 	
 protected String name;
 protected String lastName;

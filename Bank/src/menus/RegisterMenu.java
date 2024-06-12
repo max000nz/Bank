@@ -3,13 +3,13 @@ import bank_classes.UsersList;
 import connection.RoleAns;
 import enums.RoleType;
 import java.util.Scanner;
-import role_classes.User;
+import role_classes.*;
 
 
 
 public abstract class RegisterMenu {
     
-    public static void ShowRegisterMenu(Scanner input){
+    public static User ShowRegisterMenu(Scanner input){
         User current = new User();
         current.setRole(RoleType.USER);
         try {
@@ -22,7 +22,7 @@ public abstract class RegisterMenu {
         
         if(UsersList.checkIfexist(current.getId())){ 
             System.out.println("User already Exist in the system!");
-            return;
+            return null;
         }  //Valdtion check if user exist... 
         try {
             current.setPassword(RoleAns.passwordInput("Please Enter password: ", 2, 10, input));
@@ -35,8 +35,7 @@ public abstract class RegisterMenu {
          * go to user manu
         */
         UsersList.addUser(current); //add user to userlist
-
-        UserMenu.ShowUserMenu(current, input);
+        return current;
 
     }
 }
