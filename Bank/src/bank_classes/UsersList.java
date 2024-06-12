@@ -8,7 +8,7 @@ public abstract class UsersList {
     private static LinkedList<Roles> users = new LinkedList<>();
 
     // Add a user to the list
-    public static void addUser(User user) {
+    public static void addUser(Roles user) {
         users.add(user);
     }
 
