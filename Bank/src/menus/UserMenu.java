@@ -34,7 +34,7 @@ public class UserMenu {
     
                 case 1:
                     currCash = currUser.GetCash();
-                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
+                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 0, currCash, input);
                     currCash -= changeCash;
                     currUser.setCash(currCash);
                     break;

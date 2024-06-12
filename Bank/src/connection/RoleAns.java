@@ -106,7 +106,7 @@ public abstract class RoleAns {
 
   private static void validationLength(String str, float min, float max, InputType input_type) throws Exception {
 
-    if(max < min) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
+    if(max < min ) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
 
     if(input_type == InputType.PASSWORD || input_type == InputType.MESSAGE || input_type == InputType.NAMES){
 
