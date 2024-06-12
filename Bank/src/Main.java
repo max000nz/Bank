@@ -20,6 +20,7 @@ public class Main {
             Roles curr = null;
             switch (choice) {
                 case 0:
+                    System.out.println(" " + "See you next time!");
                     break;
                 case 1:
                 curr = RegisterMenu.ShowRegisterMenu(input);
