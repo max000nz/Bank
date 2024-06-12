@@ -62,7 +62,10 @@ public abstract class RoleAns {
           return currFloat;
         }
       } catch (Exception e) {
+        int choice = 0;
         System.err.println(e.getMessage());
+        choice = choiceInput("Would you like to try again?\n0.No\n1.Yes", 0, 1, input);
+        if(choice == 0) return 0;
       }
       
     }
