@@ -111,14 +111,14 @@ public abstract class RoleAns {
     if(input_type == InputType.PASSWORD || input_type == InputType.MESSAGE || input_type == InputType.NAMES){
 
       if(str.length() > max || str.length() < min){
-        throw new Exception("Input length is out of range! Expected range: ".concat(String.valueOf(min)).concat(" to ").concat(String.valueOf(max)).concat(" Characters"));
+        throw new Exception("Input length is out of range! Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)).concat(" Characters"));
       }
     }
 
     if(input_type == InputType.CASH  || input_type == InputType.ID || input_type == InputType.CHOICE){
 
       float num = Float.parseFloat(str);
-      if(num > max || num < min) throw new Exception("Input value is out of range. Expected range: ".concat(String.valueOf(min)).concat(" to ").concat(String.valueOf(max)));
+      if(num > max || num < min) throw new Exception("Input value is out of range. Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)));
     }
   }
 
