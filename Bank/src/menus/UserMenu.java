@@ -96,7 +96,7 @@ public class UserMenu {
                     UserRequest curr_request = BankRequest.findRequestById(elem);
                     System.out.printf("%d. %d", num, curr_request.getAmount());
                     num++;
-                    try {
+                    try {   // need to handle queue issue ( head moving backward whan choise is no)
                         loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                     } catch (Exception e) {
                         System.err.println(e.getMessage());

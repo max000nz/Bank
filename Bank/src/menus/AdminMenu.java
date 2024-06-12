@@ -10,7 +10,7 @@ import role_classes.*;
 
 public class AdminMenu {
 
- public static void showAdminMenu(Admin admin, Scanner input)
+ public static void showAdminMenu(Admin admin, Scanner input) throws Exception
  {
     boolean working=true;
     boolean approveLoop=true;
@@ -25,9 +25,8 @@ public class AdminMenu {
         System.out.println("5.Approve Requests");
         System.out.println("0.exit");
         System.out.println("Enter Choice: ");
-        Scanner myObj=new Scanner(System.in);
         
-        int userchoice=myObj.nextInt();
+        int userchoice=RoleAns.choiceInput("Hello Admin!\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.exit\nEnter Choice:", 0, 5, input);
         switch (userchoice) {
 
             case 1:
@@ -43,8 +42,7 @@ public class AdminMenu {
             
             break;
             case 3:
-                System.out.println("Please provide an id: ");
-                int user_id=myObj.nextInt();
+                int user_id= RoleAns.idInput("\"Please provide an id: ", 100000000, 999999999, input);
                 admin.DeleteUser(user_id);
             break;
             

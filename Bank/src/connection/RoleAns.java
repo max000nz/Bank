@@ -65,7 +65,6 @@ public abstract class RoleAns {
   public static int idInput(String message, int minValue, int maxValue, Scanner input) throws Exception {
 
     if(maxValue < minValue) throw new Exception("maxValue has to be >= minValue"); // Throws an exception if maxValue is bigger than minValue.
-
     String current;
     int currInt = 0;
     while(true){
