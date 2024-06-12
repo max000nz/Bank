@@ -8,7 +8,7 @@ public abstract class RoleAns {
   public static String passwordInput(String message, int minLenght, int maxLenght, Scanner input){
     String current;
     while(true){
-      System.out.println(message); // Add good exception messages
+      System.out.println(message);
       current = input.nextLine();
       try {
         if (operatorCheck(current, minLenght, maxLenght, InputType.PASSWORD)) {
