@@ -14,18 +14,19 @@ public class UserMenu {
         float changeCash = 0;
         float currCash = 0;
         String message = "";
-        System.out.println("Welcome, " + currUser.getName());
-
-        System.out.println("1.Withdrawal");
-        System.out.println("2.Deposit Cash");
-        System.out.println("3.Loan");
-        System.out.println("4.Long deposit");
-        System.out.println("5.Close loan");
-        System.out.println("6.Close long deposit");
-        System.out.println("0.Exit");
         int choice = -1;
-        choice = RoleAns.choiceInput("What do you want to do?", 0, 7, input);
-        while(choice != 0){
+        while(true){
+            System.out.println("Welcome, " + currUser.getName());
+
+            System.out.println("1.Withdrawal");
+            System.out.println("2.Deposit Cash");
+            System.out.println("3.Loan");
+            System.out.println("4.Long deposit");
+            System.out.println("5.Close loan");
+            System.out.println("6.Close long deposit");
+            System.out.println("0.Exit");
+            
+            choice = RoleAns.choiceInput("What do you want to do?", 0, 7, input);
             switch (choice) {
     
                 case 0:
@@ -116,13 +117,8 @@ public class UserMenu {
                             }
                         }
                 } 
-
-
-            if(choice == 0) break; 
-            choice = RoleAns.choiceInput("What do you want to do?", 0, 7, input);
             }
         }
-        
     }
 
 
