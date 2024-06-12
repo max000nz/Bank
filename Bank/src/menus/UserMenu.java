@@ -102,12 +102,14 @@ public class UserMenu {
                         }
                         switch (loanChoice) {
                             case 1:
-                                if (currUser.GetCash() >= curr_request.getAmount()) {
-                                    currUser.PayoutLoanR(curr_request);
-                                } else {
-                                    System.out.println("You dont have enough money!");
-                                    break;
-                                }
+                                currUser.PayoutLoanR(curr_request);
+                                continue;
+                                // if (currUser.GetCash() >= curr_request.getAmount()) {
+                                //     currUser.PayoutLoanR(curr_request);
+                                // } else {
+                                //     System.out.println("You dont have enough money!");
+                                //     break;
+                                // }
                             case 2:
                                 continue;
                             case 3:

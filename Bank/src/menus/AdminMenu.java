@@ -57,13 +57,13 @@ public class AdminMenu {
                     System.out.println("Type: " + curr_req.getType());
                     int choice=0;
             try {
-                choice = RoleAns.choiceInput("Does you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
+                choice = RoleAns.choiceInput("Do you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
                     switch(choice){
                         case 1:
-                            if(admin.handleApprovedRequest()){
+                            if(admin.handleApprovedRequest(input)){
                                 admin.approveRequest();
                             }else{
                                 System.out.println("Cannot approve");
