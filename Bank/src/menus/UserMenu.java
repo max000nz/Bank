@@ -36,7 +36,7 @@ public class UserMenu {
                     currCash = currUser.GetCash();
                     changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
                     currCash -= changeCash;
-                    currUser.SetCash(currCash);
+                    currUser.setCash(currCash);
                     break;
     
     
@@ -44,7 +44,7 @@ public class UserMenu {
                     changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
                     currCash = currUser.GetCash();
                     currCash += changeCash;
-                    currUser.SetCash(currCash);
+                    currUser.setCash(currCash);
                     break;
     
     

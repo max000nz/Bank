@@ -39,7 +39,7 @@ public class Admin extends Roles {
   // }
 
   public void approveRequest() {
-    if (BankRequest.approveRequest() == false) {
+    if (BankRequest.approveRequestB() == false) {
       System.out.println("No requests available");
       return;
     }
@@ -64,7 +64,7 @@ public class Admin extends Roles {
     switch (curr_req.getType()) {
 
       case RequestType.LOAN:
-        curr_user.SetCash(curr_user.GetCash() + curr_req.getAmount());
+        curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         curr_user.setTotalLoans(curr_user.GetTotalLoans() + curr_req.getAmount());
         curr_user.addLoan(curr_req.getId());
         break;
@@ -74,7 +74,7 @@ public class Admin extends Roles {
           System.out.println("error deposite bigger then your cash in the bank");
           break;
         }
-        curr_user.SetCash(curr_user.GetCash() - curr_req.getAmount());
+        curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() + curr_req.getAmount());
         curr_user.addDeposit(curr_req.getId());
         break;
@@ -84,7 +84,7 @@ public class Admin extends Roles {
         System.out.println("error remain of loan is bigger then your cash in the bank");
         break;
         }
-        curr_user.SetCash(curr_user.GetCash() - curr_req.getAmount());
+        curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the loan
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the loan
         curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount());
@@ -92,7 +92,7 @@ public class Admin extends Roles {
         break;
 
       case RequestType.CLOSE_DEPOSIT:
-        curr_user.SetCash(curr_user.GetCash() + curr_req.getAmount());
+        curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the deposit
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the deposit
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() - curr_req.getAmount());

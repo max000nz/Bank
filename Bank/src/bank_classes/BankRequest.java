@@ -9,11 +9,21 @@ public abstract class BankRequest {
 	requests.add(request);
   }
 
-  public static boolean approveRequest(){
+  public static boolean approveRequestB(){
 	if(requests==null) return false;
 	approvedRequests.add(requests.peek());
 	requests.remove();
 	return true;
+  }
+
+  public static boolean isEmptyRequests(){
+	if(requests.isEmpty() == true) return true;
+	return false;
+  }
+  
+  public static boolean isEmptyApprovedRequests(){
+	if(approvedRequests.isEmpty() == true) return true;
+	return false;
   }
 
   public static boolean denyRequest(){
@@ -61,8 +71,9 @@ public abstract class BankRequest {
   }
 
   public static UserRequest getFirstRequest(){
-	return requests.peek();
+	if(BankRequest.getRequestsSize() == 0){
+		return null;
+	} 
+	return requests.peek(); 
   }
-  
-  
 }

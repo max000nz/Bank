@@ -13,8 +13,8 @@ import java.util.UUID;
 public class User extends Roles {
 	
 	private Stack<UserRequest> requestHistory;
-	private Queue<UUID> loans;
-	private Queue<UUID> deposits;
+	private Queue<UUID> loans = new LinkedList<UUID>();
+	private Queue<UUID> deposits = new LinkedList<UUID>();
 	
 	private float frame = 0;
 	private float cash= 0;
@@ -28,12 +28,6 @@ public class User extends Roles {
 	public User(String name, String lastName, int id, String password, int cash, RoleType role) {
 		
 		super(name, lastName, id, password, role);
-		
-		requestHistory = new Stack<>();
-		Queue<UUID> loans = new LinkedList<UUID>();
-		Queue<UUID> deposits = new LinkedList<UUID>();
-
-		
         this.cash = cash;
         this.totalLoans = 0;
         this.totalDeposits = 0;
@@ -62,7 +56,7 @@ public class User extends Roles {
 		BankRequest.addRequest(closeDeposit);
 	}
 
-	public void SetCash(float cash) {
+	public void setCash(float cash) {
 		this.cash = cash;
 	}
 

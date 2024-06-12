@@ -73,12 +73,18 @@ public class AdminMenu {
                             approveLoop = false;
                         break;
                     }
+                    if(BankRequest.isEmptyRequests() == true){
+                        System.out.println("empty requests");
+                        break;
+                    }
                 }
+
+                
                 break;
 
             //default -> throw new AssertionError();
         }
-
+        
 
     }
  }

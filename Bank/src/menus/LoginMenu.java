@@ -20,9 +20,10 @@ public abstract class LoginMenu {
             LinkedList<Roles> users = UsersList.getUsers();
 
             for (Roles elem : users) {
-                if(elem.SearchInfo(id,password));
-                System.out.println("Logging in...");
-                return (elem); 
+                if(elem.SearchInfo(id,password)){
+                    System.out.println("Logging in...");
+                    return (elem); 
+                }   
             }
 
             System.out.println("Incorrect. Try again.\n");
