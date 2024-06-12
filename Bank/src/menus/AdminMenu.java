@@ -17,24 +17,21 @@ public class AdminMenu {
     LinkedList<Roles> users=UsersList.getUsers();
 
     while (working) {
-        System.out.println("Hello Admin!");//we want the admin name to show?
-        System.out.println("1.Show all Users");//fill option later
-        System.out.println("2.Show Transaction History");
-        System.out.println("3.Delete User");
-        System.out.println("4.Get analytics");
-        System.out.println("5.Approve Requests");
-        System.out.println("0.exit");
-        System.out.println("Enter Choice: ");
-        
-        int userchoice=RoleAns.choiceInput("Hello Admin!\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.exit\nEnter Choice:", 0, 5, input);
+       
+        int userchoice=RoleAns.choiceInput("\n" + "Hello"+ " " + admin.getName()+ " " + admin.getLastName() +"\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.exit\nEnter Choice:", 0, 5, input);
         switch (userchoice) {
-
+            case 0:
+            return;
             case 1:
+            if(users.size()-1==0) {System.out.println("\n" + "Users list is empty"+ "\n"); break;}
               for (Roles elem : users) {
+                  if(elem.getRole()==enums.RoleType.ADMIN) continue;
+                  else{
                   System.out.println(elem.getId());
                   System.out.println(elem.getName());
                   if(elem instanceof User) System.out.println(((User) elem).GetCash());
                   System.out.println();
+                  }
               }
             break;
 

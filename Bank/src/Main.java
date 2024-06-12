@@ -1,7 +1,7 @@
 
-import java.util.Scanner;
-
+import bank_classes.UsersList;
 import connection.RoleAns;
+import java.util.Scanner;
 import menus.AdminMenu;
 import menus.LoginMenu;
 import menus.RegisterMenu;
@@ -10,15 +10,17 @@ import role_classes.Admin;
 import role_classes.Roles;
 
 public class Main {
-	public static void main(String args[]) throws Exception{ // need to ask if login or register 
+	public static void main(String args[]) throws Exception{ 
         Scanner input = new Scanner(System.in);
-        Admin admin = new Admin("max", "pro" , 123456789, "maxXs-D", enums.RoleType.ADMIN);
+        Admin admin = new Admin("max", "pro" , 123456789, "gofman2", enums.RoleType.ADMIN);
         int choice = 0;
+        UsersList.addUser(admin);
         while(true){
-            choice = RoleAns.choiceInput("2.login\n1.register\n0.close program", 0, 3, input);
+            choice = RoleAns.choiceInput("1.register\n2.login\n0.close program", 0, 3, input);
             Roles curr = null;
             switch (choice) {
                 case 0:
+                    System.out.println(" " + "See you next time!");
                     break;
                 case 1:
                 curr = RegisterMenu.ShowRegisterMenu(input);
@@ -37,7 +39,6 @@ public class Main {
                         break;
                         
                     }
-                input.close();
                     break;
                 default:
                     break;

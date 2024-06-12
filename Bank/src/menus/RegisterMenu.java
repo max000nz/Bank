@@ -12,23 +12,17 @@ public abstract class RegisterMenu {
     public static User ShowRegisterMenu(Scanner input){
         User current = new User();
         current.setRole(RoleType.USER);
-        try {
-            current.setName(RoleAns.namesInput("Please Enter first name", 2, 10, input));
-            current.setLastName(RoleAns.namesInput("PLease Enter last name", 2, 10, input));
-            current.setId(RoleAns.idInput("please Enter id", 100000000, 999999999, input));
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+        current.setName(RoleAns.namesInput("Please Enter first name", 2, 10, input));
+        current.setLastName(RoleAns.namesInput("PLease Enter last name", 2, 10, input));
+        current.setId(RoleAns.idInput("please Enter id", 100000000, 999999999, input));
         
         if(UsersList.checkIfexist(current.getId())){ 
             System.out.println("User already Exist in the system!");
             return null;
         }  //Valdtion check if user exist... 
-        try {
-            current.setPassword(RoleAns.passwordInput("Please Enter password: ", 2, 10, input));
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+
+        current.setPassword(RoleAns.passwordInput("Please Enter password: ", 2, 10, input));
+
         /*
          * confirm password
         
