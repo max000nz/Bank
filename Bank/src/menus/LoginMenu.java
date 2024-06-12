@@ -5,11 +5,14 @@ import connection.RoleAns;
 import enums.RoleType;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import javax.management.relation.Role;
+
 import role_classes.Roles;
 
 public abstract class LoginMenu {
 
-    public static RoleType ShowLoginMenu(Scanner input){
+    public static Roles ShowLoginMenu(Scanner input){
         System.out.println("Welcome!\n");
         
         while(true){
@@ -32,10 +35,11 @@ public abstract class LoginMenu {
             for (Roles elem : users) {
                 if(elem.SearchInfo(id,password));
                 System.out.println("Logging in...");
-                return elem.getRole(); 
+                return (elem); 
             }
 
             System.out.println("Incorrect. Try again.\n");
+            return null;
         }
     }
 
