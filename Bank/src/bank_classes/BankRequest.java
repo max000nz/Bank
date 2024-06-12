@@ -22,10 +22,19 @@ public abstract class BankRequest {
 	return true;
   }
 
-  public static void deleteRequest(UserRequest request){
+  public static void deleteApprovedRequest(UserRequest request){
 	for (UserRequest curr : approvedRequests) {
 		if(curr.getId() == request.getId()){
 			approvedRequests.remove(curr);
+			return;
+		}
+   	}
+  }
+
+  public static void deleteCloseRequest(UUID requestId){
+	for (UserRequest curr : requests) {
+		if(curr.getId() == requestId){
+			requests.remove(curr);
 			return;
 		}
    	}
