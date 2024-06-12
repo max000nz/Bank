@@ -39,6 +39,7 @@ public class UserMenu {
                     if(currUser.GetCash()-changeCash<0) {System.out.println("You dont have enongh money in your balance"); break;}
                     currCash -= changeCash;
                     currUser.setCash(currCash);
+                    System.out.println("Your current balance is: "+currUser.GetCash());
                     break;
     
     
@@ -47,7 +48,7 @@ public class UserMenu {
                     currCash = currUser.GetCash();
                     currCash += changeCash;
                     currUser.setCash(currCash);
-                    System.out.println("Your current balance is: "+ " " + currUser.GetCash());
+                    System.out.println("Your current balance is: "+currUser.GetCash());
                     break;
     
     
