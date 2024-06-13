@@ -27,7 +27,7 @@ public abstract class UsersList {
     }
 
     // Remove a user from the list
-    public static void removeUser(int user_id, int admin_id) {
+    public static void removeUser(int user_id, int admin_id) throws Exception {
 
         if(validationAdmin(admin_id) == false){
             System.out.println("Only an admin can perform this action");
@@ -42,6 +42,8 @@ public abstract class UsersList {
                 return;
             }
         }
+
+        throw new Exception("Id not found");
     }
 
     // Get all users in the list
