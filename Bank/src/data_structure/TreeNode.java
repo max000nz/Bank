@@ -1,13 +1,15 @@
 package data_structure;
 
+import bank_classes.UserRequest;
+
 public class TreeNode {
-    int data;
+    UserRequest data;
     TreeNode left;
     TreeNode middle;
     TreeNode right;
 
 
-    public TreeNode(int data) {
+    public TreeNode(UserRequest data) {
         this.data = data;
         this.left = null;
         this.middle = null;
