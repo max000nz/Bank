@@ -50,14 +50,14 @@ public abstract class RoleAns {
     }
   }
 
-  public static float cashInput(String message, float minValue, Scanner input){
+  public static float cashInput(String message, float minValue, float maxValue, Scanner input){
     String current;
     float currFloat;
     while(true){
       System.out.println(message);
       current = input.nextLine();
       try {
-        if (operatorCheck(current, minValue, 1000000, InputType.CASH)) {
+        if (operatorCheck(current, minValue, maxValue, InputType.CASH)) {
           currFloat = Float.parseFloat(current);
           return currFloat;
         }

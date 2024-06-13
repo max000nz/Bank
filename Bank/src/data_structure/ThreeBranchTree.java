@@ -16,7 +16,7 @@ public class ThreeBranchTree {
                 this.depositRoot = new TreeNode(data);
                 break;
             default:
-                throw new AssertionError();
+                System.err.println("Error when creating a new Tree Branch");
         }
     }
 
@@ -29,7 +29,7 @@ public class ThreeBranchTree {
                 insert(depositRoot, data);
                 break;
             default:
-                throw new AssertionError();
+                System.err.println("Error when creating a new Tree Branch");
         }
     }
 
