@@ -3,14 +3,34 @@ package data_structure;
 import bank_classes.UserRequest;
 
 public class ThreeBranchTree {
-    private static TreeNode root;
+    private static TreeNode loanRoot;
+    private static TreeNode depositRoot ;
 
     public ThreeBranchTree(UserRequest data) {
-        this.root = new TreeNode(data);
+
+        switch (data.getType()) {
+            case LOAN:
+                this.loanRoot = new TreeNode(data);
+                break;
+            case DEPOSIT:
+                this.depositRoot = new TreeNode(data);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     public static void insertNode(UserRequest data) {
-        insert(root, data);
+        switch (data.getType()) {
+            case LOAN:
+                insert(loanRoot, data);
+                break;
+            case DEPOSIT:
+                insert(depositRoot, data);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     private static void insert(TreeNode node, UserRequest data) {
