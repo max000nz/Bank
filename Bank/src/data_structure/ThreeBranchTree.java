@@ -6,19 +6,19 @@ public class ThreeBranchTree {
     private static TreeNode loanRoot;
     private static TreeNode depositRoot ;
 
-    public ThreeBranchTree(UserRequest data) {
+    // public ThreeBranchTree(UserRequest data) {
 
-        switch (data.getType()) {
-            case LOAN:
-                loanRoot = new TreeNode(data);
-                break;
-            case DEPOSIT:
-                depositRoot = new TreeNode(data);
-                break;
-            default:
-                System.err.println("Error when creating a new Tree Branch");
-        }
-    }
+    //     switch (data.getType()) {
+    //         case LOAN:
+    //             loanRoot = new TreeNode(data);
+    //             break;
+    //         case DEPOSIT:
+    //             depositRoot = new TreeNode(data);
+    //             break;
+    //         default:
+    //             System.err.println("Error when creating a new Tree Branch");
+    //     }
+    // }
 
     public static void insertNode(UserRequest data) {
         switch (data.getType()) {
