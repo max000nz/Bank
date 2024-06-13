@@ -1,6 +1,4 @@
 package role_classes;
-import javax.management.relation.Role;
-
 import enums.RoleType;
 
 public class Roles {

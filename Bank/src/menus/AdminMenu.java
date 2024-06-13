@@ -49,7 +49,7 @@ public abstract  class AdminMenu {
             case 5:
                 while(approveLoop){
                     if(BankRequest.isEmptyRequests() == true){
-                        System.out.println("empty requests");
+                        System.out.println("No more requests, going back to menu");
                         break;
                     }
                     UserRequest curr_req = BankRequest.getFirstRequest();

@@ -1,10 +1,10 @@
 package role_classes;
+
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
-import bank_classes.UsersList;
-import enums.RequestType;
+
 import enums.RoleType;
-import java.util.ArrayDeque;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -115,7 +115,7 @@ public class User extends Roles {
 
 	public void deleteDeposit(UUID deleteDeposit) {
 		if(deposits.remove(deleteDeposit)){
-			System.out.println("Loan deleted succesfully");
+			System.out.println("Deposit deleted succesfully");
 		}
 	}
 

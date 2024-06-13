@@ -3,15 +3,11 @@ package role_classes;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Stack;
-import java.util.UUID;
-
 
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import bank_classes.UsersList;
-import connection.RoleAns;
-import enums.RequestType;
+
 import enums.RoleType;
 
 public class Admin extends Roles {

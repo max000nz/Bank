@@ -10,10 +10,10 @@ public class ThreeBranchTree {
 
         switch (data.getType()) {
             case LOAN:
-                this.loanRoot = new TreeNode(data);
+                loanRoot = new TreeNode(data);
                 break;
             case DEPOSIT:
-                this.depositRoot = new TreeNode(data);
+                depositRoot = new TreeNode(data);
                 break;
             default:
                 System.err.println("Error when creating a new Tree Branch");
@@ -22,10 +22,10 @@ public class ThreeBranchTree {
 
     public static void insertNode(UserRequest data) {
         switch (data.getType()) {
-            case LOAN:
+            case CLOSE_LOAN:
                 insert(loanRoot, data);
                 break;
-            case DEPOSIT:
+            case CLOSE_DEPOSIT:
                 insert(depositRoot, data);
                 break;
             default:
@@ -34,7 +34,9 @@ public class ThreeBranchTree {
     }
 
     private static void insert(TreeNode node, UserRequest data) {
-        if (data.getAmount() < node.data.getAmount()) {
+        if (node == null){
+            node = new TreeNode(data);
+        } else if (data.getAmount() < node.data.getAmount()) {
             if (node.left == null) {
                 node.left = new TreeNode(data);
             } else {

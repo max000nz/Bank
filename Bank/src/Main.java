@@ -13,7 +13,7 @@ import role_classes.User;
 public class Main {
 	public static void main(String args[]) throws Exception{ 
         Scanner input = new Scanner(System.in);
-        Admin admin = new Admin("max", "pro" , 123456789, "gofman2", enums.RoleType.ADMIN);
+        Admin admin = new Admin("max", "pro" , 222222222, "ben", enums.RoleType.ADMIN);
         User user = new User("liad", "mandil", 111111111, "liad" , enums.RoleType.USER);
         UsersList.addUser(user);
         int choice = 0;
