@@ -7,6 +7,7 @@ public class ThreeBranchTree {
     private static TreeNode depositRoot ;
 
     public ThreeBranchTree(UserRequest data) {
+
         switch (data.getType()) {
             case LOAN:
                 this.loanRoot = new TreeNode(data);

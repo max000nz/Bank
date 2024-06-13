@@ -2,6 +2,8 @@ package bank_classes;
 import java.util.*;
 import data_structure.ThreeBranchTree;
 
+import data_structure.ThreeBranchTree;
+
 public abstract class BankRequest {
   private static Queue<UserRequest> requests = new LinkedList<UserRequest>();
   private static LinkedList<UserRequest> approvedRequests = new LinkedList<UserRequest>();
