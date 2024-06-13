@@ -78,9 +78,9 @@ public class UserMenu {
                     deposit.setUserId(currUser.getId());
                     deposit.setType(RequestType.DEPOSIT);
                     currUser.NewDepositR(deposit);
-                    float updatecash=currCash-changeCash;
+                    //float updatecash=currCash-changeCash;
                     System.out.println("Your request was successfully sent to the bank");
-                    System.out.println("\n"+ "You account balance: " + updatecash);
+                    //System.out.println("\n"+ "You account balance: " + updatecash);
                     break;
                 case 5:
                     int num = 1;
@@ -97,7 +97,7 @@ public class UserMenu {
                         switch (loanChoice) {
                             case 1:
                                 currUser.PayoutLoanR(curr_request);
-                                System.out.println("Loan closed successfully, thank you");
+                                System.out.println("Request to close the loan sent successfully");
                                 continue;
                             case 2:
                                 continue;
@@ -120,7 +120,7 @@ public class UserMenu {
                         switch (depositChoice) {
                             case 1:
                                 currUser.WithdrawDepositR(curr_request);
-                                System.out.println("Deposit closed successfully, thank you");
+                                System.out.println("Request to close the deposit sent successfully");
                                 continue;
                             case 2:
                                 continue;
