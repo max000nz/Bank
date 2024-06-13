@@ -69,7 +69,7 @@ public class UserMenu {
                 case 4:
                     currCash = currUser.GetCash();
                     if (currCash==0) {System.out.println("Your current balance is: " + currCash); break;}
-                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 0, currCash, input);
+                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 0, 1000000000, input);
                     if (currCash-changeCash<0) {System.out.println("You dont have enough money in your account balance"); break;}
                     message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
