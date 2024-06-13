@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import role_classes.*;
 
-public class AdminMenu {
+public abstract  class AdminMenu {
 
  public static void showAdminMenu(Admin admin, Scanner input) throws Exception
  {
@@ -36,7 +36,7 @@ public class AdminMenu {
             break;
 
             case 2:
-            
+              // Show Transaction History
             break;
             case 3:
                 int user_id= RoleAns.idInput("\"Please provide an id: ", 100000000, 999999999, input);
@@ -44,9 +44,14 @@ public class AdminMenu {
             break;
             
             case 4:
+              // Get analytics
             break;
             case 5:
                 while(approveLoop){
+                    if(BankRequest.isEmptyRequests() == true){
+                        System.out.println("empty requests");
+                        break;
+                    }
                     UserRequest curr_req = BankRequest.getFirstRequest();
                     User curr_user = UsersList.findUsertById(curr_req.getUserId());
                     System.out.println("User Id: " + curr_req.getUserId());
@@ -73,10 +78,7 @@ public class AdminMenu {
                             approveLoop = false;
                         break;
                     }
-                    if(BankRequest.isEmptyRequests() == true){
-                        System.out.println("empty requests");
-                        break;
-                    }
+                    
                 }
 
                 

@@ -63,13 +63,13 @@ public class Admin extends Roles {
     User curr_user = UsersList.findUsertById(id);
     switch (curr_req.getType()) {
 
-      case RequestType.LOAN:
+      case LOAN:
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         curr_user.setTotalLoans(curr_user.GetTotalLoans() + curr_req.getAmount());
         curr_user.addLoan(curr_req.getId());
         break;
 
-      case RequestType.DEPOSIT:
+      case DEPOSIT:
         if (curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()) {
           System.out.println("error deposite bigger then your cash in the bank");
           break;
@@ -79,7 +79,7 @@ public class Admin extends Roles {
         curr_user.addDeposit(curr_req.getId());
         break;
 
-      case RequestType.CLOSE_LOAN:
+      case CLOSE_LOAN:
         if(curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()){
         System.out.println("error remain of loan is bigger then your cash in the bank");
         break;
@@ -91,7 +91,7 @@ public class Admin extends Roles {
         curr_user.deleteLoan(curr_req.getId());
         break;
 
-      case RequestType.CLOSE_DEPOSIT:
+      case CLOSE_DEPOSIT:
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the deposit
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the deposit

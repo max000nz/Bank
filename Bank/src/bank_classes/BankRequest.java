@@ -62,6 +62,16 @@ public abstract class BankRequest {
 	  return null;
   }
 
+  public static UserRequest findAprrovedRequestById(UUID id){
+	  if (approvedRequests.size() == 0) return null;
+	  for (UserRequest curr : approvedRequests) {
+		   if(curr.getId() == id){
+				return curr;
+		   }
+	  }
+	  return null;
+  }
+
   public static int getRequestsSize(){
 	return requests.size();
   }
