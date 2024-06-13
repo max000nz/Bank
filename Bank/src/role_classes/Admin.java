@@ -79,6 +79,7 @@ public class Admin extends Roles {
         curr_user.addDeposit(curr_req.getId());
         break;
 
+
       case CLOSE_LOAN:
         if(curr_req.getAmount() > curr_user.GetCash() + curr_user.GetFrame()){
         System.out.println("error remain of loan is bigger then your cash in the bank");
@@ -87,7 +88,7 @@ public class Admin extends Roles {
         curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the loan
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the loan
-        curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount());
+        curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount() + 0);
         curr_user.deleteLoan(curr_req.getId());
         break;
 
