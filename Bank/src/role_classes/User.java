@@ -13,8 +13,8 @@ import java.util.UUID;
 public class User extends Roles {
 	
 	private Stack<UserRequest> requestHistory;
-	private Queue<UUID> loans = new LinkedList<UUID>();
-	private Queue<UUID> deposits = new LinkedList<UUID>();
+	private Queue<UUID> loans = new LinkedList<>();
+	private Queue<UUID> deposits = new LinkedList<>();
 	
 	private float frame = 0;
 	private float cash= 0;
