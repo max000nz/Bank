@@ -27,7 +27,6 @@ public abstract class LoginMenu {
             }
 
             System.out.println("Incorrect. Try again.\n");
-            return null;
         }
     }
 
