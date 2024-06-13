@@ -45,7 +45,7 @@ public class UserMenu {
     
     
                 case 2:
-                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
+                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 0, 50000, input);
                     currCash = currUser.GetCash();
                     currCash += changeCash;
                     currUser.setCash(currCash);
@@ -54,7 +54,7 @@ public class UserMenu {
     
     
                 case 3:
-                    changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000, input);
+                    changeCash = RoleAns.cashInput("How much money you want to loan?", 0, 50000, input);
                     message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
                     UserRequest loan = new UserRequest();
                     loan.setAmount(changeCash);
@@ -66,7 +66,7 @@ public class UserMenu {
     
                 case 4:
                     currCash = currUser.GetCash();
-                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, currCash, input);
+                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 0, currCash, input);
                     message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
                     deposit.setAmount(changeCash);
@@ -81,10 +81,10 @@ public class UserMenu {
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest curr_request = BankRequest.findRequestById(elem);
-                        System.out.printf("%d. %d", num, curr_request.getAmount());
+                        System.out.println(num + ". " + curr_request.getAmount());
                         num++;
                         // need to handle queue issue ( head moving backward whan choise is no)
-                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
+                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n0.Exit", 0, 2, input);
                         switch (loanChoice) {
                             case 1:
                                 currUser.PayoutLoanR(curr_request);
@@ -97,7 +97,7 @@ public class UserMenu {
                                 // }
                             case 2:
                                 continue;
-                            case 3:
+                            case 0:
                                 return; // CHANGE MAIN SWITCH TO WHILE AND THIS WILL WORK
                         }
                     }
@@ -108,16 +108,16 @@ public class UserMenu {
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest curr_request = BankRequest.findRequestById(elem);
-                        System.out.printf("%d. %d", num, curr_request.getAmount());
+                        System.out.println(num + ". " + curr_request.getAmount());
                         num++;
-                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
+                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n0.Exit", 0, 2, input);
                         switch (depositChoice) {
                             case 1:
                                 currUser.WithdrawDepositR(curr_request);
                                 continue;
                             case 2:
                                 continue;
-                            case 3:
+                            case 0:
                                 return; // CHANGE MAIN SWITCH TO WHILE AND THIS WILL WORK
                             }
                         }
