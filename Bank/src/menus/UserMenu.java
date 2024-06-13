@@ -36,7 +36,7 @@ public class UserMenu {
 
                     currCash = currUser.GetCash();
                     if(currUser.GetCash()==0) {System.out.println("Current Balance = 0"); break;}
-                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
+                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, 1000000, input);
                     if(currUser.GetCash()<changeCash) {System.out.println("You dont have enongh money in your balance"); break;}
                     currCash -= changeCash;
                     currUser.setCash(currCash);
@@ -69,7 +69,7 @@ public class UserMenu {
                 case 4:
                     currCash = currUser.GetCash();
                     if (currCash==0) {System.out.println("Your current balance is: " + currCash); break;}
-                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 0, 1000000000, input);
+                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 0, 10000000, input);
                     if (currCash-changeCash<0) {System.out.println("You dont have enough money in your account balance"); break;}
                     message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
@@ -78,9 +78,7 @@ public class UserMenu {
                     deposit.setUserId(currUser.getId());
                     deposit.setType(RequestType.DEPOSIT);
                     currUser.NewDepositR(deposit);
-                    //float updatecash=currCash-changeCash;
                     System.out.println("Your request was successfully sent to the bank");
-                    //System.out.println("\n"+ "You account balance: " + updatecash);
                     break;
                 case 5:
                     int num = 1;
