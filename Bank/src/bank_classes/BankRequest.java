@@ -1,5 +1,6 @@
 package bank_classes;
 import java.util.*;
+import data_structure.ThreeBranchTree;
 
 public abstract class BankRequest {
   private static Queue<UserRequest> requests = new LinkedList<UserRequest>();
@@ -35,6 +36,7 @@ public abstract class BankRequest {
   public static void deleteApprovedRequest(UserRequest request){
 	for (UserRequest curr : approvedRequests) {
 		if(curr.getId() == request.getId()){
+			ThreeBranchTree.insertNode(curr);
 			approvedRequests.remove(curr);
 			return;
 		}
