@@ -39,8 +39,21 @@ public abstract  class AdminMenu {
               // Show Transaction History
             break;
             case 3:
-                int user_id= RoleAns.idInput("\"Please provide an id: ", 100000000, 999999999, input);
-                admin.DeleteUser(user_id);
+                // We need to add an option to cancel the deletion
+                while (true){
+                    int user_id= RoleAns.idInput("\"Please provide an id: ", 0, 999999999, input);
+                    if(user_id == 0) break; 
+                    else if(user_id < 100000000 || user_id > 999999999){
+                        System.out.println("Please enter a 9 digit number");
+                        int choice = -1;
+                        choice = RoleAns.choiceInput("Would you like to continue?\n0.No\n1.Yes", 0, 1, input);
+                        if(choice == 0) break;
+                        continue;
+                    }
+                    admin.DeleteUser(user_id);
+                    break;
+                }
+
             break;
             
             case 4:

@@ -27,7 +27,12 @@ public class Admin extends Roles {
 
 
   public void DeleteUser(int user_id) {
-    UsersList.removeUser(user_id, this.id);
+    try {
+      UsersList.removeUser(user_id, this.id);
+    } catch (Exception e) {
+      System.err.println(e.getMessage());
+    }
+    
   }
 
   // private GetAnalytics(){
