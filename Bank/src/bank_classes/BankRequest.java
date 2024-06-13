@@ -53,8 +53,8 @@ public abstract class BankRequest {
   public static Queue<UserRequest> getBankRequests(){ return requests; }
 
   public static UserRequest findRequestById(UUID id){
-	  if (requests.size() == 0) return null;
-	  for (UserRequest curr : requests) {
+	  if (approvedRequests.size() == 0) return null;
+	  for (UserRequest curr : approvedRequests) {
 		   if(curr.getId() == id){
 				return curr;
 		   }
