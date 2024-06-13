@@ -19,7 +19,7 @@ public class ThreeBranchTree {
         }
     }
 
-    public void insertNode(UserRequest data) {
+    public static void insertNode(UserRequest data) {
         switch (data.getType()) {
             case LOAN:
                 insert(loanRoot, data);
@@ -32,7 +32,7 @@ public class ThreeBranchTree {
         }
     }
 
-    private void insert(TreeNode node, UserRequest data) {
+    private static void insert(TreeNode node, UserRequest data) {
         if (data.getAmount() < node.data.getAmount()) {
             if (node.left == null) {
                 node.left = new TreeNode(data);
