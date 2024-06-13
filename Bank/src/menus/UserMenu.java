@@ -37,7 +37,7 @@ public class UserMenu {
                     currCash = currUser.GetCash();
                     if(currUser.GetCash()==0) {System.out.println("Current Balance = 0"); break;}
                     changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, currCash, input);
-                    if(currUser.GetCash()-changeCash<0) {System.out.println("You dont have enongh money in your balance"); break;}
+                    if(currUser.GetCash()<changeCash) {System.out.println("You dont have enongh money in your balance"); break;}
                     currCash -= changeCash;
                     currUser.setCash(currCash);
                     System.out.println("Money was successfully withdrawn");
