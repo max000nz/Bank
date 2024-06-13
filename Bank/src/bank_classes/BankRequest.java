@@ -1,10 +1,10 @@
 package bank_classes;
-import java.util.*;
 import data_structure.ThreeBranchTree;
+import java.util.*;
 
 public abstract class BankRequest {
-  private static Queue<UserRequest> requests = new LinkedList<UserRequest>();
-  private static LinkedList<UserRequest> approvedRequests = new LinkedList<UserRequest>();
+  private static Queue<UserRequest> requests = new LinkedList<>();
+  private static LinkedList<UserRequest> approvedRequests = new LinkedList<>();
   
   public static void addRequest(UserRequest request){
 	requests.add(request);
@@ -13,8 +13,7 @@ public abstract class BankRequest {
   public static boolean approveRequestB(){
 	if(requests == null) return false;
 	if(requests.size()==0) return true;
-	approvedRequests.add(requests.peek());
-	requests.remove();
+	approvedRequests.add(requests.remove());
 	return true;
   }
 

@@ -39,13 +39,14 @@ public class Admin extends Roles {
   // implementation of Binary tree
   // }
 
-  public void approveRequest() {
-    if (BankRequest.approveRequestB() == false) {
-      System.out.println("No requests available");
-      return;
-    }
-    System.out.println("Request approved");
-  }
+  // public void approveRequest() {
+  //   if (BankRequest.getRequestsSize() == 0) {
+  //     System.out.println("No requests available");
+  //     return;
+  //   }
+    
+  //   System.out.println("Request approved");
+  // }
 
   public void denyRequest() {
     if (BankRequest.denyRequest() == false) {
@@ -57,7 +58,7 @@ public class Admin extends Roles {
 
   public boolean handleApprovedRequest(Scanner input) throws Exception {
     if (BankRequest.getRequestsSize() == 0) {
-      return false;
+      throw new Exception("requests size is 0");
     }
     UserRequest curr_req = BankRequest.getFirstRequest();
     int id = curr_req.getUserId();

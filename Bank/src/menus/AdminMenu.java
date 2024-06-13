@@ -4,6 +4,7 @@ import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import bank_classes.UsersList;
 import connection.RoleAns;
+import enums.RequestType;
 import java.util.LinkedList;
 import java.util.Scanner;
 import role_classes.*;
@@ -73,16 +74,29 @@ public abstract  class AdminMenu {
                     System.out.println("Message: " + curr_req.getMessage());
                     System.out.println("Amount: " + curr_req.getAmount());
                     System.out.println("Type: " + curr_req.getType());
-                    int choice=0;
+                    int choice=-1;
                     choice = RoleAns.choiceInput("Do you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
                     switch(choice){
                         case 1:
-                            if(admin.handleApprovedRequest(input)){
-                                admin.approveRequest();
-                            }else{
-                                System.out.println("Cannot approve");
-                                admin.denyRequest();
+                            try {
+                                if(admin.handleApprovedRequest(input)){
+                                    
+                                    if(curr_req.getType() != RequestType.CLOSE_DEPOSIT &&  curr_req.getType() != RequestType.CLOSE_LOAN){
+                                        BankRequest.approveRequestB();
+                                    }
+                                    
+                                    if(BankRequest.getRequestsSize() == 0){
+                                        System.out.println("No more requests");
+                                        break;
+                                    }
+                                }else{
+                                    System.out.println("Cannot approve");
+                                    admin.denyRequest();
+                                }
+                            } catch (Exception e) {
+                                System.err.println(e.getMessage());
                             }
+                            
                         break;
                         case 2:
                             admin.denyRequest();

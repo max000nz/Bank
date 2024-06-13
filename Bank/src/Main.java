@@ -20,7 +20,7 @@ public class Main {
         UsersList.addUser(admin);
         while(true){
             choice = RoleAns.choiceInput("1.register\n2.login\n0.close program", 0, 2, input);
-            Roles curr = null;
+           Roles curr = null;
             switch (choice) {
                 case 0:
                     System.out.println("See you next time!");

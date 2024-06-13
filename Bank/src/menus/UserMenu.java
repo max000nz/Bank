@@ -79,9 +79,9 @@ public class UserMenu {
                     currUser.NewDepositR(deposit);
                     System.out.println("Your request was successfully sent to the bank");
                     break;
-                case 5:
+                case 5: // You can request to close a loan an infinite amoount of times as long as it isn't dealt with by the admin
                     int num = 1;
-                    int loanChoice = 0;
+                    int loanChoice = -1;
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getLoans()) {
 
