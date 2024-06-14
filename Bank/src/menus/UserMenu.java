@@ -4,10 +4,10 @@ import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import connection.RoleAns;
 import enums.RequestType;
+import java.time.LocalTime;
 import java.util.Scanner;
 import java.util.UUID;
 import role_classes.User;
-import java.time.LocalTime;
 
 public class UserMenu {
     public static void ShowUserMenu(User currUser, Scanner input) throws Exception {
@@ -28,8 +28,8 @@ public class UserMenu {
             System.out.println("4.Long deposit");
             System.out.println("5.Close loan");
             System.out.println("6.Close long deposit");
-            System.out.println("7.Show loans History");
-            System.out.println("8.Show deposit History");
+            System.out.println("7.Show loans");
+            System.out.println("8.Show deposit");
             System.out.println("0.Exit\n");
 
             choice = RoleAns.choiceInput("What do you want to do?", 0, 8, input);
@@ -175,7 +175,7 @@ public class UserMenu {
                     int loan_counter = 1;
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest req = BankRequest.findAprrovedRequestById(elem);
-                        System.out.println("Loan " + loan_counter + ":\nAmount Loaned: " + req.getAmount()
+                        System.out.println("Loan " + loan_counter + ":\nAmount Loaned: " + req.getOriginalAmount()
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         loan_counter++;
                     }
@@ -191,7 +191,7 @@ public class UserMenu {
                     int deposit_counter = 1;
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest req = BankRequest.findAprrovedRequestById(elem);
-                        System.out.println("Deposit " + deposit_counter + ":\nAmount Deposited: " + req.getAmount()
+                        System.out.println("Deposit " + deposit_counter + ":\nAmount Deposited: " + req.getOriginalAmount()
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         deposit_counter++;
                     }

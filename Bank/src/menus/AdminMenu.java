@@ -40,10 +40,10 @@ public abstract  class AdminMenu {
                 int transaction_choice = RoleAns.choiceInput("1.Show Loan History\n2.Show Deposit History", 1, 2, input);
                 switch (transaction_choice) {
                   case 1:
-                    ThreeBranchTree.printTransactionHistory(ThreeBranchTree.getLoanRoot());
+                    ThreeBranchTree.printLoanHistory(ThreeBranchTree.getLoanRoot());
                     break;
                   case 2:
-                    ThreeBranchTree.printTransactionHistory(ThreeBranchTree.getDepositRoot());
+                    ThreeBranchTree.printDepositHistory(ThreeBranchTree.getDepositRoot());
                     break;
                   default:
                       System.out.println("Error when printing transactions");
@@ -77,6 +77,7 @@ public abstract  class AdminMenu {
               System.out.println("Profit: " + BankRequest.getProfit());
             break;
             case 5:
+                approveLoop = true;
                 while(approveLoop){
                     if(BankRequest.isEmptyRequests() == true){
                         System.out.println("No more requests, going back to menu");

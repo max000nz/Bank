@@ -45,12 +45,20 @@ public class ThreeBranchTree {
         return node;
     }
 
-    public static void printTransactionHistory(TreeNode root){
+    public static void printLoanHistory(TreeNode root){
         if (root == null) return;
-        printTransactionHistory(root.right);
-        printTransactionHistory(root.middle);
-        printTransactionHistory(root.left);
-        System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount: " + root.data.getAmount() + "\n");
+        printLoanHistory(root.right);
+        printLoanHistory(root.middle);
+        printLoanHistory(root.left);
+        System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount Loaned: " + root.data.getOriginalAmount() + "\nAmount Paid: "+root.data.getAmount()+"\n");
+    }
+
+    public static void printDepositHistory(TreeNode root){
+        if (root == null) return;
+        printDepositHistory(root.right);
+        printDepositHistory(root.middle);
+        printDepositHistory(root.left);
+        System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount Deposited: " + root.data.getOriginalAmount() + "\nAmount Withdrawn: "+root.data.getAmount()+"\n");
     }
 
     public static TreeNode getLoanRoot() {
