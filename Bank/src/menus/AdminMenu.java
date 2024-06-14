@@ -4,6 +4,7 @@ import bank_classes.BankRequest;
 import bank_classes.UserRequest;
 import bank_classes.UsersList;
 import connection.RoleAns;
+import data_structure.ThreeBranchTree;
 import enums.RequestType;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -37,10 +38,22 @@ public abstract  class AdminMenu {
             break;
 
             case 2:
-              // Show Transaction History
-            break;
+                int transaction_choice = RoleAns.choiceInput("1.Show Loan History\n2.Show Deposit History", 1, 2, input);
+                switch (transaction_choice) {
+                  case 1:
+                    ThreeBranchTree.printTransactionHistory(ThreeBranchTree.getLoanRoot());
+                    break;
+                  case 2:
+                    ThreeBranchTree.printTransactionHistory(ThreeBranchTree.getDepositRoot());
+                    break;
+                  default:
+                      System.out.println("Error when printing transactions");
+                }
+              
+                break;
+            
+            
             case 3:
-                // We need to add an option to cancel the deletion
                 while (true){
                     int user_id= RoleAns.idInput("\"Please provide an id: ", 0, 999999999, input);
                     if(user_id == 0) break; 
@@ -58,7 +71,11 @@ public abstract  class AdminMenu {
             break;
             
             case 4:
-              // Get analytics
+              System.out.println("\nLoans: " + BankRequest.getLoanNum());
+              System.out.println("Cash Loaned: " + BankRequest.getLoanSum());
+              System.out.println("Deposits: " + BankRequest.getDepositNum());
+              System.out.println("Cash Deposited: " + BankRequest.getDepositSum());
+              System.out.println("Profit: " + BankRequest.getProfit());
             break;
             case 5:
                 while(approveLoop){
@@ -105,16 +122,10 @@ public abstract  class AdminMenu {
                             approveLoop = false;
                         break;
                     }
-                    
                 }
-
                 
                 break;
-
-            //default -> throw new AssertionError();
         }
-        
-
     }
  }
 
