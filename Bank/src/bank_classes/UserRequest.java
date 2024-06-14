@@ -9,15 +9,25 @@ public class UserRequest {
 	private String message;
 	private float amount;
 	private RequestType type;
-
+	private int interest;
 	public UserRequest(){}
 
-	public UserRequest(int userId, String message, int amount , RequestType type ){
+	public UserRequest(int userId, String message, int amount, int interest , RequestType type ){
         
 		this.userId = userId;
 		this.message = message;
 		this.amount = amount;
+		this.interest = interest;
 		this.type = type;
+	}
+
+	public void calculateInterest(float cash){
+		int calc = (int)cash/1000;
+			if(calc == 0){
+				this.interest = 1;
+			}else{
+				this.interest = calc;
+			}
 	}
 
 	public String getMessage() {
@@ -53,4 +63,12 @@ public class UserRequest {
 	public void setType(RequestType type) {
 		this.type = type;
 	}
+
+    public int getInterest() {
+        return interest;
+    }
+
+    public void setInterest(int interest) {
+        this.interest = interest;
+    }
 }
