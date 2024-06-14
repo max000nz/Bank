@@ -15,6 +15,7 @@ public class UserMenu {
         float currCash = 0;
         String message = "";
         int choice = -1;
+        int interest = 0;
         while(true){
             System.out.println("\nWelcome, " + currUser.getName());
             System.out.println("Your current balance is: "+currUser.GetCash() + "\n");
@@ -64,6 +65,7 @@ public class UserMenu {
                     loan.setMessage(message);
                     loan.setUserId(currUser.getId());
                     loan.setType(RequestType.LOAN);
+                    loan.calculateInterest(changeCash);
                     currUser.NewLoanR(loan);
                     System.out.println("Your request was successfully sent to the bank");
                     break;
@@ -78,6 +80,7 @@ public class UserMenu {
                     deposit.setMessage(message);
                     deposit.setUserId(currUser.getId());
                     deposit.setType(RequestType.DEPOSIT);
+                    deposit.calculateInterest(changeCash);
                     currUser.NewDepositR(deposit);
                     System.out.println("Your request was successfully sent to the bank");
                     break;
@@ -130,22 +133,22 @@ public class UserMenu {
 
                 case 7:
                 if(currUser.getLoans().isEmpty()) {System.out.println("No more Loans"); break;}
+                int loan_counter=1;
                 for (UUID elem : currUser.getLoans()) {
-                    int counter=1;
                     UserRequest req=BankRequest.findAprrovedRequestById(elem);
-                    System.out.println(counter+"."+" "+req.getAmount()+" "+req.getMessage()+" "+req.getType());
-                    counter++;
+                    System.out.println("Loan "+loan_counter+":\nAmount Loaned: "+req.getAmount()+"\nMessage: "+req.getMessage()+"\nInterest: "+req.getInterest());
+                    loan_counter++;
                 }
                 System.out.println("No more Loans");
                 break;
                 
                 case 8:
                 if(currUser.getDeposits().isEmpty()) {System.out.println("No more Deposits"); break;}
+                int deposit_counter=1;
                 for (UUID elem : currUser.getDeposits()) {
-                    int counter=1;
                     UserRequest req=BankRequest.findAprrovedRequestById(elem);
-                    System.out.println(counter+"."+" "+req.getAmount()+" "+req.getMessage()+" "+req.getType());
-                    counter++;
+                    System.out.println("Deposit "+deposit_counter+":\nAmount Deposited: "+req.getAmount()+"\nMessage: "+req.getMessage()+"\nInterest: "+req.getInterest());
+                    deposit_counter++;
                 }
                 System.out.println("No more Deposits");
                 break;
