@@ -6,34 +6,20 @@ public class ThreeBranchTree {
     private static TreeNode loanRoot;
     private static TreeNode depositRoot ;
 
-    // public ThreeBranchTree(UserRequest data) {
-
-    //     switch (data.getType()) {
-    //         case LOAN:
-    //             loanRoot = new TreeNode(data);
-    //             break;
-    //         case DEPOSIT:
-    //             depositRoot = new TreeNode(data);
-    //             break;
-    //         default:
-    //             System.err.println("Error when creating a new Tree Branch");
-    //     }
-    // }
-
     public static void insertNode(UserRequest data) {
         switch (data.getType()) {
             case CLOSE_LOAN:
-                insert(loanRoot, data);
+                loanRoot = insert(loanRoot, data);
                 break;
             case CLOSE_DEPOSIT:
-                insert(depositRoot, data);
+                depositRoot = insert(depositRoot, data);
                 break;
             default:
                 System.err.println("Error when creating a new Tree Branch");
         }
     }
 
-    private static void insert(TreeNode node, UserRequest data) {
+    private static TreeNode insert(TreeNode node, UserRequest data) {
         if (node == null){
             node = new TreeNode(data);
         } else if (data.getAmount() < node.data.getAmount()) {
@@ -55,5 +41,24 @@ public class ThreeBranchTree {
                 insert(node.middle, data);
             }
         }
+
+        return node;
     }
+
+    public static void printTransactionHistory(TreeNode root){
+        if (root == null) return;
+        printTransactionHistory(root.right);
+        printTransactionHistory(root.middle);
+        printTransactionHistory(root.left);
+        System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount: " + root.data.getAmount() + "\n");
+    }
+
+    public static TreeNode getLoanRoot() {
+        return loanRoot;
+    }
+
+    public static TreeNode getDepositRoot() {
+        return depositRoot;
+    }
+    
 }

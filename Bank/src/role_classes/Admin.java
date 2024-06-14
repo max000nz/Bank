@@ -69,6 +69,8 @@ public class Admin extends Roles {
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         curr_user.setTotalLoans(curr_user.GetTotalLoans() + curr_req.getAmount());
         curr_user.addLoan(curr_req.getId());
+        BankRequest.increaseLoanNum();
+        BankRequest.increaseLoanSum(curr_req.getAmount());
         break;
 
       case DEPOSIT:
@@ -79,6 +81,8 @@ public class Admin extends Roles {
         curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() + curr_req.getAmount());
         curr_user.addDeposit(curr_req.getId());
+        BankRequest.increaseDepositNum();
+        BankRequest.increaseDepositSum(curr_req.getAmount());
         break;
 
 
@@ -92,6 +96,8 @@ public class Admin extends Roles {
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the loan
         curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount() + 0);
         curr_user.deleteLoan(curr_req.getId());
+        BankRequest.decreaseLoanNum();
+        BankRequest.decreaseLoanSum(curr_req.getAmount());
         break;
 
       case CLOSE_DEPOSIT:
@@ -100,6 +106,8 @@ public class Admin extends Roles {
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the deposit
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() - curr_req.getAmount());
         curr_user.deleteDeposit(curr_req.getId());
+        BankRequest.decreaseDepositNum();
+        BankRequest.decreaseDepositSum(curr_req.getAmount());
         break;
     }
 

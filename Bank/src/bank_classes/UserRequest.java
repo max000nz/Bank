@@ -1,7 +1,6 @@
 package bank_classes;
-import java.util.UUID;
-
 import enums.RequestType;
+import java.util.UUID;
 
 public class UserRequest {
 	
