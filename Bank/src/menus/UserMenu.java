@@ -7,14 +7,18 @@ import enums.RequestType;
 import java.util.Scanner;
 import java.util.UUID;
 import role_classes.User;
+import java.time.LocalTime;
 
 public class UserMenu {
     public static void ShowUserMenu(User currUser, Scanner input) throws Exception {
-
+        LocalTime time = LocalTime.now();
         float changeCash = 0;
         float currCash = 0;
         String message = "";
         int choice = -1;
+        int timePassed;
+        float newAmount;
+        
         while (true) {
             System.out.println("\nWelcome, " + currUser.getName());
             System.out.println("Your current balance is: " + currUser.GetCash() + "\n");
@@ -95,21 +99,27 @@ public class UserMenu {
                     break;
 
                 case 5:
-
+                    time = LocalTime.now();
                     int num = 1;
                     int loanChoice = -1;
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
+                        newAmount = curr_request.getAmount();
                         if (curr_request.isPendingToClose() == true)
                             continue;
-                        System.out.println(num + ". " + curr_request.getAmount());
+                        timePassed = (time.toSecondOfDay()/60) - curr_request.getStartTime();
+                         for(int t=0; t<timePassed; t++){
+                            newAmount = newAmount*(1+(float)curr_request.getInterest()/100);
+                        }
+                        System.out.println(num + ". " + newAmount);
                         num++;
                         // need to handle queue issue ( head moving backward whan choise is no)
                         loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n0.Exit", 0, 2,
                                 input);
                         switch (loanChoice) {
                             case 1:
+                                curr_request.setAmount(newAmount);
                                 curr_request.setPendingToClose(true);
                                 currUser.PayoutLoanR(curr_request);
                                 System.out.println("Request to close the loan sent successfully");
@@ -123,20 +133,26 @@ public class UserMenu {
                     break;
 
                 case 6:
-
+                    time = LocalTime.now();
                     num = 1;
                     int depositChoice = 0;
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
+                        newAmount = curr_request.getAmount();
                         if (curr_request.isPendingToClose() == true)
                             continue;
-                        System.out.println(num + ". " + curr_request.getAmount());
+                        timePassed = (time.toSecondOfDay()/60) - curr_request.getStartTime();
+                        for(int t=0; t<timePassed; t++){
+                            newAmount = newAmount*(1+(float)curr_request.getInterest()/100);
+                        }
+                        System.out.println(num + ". " + newAmount);
                         num++;
                         depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n0.Exit",
                                 0, 2, input);
                         switch (depositChoice) {
                             case 1:
+                                curr_request.setAmount(newAmount);
                                 curr_request.setPendingToClose(true);
                                 currUser.WithdrawDepositR(curr_request);
                                 System.out.println("Request to close the deposit sent successfully");
