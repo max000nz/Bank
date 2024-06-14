@@ -10,6 +10,8 @@ public class UserRequest {
 	private float amount;
 	private RequestType type;
 	private int interest;
+	private boolean pendingToClose;
+	
 	public UserRequest(){}
 
 	public UserRequest(int userId, String message, int amount, int interest , RequestType type ){
@@ -19,6 +21,7 @@ public class UserRequest {
 		this.amount = amount;
 		this.interest = interest;
 		this.type = type;
+		this.pendingToClose = false;
 	}
 
 	public void calculateInterest(float cash){
@@ -71,4 +74,13 @@ public class UserRequest {
     public void setInterest(int interest) {
         this.interest = interest;
     }
+
+	public boolean isPendingToClose() {
+		return pendingToClose;
+	}
+
+	public void setPendingToClose(boolean pendingToClose) {
+		this.pendingToClose = pendingToClose;
+	}
+
 }
