@@ -24,9 +24,11 @@ public class UserMenu {
             System.out.println("4.Long deposit");
             System.out.println("5.Close loan");
             System.out.println("6.Close long deposit");
+            System.out.println("7.Show loans History");
+            System.out.println("8.Show deposit History");
             System.out.println("0.Exit\n");
             
-            choice = RoleAns.choiceInput("What do you want to do?", 0, 7, input);
+            choice = RoleAns.choiceInput("What do you want to do?", 0, 8, input);
             switch (choice) {
     
                 case 0:
@@ -125,6 +127,28 @@ public class UserMenu {
                                 return; // CHANGE MAIN SWITCH TO WHILE AND THIS WILL WORK
                             }
                         }
+
+                case 7:
+                if(currUser.getLoans().isEmpty()) {System.out.println("No more Loans"); break;}
+                for (UUID elem : currUser.getLoans()) {
+                    int counter=1;
+                    UserRequest req=BankRequest.findAprrovedRequestById(elem);
+                    System.out.println(counter+"."+" "+req.getAmount()+" "+req.getMessage()+" "+req.getType());
+                    counter++;
+                }
+                System.out.println("No more Loans");
+                break;
+                
+                case 8:
+                if(currUser.getDeposits().isEmpty()) {System.out.println("No more Deposits"); break;}
+                for (UUID elem : currUser.getDeposits()) {
+                    int counter=1;
+                    UserRequest req=BankRequest.findAprrovedRequestById(elem);
+                    System.out.println(counter+"."+" "+req.getAmount()+" "+req.getMessage()+" "+req.getType());
+                    counter++;
+                }
+                System.out.println("No more Deposits");
+                break;
                 } 
             }
         }
