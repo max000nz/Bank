@@ -70,6 +70,7 @@ public class UserMenu {
                     message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
                     UserRequest loan = new UserRequest();
                     loan.setAmount(changeCash);
+                    loan.setOriginalAmount(changeCash);
                     loan.setMessage(message);
                     loan.setUserId(currUser.getId());
                     loan.setType(RequestType.LOAN);
@@ -90,6 +91,7 @@ public class UserMenu {
                     message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
                     deposit.setAmount(changeCash);
+                    deposit.setOriginalAmount(changeCash);
                     deposit.setMessage(message);
                     deposit.setUserId(currUser.getId());
                     deposit.setType(RequestType.DEPOSIT);

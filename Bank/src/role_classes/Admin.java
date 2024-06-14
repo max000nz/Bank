@@ -21,33 +21,13 @@ public class Admin extends Roles {
     super(name, lastName, id, password, role);
   }
 
-  // public BankRequest getTransactionHistory() {
-
-  // returns the tree;
-  // }
-
-
   public void DeleteUser(int user_id) {
     try {
       UsersList.removeUser(user_id, this.id);
     } catch (Exception e) {
       System.err.println(e.getMessage());
     }
-    
   }
-
-  // private GetAnalytics(){
-  // implementation of Binary tree
-  // }
-
-  // public void approveRequest() {
-  //   if (BankRequest.getRequestsSize() == 0) {
-  //     System.out.println("No requests available");
-  //     return;
-  //   }
-    
-  //   System.out.println("Request approved");
-  // }
 
   public void denyRequest() {
     if (BankRequest.denyRequest() == false) {
@@ -94,23 +74,25 @@ public class Admin extends Roles {
         System.out.println("error remain of loan is bigger then your cash in the bank");
         break;
         }
+        BankRequest.increaseProfit(curr_req.getAmount() - curr_req.getOriginalAmount());
         curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the loan
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the loan
         curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount() + 0);
         curr_user.deleteLoan(curr_req.getId());
         BankRequest.decreaseLoanNum();
-        BankRequest.decreaseLoanSum(curr_req.getAmount());
+        BankRequest.decreaseLoanSum(curr_req.getOriginalAmount());
         break;
 
       case CLOSE_DEPOSIT:
+        BankRequest.decreaseProfit(curr_req.getAmount() - curr_req.getOriginalAmount());
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the deposit
         BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the deposit
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() - curr_req.getAmount());
         curr_user.deleteDeposit(curr_req.getId());
         BankRequest.decreaseDepositNum();
-        BankRequest.decreaseDepositSum(curr_req.getAmount());
+        BankRequest.decreaseDepositSum(curr_req.getOriginalAmount());
         break;
     }
 
