@@ -13,6 +13,7 @@ public class UserRequest {
 	private int interest;
 	private boolean pendingToClose;
 	private int startTime;
+	private float originalAmount;
 
 	public UserRequest(){}
 
@@ -91,6 +92,14 @@ public class UserRequest {
 
 	public void setStartTime(int startTime) {
 		this.startTime = startTime;
+	}
+
+	public float getOriginalAmount() {
+		return originalAmount;
+	}
+
+	public void setOriginalAmount(float originalAmount) {
+		this.originalAmount = originalAmount;
 	}
 
 }

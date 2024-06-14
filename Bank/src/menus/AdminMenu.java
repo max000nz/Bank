@@ -116,6 +116,9 @@ public abstract  class AdminMenu {
                         break;
                         case 2:
                             admin.denyRequest();
+                            if(curr_req.getType() == RequestType.CLOSE_DEPOSIT ||  curr_req.getType() == RequestType.CLOSE_LOAN){
+                                curr_req.setPendingToClose(false);
+                            }
                         break;
                         case 3:
                             approveLoop = false;
