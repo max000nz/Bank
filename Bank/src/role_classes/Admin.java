@@ -1,5 +1,6 @@
 package role_classes;
 
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -11,11 +12,11 @@ import bank_classes.UsersList;
 import enums.RoleType;
 
 public class Admin extends Roles {
-
+  LocalTime time = LocalTime.now();
   public static Queue<UserRequest> bankReq = BankRequest.getBankRequests();
   public static Queue<BankRequest> allBankLoans = new LinkedList<BankRequest>();
   public static Queue<BankRequest> allBankDeposite = new LinkedList<BankRequest>();
-
+  
   public Admin(String name, String lastName, int id, String password, RoleType role) {
     super(name, lastName, id, password, role);
   }
@@ -68,6 +69,7 @@ public class Admin extends Roles {
       case LOAN:
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         curr_user.setTotalLoans(curr_user.GetTotalLoans() + curr_req.getAmount());
+        curr_req.setStartTime(time.toSecondOfDay()/60);
         curr_user.addLoan(curr_req.getId());
         BankRequest.increaseLoanNum();
         BankRequest.increaseLoanSum(curr_req.getAmount());
@@ -80,6 +82,7 @@ public class Admin extends Roles {
         }
         curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() + curr_req.getAmount());
+        curr_req.setStartTime(time.toSecondOfDay()/60);
         curr_user.addDeposit(curr_req.getId());
         BankRequest.increaseDepositNum();
         BankRequest.increaseDepositSum(curr_req.getAmount());

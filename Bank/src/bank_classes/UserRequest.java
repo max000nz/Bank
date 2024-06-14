@@ -1,9 +1,10 @@
 package bank_classes;
 import enums.RequestType;
 import java.util.UUID;
+import java.time.LocalTime;
 
 public class UserRequest {
-	
+	LocalTime time = LocalTime.now();
 	private UUID id = UUID.randomUUID();
 	private int userId;
 	private String message;
@@ -11,7 +12,8 @@ public class UserRequest {
 	private RequestType type;
 	private int interest;
 	private boolean pendingToClose;
-	
+	private int startTime;
+
 	public UserRequest(){}
 
 	public UserRequest(int userId, String message, int amount, int interest , RequestType type ){
@@ -81,6 +83,14 @@ public class UserRequest {
 
 	public void setPendingToClose(boolean pendingToClose) {
 		this.pendingToClose = pendingToClose;
+	}
+
+	public int getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(int startTime) {
+		this.startTime = startTime;
 	}
 
 }
