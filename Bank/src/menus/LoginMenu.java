@@ -10,7 +10,7 @@ public abstract class LoginMenu {
 
     public static Roles ShowLoginMenu(Scanner input){
 
-        System.out.println("Welcome!\n");
+        System.out.println("\nWelcome!\n");
         
         while(true){
 
