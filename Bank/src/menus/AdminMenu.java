@@ -19,7 +19,7 @@ public abstract  class AdminMenu {
 
     while (working) {
        
-        int userchoice=RoleAns.choiceInput("\nHello "+admin.getName()+ " " + admin.getLastName() +"\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.exit\nEnter Choice:", 0, 5, input);
+        int userchoice=RoleAns.choiceInput("\nHello "+admin.getName()+ " " + admin.getLastName() +"\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.Exit\nEnter Choice:", 0, 5, input);
         switch (userchoice) {
             case 0:
             return;
@@ -93,7 +93,7 @@ public abstract  class AdminMenu {
                     System.out.println("Amount: " + curr_req.getAmount());
                     System.out.println("Type: " + curr_req.getType());
                     int choice=-1;
-                    choice = RoleAns.choiceInput("\nDo you want to approve?\n1.Yes\n2.No\n3.Exit", 1, 3, input);
+                    choice = RoleAns.choiceInput("\nDo you want to approve?\n1.Yes\n2.No\n0.Exit", 0, 2, input);
                     switch(choice){
                         case 1:
                             try {
@@ -122,7 +122,7 @@ public abstract  class AdminMenu {
                                 curr_req.setPendingToClose(false);
                             }
                         break;
-                        case 3:
+                        case 0:
                             approveLoop = false;
                         break;
                     }
