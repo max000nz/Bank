@@ -64,7 +64,7 @@ public abstract class RoleAns {
       } catch (Exception e) {
         int choice = 0;
         System.err.println(e.getMessage());
-        choice = choiceInput("Would you like to try again?\n0.No\n1.Yes", 0, 1, input);
+        choice = choiceInput("\nWould you like to try again?\n\n0.No\n1.Yes", 0, 1, input);
         if(choice == 0) return 0;
       }
     }
@@ -108,19 +108,19 @@ public abstract class RoleAns {
 
   private static void validationLength(String str, float min, float max, InputType input_type) throws Exception {
 
-    if(max < min ) throw new Exception("maxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
+    if(max < min ) throw new Exception("\nmaxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
 
     if(input_type == InputType.PASSWORD || input_type == InputType.MESSAGE || input_type == InputType.NAMES){
 
       if(str.length() > max || str.length() < min){
-        throw new Exception("Input length is out of range! Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)).concat(" Characters"));
+        throw new Exception("\nInput length is out of range! Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)).concat(" Characters"));
       }
     }
 
     if(input_type == InputType.CASH  || input_type == InputType.ID || input_type == InputType.CHOICE){
 
       float num = Float.parseFloat(str);
-      if(num > max || num < min) throw new Exception("Input value is out of range. Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)));
+      if(num > max || num < min) throw new Exception("\nInput value is out of range. Expected range: ".concat(String.valueOf((int)min)).concat(" to ").concat(String.valueOf((int)max)));
     }
   }
 
@@ -137,12 +137,12 @@ public abstract class RoleAns {
       for (char c : str.toCharArray()) {
       
         for(char o : operators.toCharArray()){
-          if(c == o) throw new Exception("Special letters are not allowed!");
+          if(c == o) throw new Exception("\nSpecial letters are not allowed!");
         }
 
         c = Character.toLowerCase(c);
         for(char l : alphabet.toCharArray()){
-          if(c == l) throw new Exception("Alphabet letters are not allowed!");
+          if(c == l) throw new Exception("\nAlphabet letters are not allowed!");
         }
       }
     }
@@ -152,10 +152,10 @@ public abstract class RoleAns {
       for (char c : str.toCharArray()) {
         for(char o : operators.toCharArray()){
           int counter = 0;
-          if(c == o && c != '.') throw new Exception("Special letters are not allowed!"); // Dots are allowed
+          if(c == o && c != '.') throw new Exception("\nSpecial letters are not allowed!"); // Dots are allowed
           else if (c == o && c == '.'){
             counter++;
-            if(counter >= 2) throw new Exception("You have entered too many dots!"); // Only 1 dot is allowed
+            if(counter >= 2) throw new Exception("\nYou have entered too many dots!"); // Only 1 dot is allowed
           }
         }
       }
@@ -163,7 +163,7 @@ public abstract class RoleAns {
       for(char c : operators.toCharArray()){
         c = Character.toLowerCase(c);
         for(char l : alphabet.toCharArray()){
-          if(c == l) throw new Exception("Alphabet letters are not allowed!");
+          if(c == l) throw new Exception("\nAlphabet letters are not allowed!");
         }
       }
     }
@@ -172,7 +172,7 @@ public abstract class RoleAns {
 
       for (char c : str.toCharArray()) {
         for(char o : operators.toCharArray()){
-          if(c == o && c != ' ') throw new Exception("Special letters are not allowed!"); // Spaces are allowed
+          if(c == o && c != ' ') throw new Exception("\nSpecial letters are not allowed!"); // Spaces are allowed
         }
       }
     }

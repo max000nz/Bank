@@ -42,12 +42,12 @@ public class UserMenu {
 
                     currCash = currUser.GetCash();
                     if (currUser.GetCash() == 0) {
-                        System.out.println("Current Balance = 0");
+                        System.out.println("\nYou have no money to withdraw... Current Balance = 0");
                         break;
                     }
-                    changeCash = RoleAns.cashInput("How much money you want to withdrawal?", 1, 1000000, input);
+                    changeCash = RoleAns.cashInput("\nHow much money you want to withdraw?", 1, 1000000, input);
                     if (currUser.GetCash() < changeCash) {
-                        System.out.println("You dont have enongh money in your balance");
+                        System.out.println("\nYou dont have enough money in your balance");
                         break;
                     }
                     currCash -= changeCash;
@@ -57,11 +57,11 @@ public class UserMenu {
 
                 case 2:
 
-                    changeCash = RoleAns.cashInput("How much money you want to deposit?", 1, 50000, input);
+                    changeCash = RoleAns.cashInput("\nHow much money you want to deposit?", 1, 50000, input);
                     currCash = currUser.GetCash();
                     currCash += changeCash;
                     currUser.setCash(currCash);
-                    System.out.println("Money was successfully deposited");
+                    System.out.println("\nMoney was successfully deposited");
                     break;
 
                 case 3:
@@ -82,13 +82,13 @@ public class UserMenu {
                 case 4:
 
                     currCash = currUser.GetCash();
-                    changeCash = RoleAns.cashInput("How much money you want to put on long deposit?", 1, 10000000,
+                    changeCash = RoleAns.cashInput("\nHow much money you want to put on long deposit?", 1, 10000000,
                             input);
                     if (currCash - changeCash < 0) {
                         System.out.println("You dont have enough money in your account balance");
                         break;
                     }
-                    message = RoleAns.messageInput("Why you want to put money on deposit?", 1, 100, input);
+                    message = RoleAns.messageInput("Why you want to deposit money?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
                     deposit.setAmount(changeCash);
                     deposit.setOriginalAmount(changeCash);
@@ -169,7 +169,7 @@ public class UserMenu {
                 case 7:
 
                     if (currUser.getLoans().isEmpty()) {
-                        System.out.println("No more Loans");
+                        System.out.println("\nThere are no open loans");
                         break;
                     }
                     int loan_counter = 1;
@@ -179,13 +179,11 @@ public class UserMenu {
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         loan_counter++;
                     }
-                    System.out.println("No more Loans");
-                    break;
 
                 case 8:
 
                     if (currUser.getDeposits().isEmpty()) {
-                        System.out.println("No more Deposits");
+                        System.out.println("\nThere are no open deposits");
                         break;
                     }
                     int deposit_counter = 1;
@@ -195,8 +193,6 @@ public class UserMenu {
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         deposit_counter++;
                     }
-                    System.out.println("No more Deposits");
-                    break;
             }
         }
     }
