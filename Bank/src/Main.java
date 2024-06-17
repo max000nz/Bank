@@ -19,7 +19,7 @@ public class Main {
         int choice = 0;
         UsersList.addUser(admin);
         while(true){
-            choice = RoleAns.choiceInput("1.register\n2.login\n0.close program", 0, 2, input);
+            choice = RoleAns.choiceInput("1.Register\n2.Login\n0.Close program", 0, 2, input);
            Roles curr = null;
             switch (choice) {
                 case 0:
