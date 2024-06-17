@@ -30,9 +30,9 @@ public class UserMenu {
             System.out.println("6.Close long deposit");
             System.out.println("7.Show loans");
             System.out.println("8.Show deposit");
-            System.out.println("0.Exit\n");
+            System.out.println("0.Exit");
 
-            choice = RoleAns.choiceInput("What do you want to do?", 0, 8, input);
+            choice = RoleAns.choiceInput("\nWhat do you want to do?", 0, 8, input);
             switch (choice) {
 
                 case 0:
@@ -46,6 +46,7 @@ public class UserMenu {
                         break;
                     }
                     changeCash = RoleAns.cashInput("\nHow much money you want to withdraw?", 1, 1000000, input);
+                    if(changeCash == 0) break;
                     if (currUser.GetCash() < changeCash) {
                         System.out.println("\nYou dont have enough money in your balance");
                         break;
@@ -58,6 +59,7 @@ public class UserMenu {
                 case 2:
 
                     changeCash = RoleAns.cashInput("\nHow much money you want to deposit?", 1, 50000, input);
+                    if(changeCash == 0) break;
                     currCash = currUser.GetCash();
                     currCash += changeCash;
                     currUser.setCash(currCash);
@@ -66,8 +68,9 @@ public class UserMenu {
 
                 case 3:
 
-                    changeCash = RoleAns.cashInput("How much money you want to loan?", 1, 50000, input);
-                    message = RoleAns.messageInput("Why you want to take a loan?", 1, 100, input);
+                    changeCash = RoleAns.cashInput("\nHow much money you want to loan?", 1, 50000, input);
+                    if(changeCash == 0) break;
+                    message = RoleAns.messageInput("\nWhy do you want to take a loan?", 1, 100, input);
                     UserRequest loan = new UserRequest();
                     loan.setAmount(changeCash);
                     loan.setOriginalAmount(changeCash);
@@ -76,19 +79,19 @@ public class UserMenu {
                     loan.setType(RequestType.LOAN);
                     loan.calculateInterest(changeCash);
                     currUser.NewLoanR(loan);
-                    System.out.println("Your request was successfully sent to the bank");
+                    System.out.println("\nYour request was successfully sent for review");
                     break;
 
                 case 4:
 
                     currCash = currUser.GetCash();
-                    changeCash = RoleAns.cashInput("\nHow much money you want to put on long deposit?", 1, 10000000,
-                            input);
+                    changeCash = RoleAns.cashInput("\nHow much money you want to put on long deposit?", 1, 10000000,input);
+                    if(changeCash == 0) break;
                     if (currCash - changeCash < 0) {
-                        System.out.println("You dont have enough money in your account balance");
+                        System.out.println("\nYou dont have enough money in your account balance");
                         break;
                     }
-                    message = RoleAns.messageInput("Why you want to deposit money?", 1, 100, input);
+                    message = RoleAns.messageInput("\nWhy do you want to deposit money?", 1, 100, input);
                     UserRequest deposit = new UserRequest();
                     deposit.setAmount(changeCash);
                     deposit.setOriginalAmount(changeCash);
@@ -97,13 +100,17 @@ public class UserMenu {
                     deposit.setType(RequestType.DEPOSIT);
                     deposit.calculateInterest(changeCash);
                     currUser.NewDepositR(deposit);
-                    System.out.println("Your request was successfully sent to the bank");
+                    System.out.println("\nYour request was successfully sent to the bank");
                     break;
 
                 case 5:
                     time = LocalTime.now();
                     int num = 1;
                     int loanChoice = -1;
+                    if(currUser.getLoans().isEmpty()){
+                        System.out.println("\nThere are no open loans");
+                        break;
+                    }
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
@@ -117,14 +124,13 @@ public class UserMenu {
                         System.out.println(num + ". " + newAmount);
                         num++;
                         // need to handle queue issue ( head moving backward whan choise is no)
-                        loanChoice = RoleAns.choiceInput("Do you want to close this loan?\n1.Yes\n2.No\n0.Exit", 0, 2,
-                                input);
+                        loanChoice = RoleAns.choiceInput("\nDo you want to close this loan?\n1.Yes\n2.No\n0.Exit", 0, 2,input);
                         switch (loanChoice) {
                             case 1:
                                 curr_request.setAmount(newAmount);
                                 curr_request.setPendingToClose(true);
                                 currUser.PayoutLoanR(curr_request);
-                                System.out.println("Request to close the loan sent successfully");
+                                System.out.println("\nRequest to close the loan sent successfully");
                                 continue;
                             case 2:
                                 continue;
@@ -138,6 +144,10 @@ public class UserMenu {
                     time = LocalTime.now();
                     num = 1;
                     int depositChoice = 0;
+                    if(currUser.getDeposits().isEmpty()){
+                        System.out.println("\nThere are no open deposits");
+                        break;
+                    }
                     System.out.println("Your current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
@@ -150,14 +160,13 @@ public class UserMenu {
                         }
                         System.out.println(num + ". " + newAmount);
                         num++;
-                        depositChoice = RoleAns.choiceInput("Do you want to close this deposit?\n1.Yes\n2.No\n0.Exit",
-                                0, 2, input);
+                        depositChoice = RoleAns.choiceInput("\nDo you want to close this deposit?\n1.Yes\n2.No\n0.Exit", 0, 2, input);
                         switch (depositChoice) {
                             case 1:
                                 curr_request.setAmount(newAmount);
                                 curr_request.setPendingToClose(true);
                                 currUser.WithdrawDepositR(curr_request);
-                                System.out.println("Request to close the deposit sent successfully");
+                                System.out.println("\nRequest to close the deposit sent successfully");
                                 continue;
                             case 2:
                                 continue;
