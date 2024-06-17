@@ -32,6 +32,7 @@ public class Main {
                     break;
                 case 2:
                 curr = LoginMenu.ShowLoginMenu(input);
+                    if(curr == null) continue;
                     switch(curr.getRole())
                     {
                         case ADMIN:

@@ -22,13 +22,13 @@ public class ThreeBranchTree {
     private static TreeNode insert(TreeNode node, UserRequest data) {
         if (node == null){
             node = new TreeNode(data);
-        } else if (data.getAmount() < node.data.getAmount()) {
+        } else if (data.getOriginalAmount() < node.data.getOriginalAmount()) {
             if (node.left == null) {
                 node.left = new TreeNode(data);
             } else {
                 insert(node.left, data);
             }
-        } else if (data.getAmount() > node.data.getAmount()) {
+        } else if (data.getOriginalAmount() > node.data.getOriginalAmount()) {
             if (node.right == null) {
                 node.right = new TreeNode(data);
             } else {
