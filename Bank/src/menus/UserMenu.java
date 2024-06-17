@@ -111,7 +111,7 @@ public class UserMenu {
                         System.out.println("\nThere are no open loans");
                         break;
                     }
-                    System.out.println("Your current balance is " + currUser.GetCash());
+                    System.out.println("\nYour current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
                         newAmount = curr_request.getAmount();
@@ -121,7 +121,7 @@ public class UserMenu {
                          for(int t=0; t<timePassed; t++){
                             newAmount = newAmount*(1+(float)curr_request.getInterest()/100);
                         }
-                        System.out.println(num + ". " + newAmount);
+                        System.out.println("\n" + num + ". " + newAmount);
                         num++;
                         // need to handle queue issue ( head moving backward whan choise is no)
                         loanChoice = RoleAns.choiceInput("\nDo you want to close this loan?\n1.Yes\n2.No\n0.Exit", 0, 2,input);
@@ -148,7 +148,7 @@ public class UserMenu {
                         System.out.println("\nThere are no open deposits");
                         break;
                     }
-                    System.out.println("Your current balance is " + currUser.GetCash());
+                    System.out.println("\nYour current balance is " + currUser.GetCash());
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
                         newAmount = curr_request.getAmount();
@@ -184,10 +184,11 @@ public class UserMenu {
                     int loan_counter = 1;
                     for (UUID elem : currUser.getLoans()) {
                         UserRequest req = BankRequest.findAprrovedRequestById(elem);
-                        System.out.println("Loan " + loan_counter + ":\nAmount Loaned: " + req.getOriginalAmount()
+                        System.out.println("\nLoan " + loan_counter + ":\nAmount Loaned: " + req.getOriginalAmount()
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         loan_counter++;
                     }
+                    break;
 
                 case 8:
 
@@ -198,7 +199,7 @@ public class UserMenu {
                     int deposit_counter = 1;
                     for (UUID elem : currUser.getDeposits()) {
                         UserRequest req = BankRequest.findAprrovedRequestById(elem);
-                        System.out.println("Deposit " + deposit_counter + ":\nAmount Deposited: " + req.getOriginalAmount()
+                        System.out.println("\nDeposit " + deposit_counter + ":\nAmount Deposited: " + req.getOriginalAmount()
                                 + "\nMessage: " + req.getMessage() + "\nInterest: " + req.getInterest());
                         deposit_counter++;
                     }
