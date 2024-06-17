@@ -21,7 +21,7 @@ public abstract class LoginMenu {
             LinkedList<Roles> users = UsersList.getUsers();
             int menu_count = 1;
             for(Roles elem : users){
-                System.out.println(menu_count + " " + elem.getName() + " " + elem.getLastName() + " " + elem.getId());
+                System.out.println(menu_count + ". " + elem.getName() + " " + elem.getLastName());
                 menu_count++;
             }
             System.out.println("0. Back");
@@ -31,10 +31,10 @@ public abstract class LoginMenu {
 
             if(choice == 0) return null;
 
-            password = RoleAns.passwordInput("Please enter your password: ", 100000000, 999999999, input);
+            password = RoleAns.passwordInput("\nPlease enter your password: ", 100000000, 999999999, input);
 
             if(users.get(choice-1).SearchInfo(users.get(choice-1).getId(), password)){
-                System.out.println("Logging in...");
+                System.out.println("\nLogging in...");
                 return (users.get(choice-1)); 
             }
 
