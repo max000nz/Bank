@@ -1,21 +1,19 @@
 package role_classes;
 
+import bank_classes.BankRequest;
+import bank_classes.UserRequest;
+import bank_classes.UsersList;
+import enums.RoleType;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import bank_classes.BankRequest;
-import bank_classes.UserRequest;
-import bank_classes.UsersList;
-
-import enums.RoleType;
-
 public class Admin extends Roles {
   LocalTime time = LocalTime.now();
   public static Queue<UserRequest> bankReq = BankRequest.getBankRequests();
-  public static Queue<BankRequest> allBankLoans = new LinkedList<BankRequest>();
-  public static Queue<BankRequest> allBankDeposite = new LinkedList<BankRequest>();
+  public static Queue<BankRequest> allBankLoans = new LinkedList<>();
+  public static Queue<BankRequest> allBankDeposite = new LinkedList<>();
   
   public Admin(String name, String lastName, int id, String password, RoleType role) {
     super(name, lastName, id, password, role);
@@ -77,7 +75,7 @@ public class Admin extends Roles {
         BankRequest.increaseProfit(curr_req.getAmount() - curr_req.getOriginalAmount());
         curr_user.setCash(curr_user.GetCash() - curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the loan
-        BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the loan
+        BankRequest.deleteCloseRequest(curr_req); //deletes close request of the loan
         curr_user.setTotalLoans(curr_user.GetTotalLoans() - curr_req.getAmount() + 0);
         curr_user.deleteLoan(curr_req.getId());
         BankRequest.decreaseLoanNum();
@@ -88,7 +86,7 @@ public class Admin extends Roles {
         BankRequest.decreaseProfit(curr_req.getAmount() - curr_req.getOriginalAmount());
         curr_user.setCash(curr_user.GetCash() + curr_req.getAmount());
         BankRequest.deleteApprovedRequest(curr_req);      //deletes approved request of the deposit
-        BankRequest.deleteCloseRequest(curr_req.getId()); //deletes close request of the deposit
+        BankRequest.deleteCloseRequest(curr_req); //deletes close request of the deposit
         curr_user.setTotalDeposits(curr_user.GetTotalDeposit() - curr_req.getAmount());
         curr_user.deleteDeposit(curr_req.getId());
         BankRequest.decreaseDepositNum();

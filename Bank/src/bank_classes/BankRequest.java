@@ -39,22 +39,12 @@ public abstract class BankRequest {
 	}
 
 	public static void deleteApprovedRequest(UserRequest request){
-		for (UserRequest curr : approvedRequests) {
-			if(curr.getId() == request.getId()){
-				ThreeBranchTree.insertNode(curr);
-				approvedRequests.remove(curr);
-				return;
-			}
-		}
+		ThreeBranchTree.insertNode(request);
+		approvedRequests.remove(request);
 	}
 
-	public static void deleteCloseRequest(UUID requestId){
-		for (UserRequest curr : requests) {
-			if(curr.getId() == requestId){
-				requests.remove(curr);
-				return;
-			}
-		}
+	public static void deleteCloseRequest(UserRequest request){
+		requests.remove(request);
 	}
 
 	public static Queue<UserRequest> getBankRequests(){ return requests; }
