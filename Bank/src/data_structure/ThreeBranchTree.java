@@ -46,7 +46,7 @@ public class ThreeBranchTree {
     }
 
     public static void printLoanHistory(TreeNode root){
-        if (root == null) return;
+        if (root == null){System.out.println("\nloans history is empty"); return;}
         printLoanHistory(root.right);
         printLoanHistory(root.middle);
         printLoanHistory(root.left);
@@ -54,7 +54,7 @@ public class ThreeBranchTree {
     }
 
     public static void printDepositHistory(TreeNode root){
-        if (root == null) return;
+        if (root == null){System.out.println("Transaction history is empty"); return;}
         printDepositHistory(root.right);
         printDepositHistory(root.middle);
         printDepositHistory(root.left);
