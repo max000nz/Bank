@@ -64,7 +64,7 @@ public abstract class RoleAns {
       } catch (Exception e) {
         int choice = 0;
         System.err.println(e.getMessage());
-        choice = choiceInput("\nWould you like to try again?\n\n0.No\n1.Yes", 0, 1, input);
+        choice = choiceInput("\nWould you like to try again?\n\n1.Yes\n0.No", 0, 1, input);
         if(choice == 0) return 0;
       }
     }
@@ -160,7 +160,7 @@ public abstract class RoleAns {
         }
       }
 
-      for(char c : operators.toCharArray()){
+      for(char c : str.toCharArray()){
         c = Character.toLowerCase(c);
         for(char l : alphabet.toCharArray()){
           if(c == l) throw new Exception("\nAlphabet letters are not allowed!");

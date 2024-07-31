@@ -19,20 +19,19 @@ public abstract  class AdminMenu {
 
     while (working) {
        
-        int userchoice=RoleAns.choiceInput("\nHello "+admin.getName()+ " " + admin.getLastName() +"\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.Exit\nEnter Choice:", 0, 5, input);
+        int userchoice=RoleAns.choiceInput("\nHello "+admin.getName()+ " " + admin.getLastName() +"\n\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.Exit\n\nWhat do you want to do?", 0, 5, input);
         switch (userchoice) {
             case 0:
             return;
             case 1:
-            if(users.size()-1==0) {System.out.println("\nUsers list is empty\n"); break;}
+            if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
               for (Roles elem : users) {
                   if(elem.getRole()==enums.RoleType.ADMIN) continue;
                   else{
-                  System.out.println("\n");
-                  System.out.println("User ID: "+elem.getId());
-                  System.out.println("User name: " + elem.getName() + " " + elem.getLastName());
-                  if(elem instanceof User) System.out.println("Current balance: " +((User) elem).GetCash());
-                  System.out.println();
+                    System.out.println();
+                    System.out.println("User ID: "+elem.getId());
+                    System.out.println("User name: " + elem.getName() + " " + elem.getLastName());
+                    if(elem instanceof User) System.out.println("Current balance: " +((User) elem).GetCash());
                   }
               }
             break;
@@ -55,6 +54,7 @@ public abstract  class AdminMenu {
             
             case 3:
                 while (true){
+                    if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
                     int user_id= RoleAns.idInput("\nPlease provide an id: ", 0, 999999999, input);
                     if(user_id == 0) break; 
                     else if(user_id < 100000000 || user_id > 999999999){
@@ -79,6 +79,10 @@ public abstract  class AdminMenu {
             break;
             case 5:
                 approveLoop = true;
+                if(BankRequest.isEmptyRequests() == true){
+                    System.out.println("\nThere are no open requests");
+                    break;
+                }
                 while(approveLoop){
                     if(BankRequest.isEmptyRequests() == true){
                         System.out.println("\nNo more requests, going back to menu");

@@ -18,7 +18,7 @@ public abstract class UsersList {
         for(Roles user_in_list : users){
             if(user_in_list.getId() == admin_id){
                 if(user_in_list.getRole() == RoleType.USER){
-                    System.err.println("Only an admin perform this operation.");
+                    System.err.println("\nOnly an admin perform this operation.");
                     return false;
                 }
             }
@@ -30,7 +30,7 @@ public abstract class UsersList {
     public static void removeUser(int user_id, int admin_id) throws Exception {
 
         if(validationAdmin(admin_id) == false){
-            System.out.println("Only an admin can perform this action");
+            System.out.println("\nOnly an admin can perform this action");
             return;
         }
         // Removes the user with the corresponding id from the list
@@ -43,7 +43,7 @@ public abstract class UsersList {
             }
         }
 
-        throw new Exception("Id not found");
+        throw new Exception("\nId was not found");
     }
 
     // Get all users in the list
