@@ -36,14 +36,16 @@ public abstract  class AdminMenu {
               }
             break;
 
-            case 2: // Add a message for "No transaction history"
-                int transaction_choice = RoleAns.choiceInput("\n1.Show Loan History\n2.Show Deposit History", 1, 2, input);
+            case 2:
+                int transaction_choice = RoleAns.choiceInput("\n1.Show Loan History\n2.Show Deposit History\n0.Back", 0, 2, input);
                 switch (transaction_choice) {
                   case 1:
                     ThreeBranchTree.printLoanHistory(ThreeBranchTree.getLoanRoot());
                     break;
                   case 2:
                     ThreeBranchTree.printDepositHistory(ThreeBranchTree.getDepositRoot());
+                    break;
+                  case 0:
                     break;
                   default:
                       System.out.println("Error when printing transactions");
@@ -55,7 +57,7 @@ public abstract  class AdminMenu {
             case 3:
                 while (true){
                     if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
-                    int user_id= RoleAns.idInput("\nPlease provide an id: ", 0, 999999999, input);
+                    int user_id= RoleAns.idInput("\nPlease provide an id (Enter 0 to go back): ", 0, 999999999, input);
                     if(user_id == 0) break; 
                     else if(user_id < 100000000 || user_id > 999999999){
                         System.out.println("\nPlease enter a 9 digit number");
