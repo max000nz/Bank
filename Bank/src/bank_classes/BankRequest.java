@@ -1,5 +1,6 @@
 package bank_classes;
 import data_structure.ThreeBranchTree;
+import java.time.LocalTime;
 import java.util.*;
 
 public abstract class BankRequest {
@@ -67,6 +68,19 @@ public abstract class BankRequest {
 			}
 		}
 		return null;
+	}
+
+	public static float getNewAmount(UUID elem){
+		LocalTime time = LocalTime.now();
+		UserRequest curr_request = BankRequest.findAprrovedRequestById(elem);
+		float newAmount = curr_request.getAmount();
+		if (curr_request.isPendingToClose() == true)
+			return -1; // Continue in the outer loop
+		int timePassed = (time.toSecondOfDay()/60) - curr_request.getStartTime();
+			for(int t=0; t<timePassed; t++){
+			newAmount = newAmount*(1+(float)curr_request.getInterest()/100);
+		}
+		return newAmount;
 	}
 
 	public static int getRequestsSize(){

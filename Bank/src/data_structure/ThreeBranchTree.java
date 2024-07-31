@@ -46,7 +46,10 @@ public class ThreeBranchTree {
     }
 
     public static void printLoanHistory(TreeNode root){
-        if (root == null)return;
+        if (root == null){
+            System.out.println("\nThere are no closed loans");
+            return;
+        }
         printLoanHistory(root.right);
         printLoanHistory(root.middle);
         System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount Loaned: " + root.data.getOriginalAmount() + "\nAmount Paid: "+root.data.getAmount()+"\n");
@@ -54,7 +57,10 @@ public class ThreeBranchTree {
     }
 
     public static void printDepositHistory(TreeNode root){
-        if (root == null)return;
+        if (root == null){
+            System.out.println("\nThere are no closed deposits");
+            return;
+        }
         printDepositHistory(root.right);
         printDepositHistory(root.middle);
         System.out.println("User ID: " + root.data.getUserId() + "\nMessage: " + root.data.getMessage() + "\nAmount Deposited: " + root.data.getOriginalAmount() + "\nAmount Withdrawn: "+root.data.getAmount()+"\n");
