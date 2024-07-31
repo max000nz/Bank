@@ -22,6 +22,7 @@ public class Admin extends Roles {
   public void DeleteUser(int user_id) {
     try {
       UsersList.removeUser(user_id, this.id);
+      System.out.println("\nUser " + user_id + " was deleted successfully");
     } catch (Exception e) {
       System.err.println(e.getMessage());
     }

@@ -2,15 +2,14 @@ package role_classes;
 
 import bank_classes.BankRequest;
 import bank_classes.UserRequest;
-
 import enums.RoleType;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 import java.util.UUID;
+import user_interface.UserInterface;
 
-public class User extends Roles {
+public class User extends Roles implements UserInterface {
 	
 	private Stack<UserRequest> requestHistory;
 	private Queue<UUID> loans = new LinkedList<>();
