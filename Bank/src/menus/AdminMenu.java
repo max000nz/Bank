@@ -37,7 +37,7 @@ public abstract  class AdminMenu {
               }
             break;
 
-            case 2:
+            case 2: // Add a message for "No transaction history"
                 int transaction_choice = RoleAns.choiceInput("\n1.Show Loan History\n2.Show Deposit History", 1, 2, input);
                 switch (transaction_choice) {
                   case 1:
@@ -104,7 +104,6 @@ public abstract  class AdminMenu {
                                     }
                                     
                                     if(BankRequest.getRequestsSize() == 0){
-                                        System.out.println("\nNo more requests");
                                         break;
                                     }
                                 }else{
