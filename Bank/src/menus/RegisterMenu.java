@@ -9,6 +9,7 @@ import role_classes.*;
 
 public abstract class RegisterMenu {
     
+    // Prints and manages the Register menu and its functions.
     public static User ShowRegisterMenu(Scanner input){
         User current = new User();
         current.setRole(RoleType.USER);
@@ -19,15 +20,10 @@ public abstract class RegisterMenu {
         if(UsersList.checkIfexist(current.getId())){ 
             System.out.println("\nUser already exist in the system!");
             return null;
-        }  //Valdtion check if user exist... 
+        } 
 
         current.setPassword(RoleAns.passwordInput("\nPlease enter your password: ", 2, 10, input));
 
-        /*
-         * confirm password
-        
-         * go to user manu
-        */
         UsersList.addUser(current); //add user to userlist
         return current;
 

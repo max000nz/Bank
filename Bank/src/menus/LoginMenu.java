@@ -7,7 +7,8 @@ import java.util.Scanner;
 import role_classes.Roles;
 
 public abstract class LoginMenu {
-
+    
+    // Prints and manages the Login menu and its functions.
     public static Roles ShowLoginMenu(Scanner input){
 
         System.out.println("\nWelcome!\n");
@@ -15,7 +16,6 @@ public abstract class LoginMenu {
         while(true){
 
             int id=0;
-            //id = RoleAns.idInput("Please enter your id: ", 100000000, 999999999, input);
 
             String password="";
             LinkedList<Roles> users = UsersList.getUsers();
@@ -37,13 +37,6 @@ public abstract class LoginMenu {
                 System.out.println("\nLogging in...");
                 return (users.get(choice-1)); 
             }
-
-            // for (Roles elem : users) {
-            //     if(elem.SearchInfo(id,password)){
-            //         System.out.println("Logging in...");
-            //         return (elem); 
-            //     }   
-            // }
 
             System.out.println("Incorrect. Try again.\n");
         }

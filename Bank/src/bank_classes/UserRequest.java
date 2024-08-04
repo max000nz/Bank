@@ -1,7 +1,7 @@
 package bank_classes;
 import enums.RequestType;
-import java.util.UUID;
 import java.time.LocalTime;
+import java.util.UUID;
 
 public class UserRequest {
 	LocalTime time = LocalTime.now();
@@ -15,8 +15,10 @@ public class UserRequest {
 	private int startTime;
 	private float originalAmount;
 
+	// Empty constructor
 	public UserRequest(){}
 
+	// Non-empty constructor
 	public UserRequest(int userId, String message, int amount, int interest , RequestType type ){
         
 		this.userId = userId;
@@ -27,6 +29,7 @@ public class UserRequest {
 		this.pendingToClose = false;
 	}
 
+	// Calculates the interest rate of the long-deposit or loan based on the amount of money.
 	public void calculateInterest(float cash){
 		int calc = (int)cash/1000;
 			if(calc == 0){
@@ -36,10 +39,9 @@ public class UserRequest {
 			}
 	}
 
+	// Getters + Setters
 	public String getMessage() {
-
 		return this.message;
-
 	}
 	public void setMessage(String message) {
 		this.message = message;
@@ -77,7 +79,7 @@ public class UserRequest {
     public void setInterest(int interest) {
         this.interest = interest;
     }
-
+	
 	public boolean isPendingToClose() {
 		return pendingToClose;
 	}

@@ -8,7 +8,7 @@ public class TreeNode {
     TreeNode middle;
     TreeNode right;
 
-
+    // Constructor
     public TreeNode(UserRequest data) {
         this.data = data;
         this.left = null;

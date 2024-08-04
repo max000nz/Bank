@@ -10,7 +10,7 @@ import java.util.Scanner;
 import role_classes.*;
 
 public abstract  class AdminMenu {
-
+ // Prints and manages the Admin menu and its functions.
  public static void showAdminMenu(Admin admin, Scanner input) throws Exception
  {
     boolean working=true;
@@ -18,24 +18,29 @@ public abstract  class AdminMenu {
     LinkedList<Roles> users=UsersList.getUsers();
 
     while (working) {
-       
+
         int userchoice=RoleAns.choiceInput("\nHello "+admin.getName()+ " " + admin.getLastName() +"\n\n1.Show all Users\n2.Show Transaction History\n3.Delete User\n4.Get analytics\n5.Approve Requests\n0.Exit\n\nWhat do you want to do?", 0, 5, input);
         switch (userchoice) {
-            case 0:
-            return;
-            case 1:
-            if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
-              for (Roles elem : users) {
-                  if(elem.getRole()==enums.RoleType.ADMIN) continue;
-                  else{
-                    System.out.println();
-                    System.out.println("User ID: "+elem.getId());
-                    System.out.println("User name: " + elem.getName() + " " + elem.getLastName());
-                    if(elem instanceof User) System.out.println("Current balance: " +((User) elem).GetCash());
-                  }
-              }
-            break;
 
+            // Exit
+            case 0:
+                return;
+
+            // Show all users
+            case 1:
+                if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
+                for (Roles elem : users) {
+                    if(elem.getRole()==enums.RoleType.ADMIN) continue;
+                    else{
+                        System.out.println();
+                        System.out.println("User ID: "+elem.getId());
+                        System.out.println("User name: " + elem.getName() + " " + elem.getLastName());
+                        if(elem instanceof User) System.out.println("Current balance: " +((User) elem).GetCash());
+                    }
+                }
+                break;
+            
+            // Show Transaction History
             case 2:
                 int transaction_choice = RoleAns.choiceInput("\n1.Show Loan History\n2.Show Deposit History\n0.Back", 0, 2, input);
                 switch (transaction_choice) {
@@ -53,7 +58,7 @@ public abstract  class AdminMenu {
               
                 break;
             
-            
+            // Delete User
             case 3:
                 while (true){
                     if(users.size()-1 == 0) {System.out.println("\nUsers list is empty"); break;}
@@ -70,8 +75,9 @@ public abstract  class AdminMenu {
                     break;
                 }
 
-            break;
+                break;
             
+            // Get analytics
             case 4:
               System.out.println("\nLoans: " + BankRequest.getLoanNum());
               System.out.println("Cash Loaned: " + BankRequest.getLoanSum());
@@ -79,6 +85,8 @@ public abstract  class AdminMenu {
               System.out.println("Cash Deposited: " + BankRequest.getDepositSum());
               System.out.println("Profit: " + BankRequest.getProfit());
             break;
+
+            // Approve Requests
             case 5:
                 approveLoop = true;
                 if(BankRequest.isEmptyRequests() == true){

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public abstract class RoleAns {
   
+  // Takes the password input from the user and checks for invalid operators and letters.
   public static String passwordInput(String message, int minLenght, int maxLenght, Scanner input){
     String current;
     while(true){
@@ -20,6 +21,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Takes the message input (All input is allowed for messages).
   public static String messageInput(String message, int minLenght, int maxLenght, Scanner input){
     String current;
     while(true){
@@ -35,6 +37,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Takes the name input from the user and checks for invalid operators and letters.
   public static String namesInput(String message, int minLenght, int maxLenght, Scanner input){
     String current;
     while(true){
@@ -50,6 +53,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Takes the cash input from the user and check for invalid operators and letters.
   public static float cashInput(String message, float minValue, float maxValue, Scanner input){
     String current;
     float currFloat;
@@ -70,6 +74,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Takes the id input from the user and checks for invalid operators and letters. 
   public static int idInput(String message, int minValue, int maxValue, Scanner input){
     String current;
     int currInt = 0;
@@ -88,6 +93,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Takes the choice input from the user when navigating the menus, and checks for invalid operators and letters.
   public static int choiceInput(String message, float minValue, float maxValue, Scanner input){
     String current;
     int currInt;
@@ -106,6 +112,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Validates the length of the input.
   private static void validationLength(String str, float min, float max, InputType input_type) throws Exception {
 
     if(max < min ) throw new Exception("\nmaxLength has to be >= minLength"); // Throws an exception if max is bigger than min.
@@ -124,6 +131,7 @@ public abstract class RoleAns {
     }
   }
 
+  // Validates the input by checking for unallowed operators and letters based on the type of input.
   private static boolean operatorCheck(String str, float min, float max, InputType input_type) throws Exception
   {
     String operators = "+-*/%^&|<>!=?:,.()_@#$\"'`~[]{}\\; ";
@@ -146,7 +154,7 @@ public abstract class RoleAns {
         }
       }
     }
-
+  
     if(input_type == InputType.CASH){
 
       for (char c : str.toCharArray()) {
