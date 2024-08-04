@@ -9,13 +9,10 @@ protected String password;
 protected int id;
 protected RoleType role;
 
-
- // Set function can be done only for admin ( beacuse neet to change all the loans/deposite with)
-
-
-//functions
-
+// Empty-Constructor
 public Roles(){}
+
+// Non-empty Constructor
 public Roles(String name, String lastName, int id, String password, RoleType role)
 {
 	this.name = name;
@@ -25,16 +22,16 @@ public Roles(String name, String lastName, int id, String password, RoleType rol
 	this.role = role;
 }
 
+// Checks if the password that was entered is the correct password.
 public boolean SearchInfo(int id, String password)
 {
-
-	// create a connection to users DB (create bank-user class), get thw relevant user if exist 
 	if(id == this.id && this.password.equals((password))) {
 		return true;
 	}
 	return false;
 }
 
+// Getters + Setters
 public String getName() {
 	return name;
 }

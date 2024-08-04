@@ -9,6 +9,8 @@ import java.util.UUID;
 import role_classes.User;
 
 public class UserMenu {
+
+    // Prints and manages the User menu and its functions.
     public static void ShowUserMenu(User currUser, Scanner input) throws Exception {
         float changeCash = 0;
         float currCash = 0;
@@ -33,9 +35,11 @@ public class UserMenu {
             choice = RoleAns.choiceInput("\nWhat do you want to do?", 0, 8, input);
             switch (choice) {
 
+                // Exit
                 case 0:
                     return;
 
+                // Withdrawal
                 case 1:
 
                     currCash = currUser.GetCash();
@@ -53,7 +57,8 @@ public class UserMenu {
                     currUser.setCash(currCash);
                     System.out.println("\nMoney was successfully withdrawn");
                     break;
-
+                
+                // Deposit Cash
                 case 2:
 
                     changeCash = RoleAns.cashInput("\nHow much money you want to deposit?", 1, 50000, input);
@@ -63,7 +68,8 @@ public class UserMenu {
                     currUser.setCash(currCash);
                     System.out.println("\nMoney was successfully deposited");
                     break;
-
+                
+                // Loan
                 case 3:
 
                     changeCash = RoleAns.cashInput("\nHow much money you want to loan?", 1, 50000, input);
@@ -79,7 +85,8 @@ public class UserMenu {
                     currUser.NewLoanR(loan);
                     System.out.println("\nYour request was sent for review");
                     break;
-
+                
+                // Long-deposit
                 case 4:
 
                     currCash = currUser.GetCash();
@@ -105,7 +112,8 @@ public class UserMenu {
                     currUser.NewDepositR(deposit);
                     System.out.println("\nYour request was sent for review");
                     break;
-
+                
+                // Close loan
                 case 5:
                     exit = false;
                     int num = 1;
@@ -141,7 +149,8 @@ public class UserMenu {
                         }
                     }
                     break;
-
+                
+                // Close Long-deposit
                 case 6:
                     exit = false;
                     num = 1;
@@ -176,6 +185,8 @@ public class UserMenu {
                         }
                     }
                     break;
+
+                // Show loans
                 case 7:
 
                     if (currUser.getLoans().isEmpty()) {
@@ -192,7 +203,8 @@ public class UserMenu {
                         loan_counter++;
                     }
                     break;
-
+                
+                // Show deposit
                 case 8:
 
                     if (currUser.getDeposits().isEmpty()) {

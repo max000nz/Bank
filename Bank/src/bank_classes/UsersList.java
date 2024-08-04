@@ -33,6 +33,10 @@ public abstract class UsersList {
             System.out.println("\nOnly an admin can perform this action");
             return;
         }
+        if(user_id == 222222222){
+            System.out.println("\nYou cannot delete an admin");
+            return;
+        }
         // Removes the user with the corresponding id from the list
         for(Roles user_in_list : users){
 
@@ -63,7 +67,7 @@ public abstract class UsersList {
       return null;
   }
 
-
+  // Checks if the user exists.
   public static  boolean checkIfexist(int id)
   {
     for (Roles elem :users ) {

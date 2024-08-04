@@ -6,6 +6,7 @@ public class ThreeBranchTree {
     private static TreeNode loanRoot;
     private static TreeNode depositRoot ;
 
+    // Inserts a node with the user request into the three-branch tree.
     public static void insertNode(UserRequest data) {
         switch (data.getType()) {
             case CLOSE_LOAN:
@@ -19,6 +20,7 @@ public class ThreeBranchTree {
         }
     }
 
+    //  Inserts a node into the tree, based on the amount of money requested.
     private static TreeNode insert(TreeNode node, UserRequest data) {
         if (node == null){
             node = new TreeNode(data);
@@ -45,6 +47,7 @@ public class ThreeBranchTree {
         return node;
     }
 
+    // Prints the history of all the loans that were closed from the tree.
     public static void printLoanHistory(TreeNode root){
         if (root == null){
             System.out.println("\nThere are no closed loans");
@@ -56,6 +59,7 @@ public class ThreeBranchTree {
         printLoanHistory(root.left);
     }
 
+    // Prints the history of all the long-deposits that were closed from the tree
     public static void printDepositHistory(TreeNode root){
         if (root == null){
             System.out.println("\nThere are no closed deposits");
@@ -67,10 +71,12 @@ public class ThreeBranchTree {
         printDepositHistory(root.left);
     }
 
+    // Returns the root of the loans tree
     public static TreeNode getLoanRoot() {
         return loanRoot;
     }
 
+    // Returns the root of the deposits tree
     public static TreeNode getDepositRoot() {
         return depositRoot;
     }

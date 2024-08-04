@@ -11,6 +11,7 @@ import role_classes.Roles;
 import role_classes.User;
 
 public class Main {
+    
 	public static void main(String args[]) throws Exception{ 
         Scanner input = new Scanner(System.in);
         Admin admin = new Admin("max", "pro" , 222222222, "ben", enums.RoleType.ADMIN);

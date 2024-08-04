@@ -15,19 +15,22 @@ public class Admin extends Roles {
   public static Queue<BankRequest> allBankLoans = new LinkedList<>();
   public static Queue<BankRequest> allBankDeposite = new LinkedList<>();
   
+  // Constructor
   public Admin(String name, String lastName, int id, String password, RoleType role) {
     super(name, lastName, id, password, role);
   }
 
+  // Deletes a specific user based on an id number.
   public void DeleteUser(int user_id) {
     try {
       UsersList.removeUser(user_id, this.id);
-      System.out.println("\nUser " + user_id + " was deleted successfully");
+      if(user_id != 222222222) System.out.println("\nUser " + user_id + " was deleted successfully");
     } catch (Exception e) {
       System.err.println(e.getMessage());
     }
   }
 
+  // Denies a request.
   public void denyRequest() {
     if (BankRequest.denyRequest() == false) {
       System.out.println("No requests available");
@@ -36,6 +39,7 @@ public class Admin extends Roles {
     System.out.println("Request denied");
   }
 
+  // Determines what happens when the admin approves a request based on its type.
   public boolean handleApprovedRequest(Scanner input) throws Exception {
     if (BankRequest.getRequestsSize() == 0) {
       throw new Exception("requests size is 0");

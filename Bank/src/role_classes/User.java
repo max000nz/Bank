@@ -19,11 +19,11 @@ public class User extends Roles implements UserInterface {
 	private float cash= 0;
 	private float totalLoans= 0;
 	private float totalDeposits= 0;
-	
-	
 
+	// Empty-Constructor
 	public User(){}
 
+	// Non-empty Constructor
 	public User(String name, String lastName, int id, String password, RoleType role) {
 		
 		super(name, lastName, id, password, role);
@@ -54,6 +54,7 @@ public class User extends Roles implements UserInterface {
 		BankRequest.addRequest(closeDeposit);
 	}
 
+	// Getters + Setters
 	public void setCash(float cash) {
 		this.cash = cash;
 	}
