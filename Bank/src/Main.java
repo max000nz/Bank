@@ -8,17 +8,14 @@ import menus.RegisterMenu;
 import menus.UserMenu;
 import role_classes.Admin;
 import role_classes.Roles;
-import role_classes.User;
 
 public class Main {
     
 	public static void main(String args[]) throws Exception{ 
         Scanner input = new Scanner(System.in);
-        Admin admin = new Admin("max", "pro" , 222222222, "ben", enums.RoleType.ADMIN);
-        User user = new User("liad", "mandil", 111111111, "liad" , enums.RoleType.USER);
-        UsersList.addUser(user);
-        int choice = 0;
+        Admin admin = new Admin("Admin", "" , 222222222, "admin", enums.RoleType.ADMIN);
         UsersList.addUser(admin);
+        int choice = 0;
         while(true){
             choice = RoleAns.choiceInput("\n1.Register\n2.Login\n0.Close program", 0, 2, input);
            Roles curr = null;
