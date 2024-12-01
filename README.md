@@ -1,9 +1,26 @@
-inside connection-RoleAns-> need to change the validation to be more dynamic per request (withdrawal validate)
+Welcome to our final project in Java.
+
+Project name: Bank
+
+This project contain banking system, that have:
+
+- Relevant menu for User
+- Relevant menu for Admin
+
+ Admin:
+  - Show all Users
+  - Show Transaction History
+  - Delete User
+  - Get analytics
+  - Approve Requests
 
 
-checklist for the project:
-
- - interface class
- - inherited
- - abstruct
- - 
+  User:
+  - Withdrawal
+  - Deposit Cash
+  - Loan
+  - Long deposit
+  - Close loan
+  - Close long-deposit
+  - Show loans
+  - Show deposit
